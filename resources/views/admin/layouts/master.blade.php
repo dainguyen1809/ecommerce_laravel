@@ -81,6 +81,15 @@
     <!-- bundle -->
     <script src="{{ asset('backend/js/vendor.min.js') }}"></script>
     <script src="{{ asset('backend/js/app.min.js') }}"></script>
+    <script>
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                @php
+                    toastr()->error($error);
+                @endphp
+            @endforeach
+        @endif
+    </script>
 
 </body>
 

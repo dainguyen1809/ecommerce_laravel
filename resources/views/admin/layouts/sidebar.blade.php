@@ -1,8 +1,8 @@
 <div class="left-side-menu left-side-menu-detached">
     <div class="leftbar-user">
-        <a href="javascript: void(0);">
-            <img src="assets/images/users/avatar-1.jpg" alt="user-image" height="42" class="rounded-circle shadow-sm" />
-            <span class="leftbar-user-name">Dominic Keller</span>
+        <a href="{{ route('admin.profile') }}">
+            <img src="{{ asset(Auth::user()->avatar) }}" alt="user-image" height="42" class="rounded-circle shadow-sm" />
+            <span class="leftbar-user-name">{{ Auth::user()->name }}</span>
         </a>
     </div>
 
@@ -18,16 +18,16 @@
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="dashboard-analytics.html">Analytics</a>
+                    <a href="#">Analytics</a>
                 </li>
                 <li>
-                    <a href="dashboard-crm.html">CRM</a>
+                    <a href="#">CRM</a>
                 </li>
                 <li>
-                    <a href="/saas/">Ecommerce</a>
+                    <a href="#">Ecommerce</a>
                 </li>
                 <li>
-                    <a href="dashboard-projects.html">Projects</a>
+                    <a href="#">Projects</a>
                 </li>
             </ul>
         </li>
@@ -41,28 +41,28 @@
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="apps-ecommerce-products.html">Products</a>
+                    <a href="#">Products</a>
                 </li>
                 <li>
-                    <a href="apps-ecommerce-products-details.html">Products Details</a>
+                    <a href="#">Products Details</a>
                 </li>
                 <li>
-                    <a href="apps-ecommerce-orders.html">Orders</a>
+                    <a href="#">Orders</a>
                 </li>
                 <li>
-                    <a href="apps-ecommerce-orders-details.html">Order Details</a>
+                    <a href="#">Order Details</a>
                 </li>
                 <li>
-                    <a href="apps-ecommerce-customers.html">Customers</a>
+                    <a href="#">Customers</a>
                 </li>
                 <li>
-                    <a href="apps-ecommerce-shopping-cart.html">Shopping Cart</a>
+                    <a href="#">Shopping Cart</a>
                 </li>
                 <li>
-                    <a href="apps-ecommerce-checkout.html">Checkout</a>
+                    <a href="#">Checkout</a>
                 </li>
                 <li>
-                    <a href="apps-ecommerce-sellers.html">Sellers</a>
+                    <a href="#">Sellers</a>
                 </li>
             </ul>
         </li>
