@@ -18,19 +18,13 @@ class VendorProfileController extends Controller
 
     public function updateProfile(UpdateProfileRequest $request)
     {
+
+        $imgPath = $this->uploadImage($request, 'avatar', 'images/users');
         $user = Auth::user()
             ->fill($request->validated());
 
-        if ($request->hasFile('avatar')) {
-            if (File::exists(public_path($user->avatar))) {
-                File::delete(public_path($user->avatar));
-            }
-            $avt = $request->avatar;
-            $avtName = rand() . '_' . $avt->getClientOriginalName();
-            $avt->move(public_path('images/users'), $avtName);
-            $path = '/images/users/' . $avtName;
-            $user->avatar = $path;
-        }
+        $user->avatar = $imgPath;
+
         $user->save();
 
         toastr()->success('Update Successfully');

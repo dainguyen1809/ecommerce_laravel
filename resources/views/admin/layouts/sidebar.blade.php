@@ -11,7 +11,7 @@
         <li class="side-nav-title side-nav-item">Navigation</li>
 
         <li class="side-nav-item">
-            <a href="javascript: void(0);" class="side-nav-link">
+            <a href="{{ route('admin.dashboard') }}" class="side-nav-link">
                 <i class="uil-home-alt"></i>
                 <span class="badge badge-success float-right">4</span>
                 <span> Dashboards </span>
@@ -35,34 +35,13 @@
         <li class="side-nav-title side-nav-item">Apps</li>
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
-                <i class="uil-store"></i>
-                <span> Ecommerce </span>
+                <i class="uil-web-section"></i>
+                <span> Layout </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="#">Products</a>
-                </li>
-                <li>
-                    <a href="#">Products Details</a>
-                </li>
-                <li>
-                    <a href="#">Orders</a>
-                </li>
-                <li>
-                    <a href="#">Order Details</a>
-                </li>
-                <li>
-                    <a href="#">Customers</a>
-                </li>
-                <li>
-                    <a href="#">Shopping Cart</a>
-                </li>
-                <li>
-                    <a href="#">Checkout</a>
-                </li>
-                <li>
-                    <a href="#">Sellers</a>
+                    <a href="{{ route('admin.slider.index') }}">Slider</a>
                 </li>
             </ul>
         </li>

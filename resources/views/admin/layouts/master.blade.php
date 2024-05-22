@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Detached | Hyper - Responsive Bootstrap 4 Admin Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
@@ -15,6 +16,7 @@
     <link href="{{ asset('backend/css/app-creative.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
     <link href="{{ asset('backend/css/app-creative-dark.min.css') }}" rel="stylesheet" type="text/css"
         id="dark-style" />
+    @stack('styles')
 </head>
 
 <body class="loading" data-layout="detached"
@@ -78,9 +80,12 @@
     <div class="rightbar-overlay"></div>
     <!-- /Right-bar -->
 
+    <script src="//cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- bundle -->
     <script src="{{ asset('backend/js/vendor.min.js') }}"></script>
     <script src="{{ asset('backend/js/app.min.js') }}"></script>
+
     <script>
         @if ($errors->any())
             @foreach ($errors->all() as $error)
@@ -91,6 +96,59 @@
         @endif
     </script>
 
+    {{-- delete item --}}
+    <script>
+        $(document).ready(function() {
+            // $.ajaxSetup({
+
+            // });
+
+            $('body').on('click', '.delete-item', function(event) {
+                event.preventDefault();
+
+                let deleteUrl = $(this).attr('href');
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: 'DELETE',
+                            url: deleteUrl,
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+
+                            success: function(data) {
+                                if (data.status == 'success') {
+                                    Swal.fire(
+                                        "Deleted!",
+                                        data.message
+                                    );
+                                    window.location.reload();
+                                } else if (data.status == 'error') {
+                                    Swal.fire(
+                                        "Cannot delte!",
+                                        data.message
+                                    );
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(error);
+                            }
+                        })
+                    }
+                });
+            })
+        });
+    </script>
+    @stack('scripts')
 </body>
 
 </html>
