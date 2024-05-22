@@ -80,9 +80,14 @@
                                                 placeholder="Name">
                                         </div>
                                         <div class="wsus__login_input">
+                                            <i class="fas fa-user-tie"></i>
+                                            <input type="text" name="username" id="name"
+                                                value="{{ old('username') }}" placeholder="Username">
+                                        </div>
+                                        <div class="wsus__login_input">
                                             <i class="far fa-envelope"></i>
-                                            <input type="email" name="email" id="email" value="{{ old('email') }}"
-                                                placeholder="Email">
+                                            <input type="email" name="email" id="email"
+                                                value="{{ old('email') }}" placeholder="Email">
                                         </div>
                                         <div class="wsus__login_input">
                                             <i class="fas fa-key"></i>
