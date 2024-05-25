@@ -26,6 +26,27 @@
                 <li>
                     <a href="{{ route('admin.slider.index') }}">Slider</a>
                 </li>
+                <li>
+                    <a href="#">Ecommerce</a>
+                </li>
+            </ul>
+        </li>
+        <li class="side-nav-item">
+            <a href="javascript: void(0);" class="side-nav-link">
+                <i class="uil-label"></i>
+                <span> Categories </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <ul class="side-nav-second-level" aria-expanded="false">
+                <li>
+                    <a href="{{ route('admin.category.index') }}">Main Category</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.sub-category.index') }}">Sub Category</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.child-category.index') }}">Child Category</a>
+                </li>
             </ul>
         </li>
 

@@ -16,6 +16,15 @@
     <link href="{{ asset('backend/css/app-creative.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
     <link href="{{ asset('backend/css/app-creative-dark.min.css') }}" rel="stylesheet" type="text/css"
         id="dark-style" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" href="{{ asset('backend/css/bootstrap-iconpicker.min.css') }}">
+
+    <style>
+        .dataTables_filter,
+        .dataTables_paginate {
+            float: right;
+        }
+    </style>
     @stack('styles')
 </head>
 
@@ -82,9 +91,11 @@
 
     <script src="//cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- bundle -->
     <script src="{{ asset('backend/js/vendor.min.js') }}"></script>
     <script src="{{ asset('backend/js/app.min.js') }}"></script>
+    <script src="{{ asset('backend/js/bootstrap-iconpicker.bundle.min.js') }}"></script>
 
     <script>
         @if ($errors->any())
@@ -129,13 +140,15 @@
                                 if (data.status == 'success') {
                                     Swal.fire(
                                         "Deleted!",
-                                        data.message
+                                        data.message,
+                                        'success'
                                     );
                                     window.location.reload();
                                 } else if (data.status == 'error') {
                                     Swal.fire(
                                         "Cannot delte!",
-                                        data.message
+                                        data.message,
+                                        'error'
                                     );
                                 }
                             },

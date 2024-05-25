@@ -30,8 +30,8 @@
         <div class="form-group">
             <label for="example-multiselect">Status</label>
             <select class="custom-select mb-3" name="status">
-                <option value="1">Active</option>
-                <option value="0">Inactive</option>
+                <option value="1">Enable</option>
+                <option value="0">Disable</option>
             </select>
         </div>
         <div class="row">

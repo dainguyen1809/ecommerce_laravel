@@ -35,8 +35,8 @@
         <div class="form-group">
             <label for="example-multiselect">Status</label>
             <select class="custom-select mb-3" name="status">
-                <option {{ $slider->status == 1 ? 'selected' : '' }} value="1">Active</option>
-                <option {{ $slider->status == 0 ? 'selected' : '' }} value="0">Inactive</option>
+                <option {{ $slider->status == 1 ? 'selected' : '' }} value="1">Enable</option>
+                <option {{ $slider->status == 0 ? 'selected' : '' }} value="0">Disable</option>
             </select>
         </div>
         <div class="row">

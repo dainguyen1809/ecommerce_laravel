@@ -19,3 +19,5 @@ yarn-error.log
 /.vscode
 public/backend
 public/frontend
+tests/
+.env.testing

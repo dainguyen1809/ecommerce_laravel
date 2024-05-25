@@ -14,7 +14,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-12 d-flex justify-content-end mb-3">
-                    <a class="btn btn-primary" href="{{ route('admin.slider.create') }}">
+                    <a class="btn btn-primary" href="{{ route('admin.sub-category.create') }}">
                         <i class="uil-plus"></i>
                         {{ __('Create New') }}</a>
                 </div>
@@ -33,4 +33,32 @@
     <script src="{{ asset('backend/js/vendor/dataTables.responsive.min.js') }}"></script>
     <script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap4.js"></script>
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+
+    <script>
+        $(document).ready(function() {
+            $('body').on('click', '.change-status', function() {
+                const checked = $(this).is(':checked');
+                const id = $(this).data('id');
+
+                $.ajax({
+                    url: "{{ route('admin.sub-category.change-status') }}",
+                    method: "PUT",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        status: checked,
+                        id: id,
+                    },
+                    success: function(response) {
+                        console.log(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    },
+                });
+
+            })
+        });
+    </script>
 @endpush

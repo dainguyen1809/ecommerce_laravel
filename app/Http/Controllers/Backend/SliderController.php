@@ -80,7 +80,7 @@ class SliderController extends Controller
         $slider = $this->model->findOrFail($id);
         $imgPath = $this->updateImage($request, 'banner', 'images/banners', $slider->banner);
         $slider->fill($request->validated());
-        $slider->banner = empty(!$imgPath) ? $imgPath : $slider->banner; // Gán đường dẫn của tệp ảnh đã di chuyển vào trường 'banner'
+        $slider->banner = empty(! $imgPath) ? $imgPath : $slider->banner; // Gán đường dẫn của tệp ảnh đã di chuyển vào trường 'banner'
         // dd($slider->banner);
         $slider->save();
 
