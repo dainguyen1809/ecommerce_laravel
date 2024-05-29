@@ -15,7 +15,7 @@
                 <i class="uil-home-alt"></i>
                 <span> Dashboards </span>
             </a>
-        <li class="side-nav-title side-nav-item">Apps</li>
+        <li class="side-nav-title side-nav-item">Managements</li>
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
                 <i class="uil-web-section"></i>
@@ -46,6 +46,18 @@
                 </li>
                 <li>
                     <a href="{{ route('admin.child-category.index') }}">Child Category</a>
+                </li>
+            </ul>
+        </li>
+        <li class="side-nav-item">
+            <a href="javascript: void(0);" class="side-nav-link">
+                <i class="uil-label"></i>
+                <span> Products </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <ul class="side-nav-second-level" aria-expanded="false">
+                <li>
+                    <a href="{{ route('admin.brand.index') }}"> Brand </a>
                 </li>
             </ul>
         </li>

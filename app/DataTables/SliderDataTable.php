@@ -17,7 +17,7 @@ class SliderDataTable extends DataTable
      *
      * @param QueryBuilder $query Results from query() method.
      */
-    public function dataTable(QueryBuilder $query): EloquentDataTable
+    public function dataTable(QueryBuilder $query) : EloquentDataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
@@ -48,7 +48,7 @@ class SliderDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(Slider $model): QueryBuilder
+    public function query(Slider $model) : QueryBuilder
     {
         return $model->newQuery();
     }
@@ -56,7 +56,7 @@ class SliderDataTable extends DataTable
     /**
      * Optional method if you want to use the html builder.
      */
-    public function html(): HtmlBuilder
+    public function html() : HtmlBuilder
     {
         return $this->builder()
             ->setTableId('slider-table')
@@ -78,7 +78,7 @@ class SliderDataTable extends DataTable
     /**
      * Get the dataTable columns definition.
      */
-    public function getColumns(): array
+    public function getColumns() : array
     {
         return [
             Column::make('id')->width(50),
@@ -98,7 +98,7 @@ class SliderDataTable extends DataTable
     /**
      * Get the filename for export.
      */
-    protected function filename(): string
+    protected function filename() : string
     {
         return 'Slider_' . date('YmdHis');
     }
