@@ -12,7 +12,7 @@ if (! function_exists('formatDate')) {
         $active->save();
 
         return response()->json([
-            'message' => 'Status has been updated!',
+            'message' => 'Status has been updated',
         ]);
     }
 }

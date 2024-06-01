@@ -10,7 +10,7 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    public function run(): void
+    public function run() : void
     {
         // \App\Models\User::factory(10)->create();
 
@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
-            UserSeeder::class,
+                // UserSeeder::class,
+            AdminProfileVendor::class,
         ]);
     }
 }

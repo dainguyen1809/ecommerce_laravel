@@ -19,7 +19,7 @@
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
                 <i class="uil-web-section"></i>
-                <span> Layout </span>
+                <span> Ecommerce </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
@@ -27,7 +27,7 @@
                     <a href="{{ route('admin.slider.index') }}">Slider</a>
                 </li>
                 <li>
-                    <a href="#">Ecommerce</a>
+                    <a href="{{ route('admin.vendor-profile.index') }}"> Vendor </a>
                 </li>
             </ul>
         </li>
@@ -58,6 +58,9 @@
             <ul class="side-nav-second-level" aria-expanded="false">
                 <li>
                     <a href="{{ route('admin.brand.index') }}"> Brand </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.vendor-profile.index') }}"> Product </a>
                 </li>
             </ul>
         </li>
