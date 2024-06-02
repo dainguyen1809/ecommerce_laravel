@@ -51,7 +51,7 @@
         </li>
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
-                <i class="uil-label"></i>
+                <i class="uil uil-pricetag-alt"></i>
                 <span> Products </span>
                 <span class="menu-arrow"></span>
             </a>
@@ -60,7 +60,7 @@
                     <a href="{{ route('admin.brand.index') }}"> Brand </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.vendor-profile.index') }}"> Product </a>
+                    <a href="{{ route('admin.products.index') }}"> Product </a>
                 </li>
             </ul>
         </li>
