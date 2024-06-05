@@ -29,5 +29,7 @@ class Product extends Model
         'status',
         'seo_title',
         'seo_description',
+        'offer_start_date',
+        'offer_end_date',
     ];
 }

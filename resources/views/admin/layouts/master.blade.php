@@ -18,6 +18,7 @@
         id="dark-style" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link rel="stylesheet" href="{{ asset('backend/css/bootstrap-iconpicker.min.css') }}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <style>
         .dataTables_filter,
@@ -110,10 +111,6 @@
     {{-- delete item --}}
     <script>
         $(document).ready(function() {
-            // $.ajaxSetup({
-
-            // });
-
             $('body').on('click', '.delete-item', function(event) {
                 event.preventDefault();
 

@@ -13,10 +13,24 @@
     <div class="card">
         <div class="card-header">
             <div class="row">
-                <div class="col-12 d-flex justify-content-end mb-3">
-                    <a class="btn btn-primary" href="{{ route('admin.products.create') }}">
+                <div class="col-12 d-flex justify-content-between">
+                    <a class="btn btn-secondary"
+                        href="{{ route('admin.products-variant.index', ['product' => $product->id]) }}">
+                        <i class="uil-arrow-left"></i>
+                        Back to product variants
+                    </a>
+                    <a class="btn btn-primary mr-2"
+                        href="{{ route('admin.products-variant-item.create', [
+                            'productId' => $product->id,
+                            'variantId' => $variant->id,
+                        ]) }}">
                         <i class="uil-plus"></i>
                         {{ __('Create New') }}</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="text-info">Variant: {{ $variant->name }}</h4>
                 </div>
             </div>
         </div>
@@ -41,7 +55,7 @@
                 const id = $(this).data('id');
 
                 $.ajax({
-                    url: "{{ route('admin.product.change-status') }}",
+                    url: "{{ route('admin.products-variant-item-status.change-status') }}",
                     method: "PUT",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

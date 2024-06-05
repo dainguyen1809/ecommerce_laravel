@@ -5,14 +5,19 @@ namespace App\Http\Controllers\Backend;
 use App\DataTables\ProductDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreProductRequest;
+use App\Http\Requests\product\UpdateProductRequest;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ChildCategory;
 use App\Models\Product;
+use App\Models\ProductImageGallery;
+use App\Models\ProductVariant;
 use App\Models\SubCategory;
 use App\Traits\UploadImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+use function App\Helpers\active;
 
 class ProductController extends Controller
 {
@@ -60,20 +65,6 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-        // $request->validate([
-        //     'image' => ['required', 'image', 'max:3000'],
-        //     'name' => ['required', 'max:200'],
-        //     'category' => ['required'],
-        //     'brand' => ['required'],
-        //     'price' => ['required'],
-        //     'quantity' => ['required'],
-        //     'short_description' => ['required', 'max: 600'],
-        //     'long_description' => ['required'],
-        //     'seo_title' => ['nullable', 'max:200'],
-        //     'seo_description' => ['nullable', 'max:250'],
-        //     'status' => ['required']
-        // ]);
-
         /** Handle the image upload */
         $imagePath = $this->uploadImage($request, 'image', 'images/products');
 
@@ -88,24 +79,110 @@ class ProductController extends Controller
         $product->child_category_id = $request->child_category;
         $product->brand_id = $request->brand;
         $product->is_approved = 1;
-        // $product->quantity = $request->quantity;
-        // $product->short_description = $request->short_description;
-        // $product->long_description = $request->long_description;
-        // $product->video_link = $request->video_link;
-        // $product->sku = $request->sku;
-        // $product->price = $request->price;
-        // $product->offer_price = $request->offer_price;
-        // $product->offer_start_date = $request->offer_start_date;
-        // $product->offer_end_date = $request->offer_end_date;
-        // $product->product_type = $request->product_type;
-        // $product->status = $request->status;
-        // $product->seo_title = $request->seo_title;
-        // $product->seo_description = $request->seo_description;
         $product->save();
 
         toastr('Created Successfully!', 'success');
 
         return redirect()->route('admin.products.index');
 
+    }
+
+    public function edit(Product $product)
+    {
+        $categories = Category::all();
+        $subCategories = SubCategory::where('category_id', $product->category_id)->get();
+        $childCategories = ChildCategory::where('sub_category_id', $product->sub_category_id)->get();
+        $brands = Brand::all();
+        return view('admin.product.edit', [
+            'product' => $product,
+            'categories' => $categories,
+            'brands' => $brands,
+            'subCategories' => $subCategories,
+            'childCategories' => $childCategories,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'image' => ['nullable', 'image', 'max:3000'],
+            'name' => ['required', 'max:200'],
+            'category' => ['required'],
+            'brand' => ['required'],
+            'price' => ['required'],
+            'quantity' => ['required'],
+            'short_description' => ['required', 'max: 600'],
+            'long_description' => ['required'],
+            'video_link' => ['required', 'url'],
+            'sku' => ['required', 'max:100'],
+            'seo_title' => ['nullable', 'max:200'],
+            'seo_description' => ['nullable', 'max:250'],
+            'status' => ['required'],
+            'product_type' => ['required'],
+        ]);
+
+        $product = $this->model->findOrFail($id);
+        $imagePath = $this->updateImage($request, 'image', 'images/products', $product->thumb_image);
+        $product->thumb_image = empty(! $imagePath) ? $imagePath : $product->thumb_image;
+        $product->name = $request->name;
+        $product->slug = str()->slug($request->name);
+        $product->vendor_id = Auth::user()->vendor->id;
+        $product->category_id = $request->category;
+        $product->sub_category_id = $request->sub_category;
+        $product->child_category_id = $request->child_category;
+        $product->brand_id = $request->brand;
+        $product->is_approved = 1;
+        $product->quantity = $request->quantity;
+        $product->short_description = $request->short_description;
+        $product->long_description = $request->long_description;
+        $product->video_link = $request->video_link;
+        $product->sku = $request->sku;
+        $product->price = $request->price;
+        $product->offer_price = $request->offer_price;
+        $product->offer_start_date = $request->offer_start_date;
+        $product->offer_end_date = $request->offer_end_date;
+        $product->product_type = $request->product_type;
+        $product->status = $request->status;
+        $product->seo_title = $request->seo_title;
+        $product->seo_description = $request->seo_description;
+        $product->save();
+
+        toastr('Update successfully', 'success');
+
+        return redirect()->route('admin.products.index');
+    }
+
+    public function destroy($id)
+    {
+        $product = $this->model->findOrFail($id);
+
+        // delete main image
+        $this->deleteImage($product->thumb_image);
+
+        // delete product gallery image
+        $galleryCheck = ProductImageGallery::where('product_id', $product->id)->get();
+        foreach ($galleryCheck as $gallery) {
+            $this->deleteImage($gallery->image);
+            $gallery->delete();
+        }
+
+        // delete product variant if exist
+        $variants = ProductVariant::where('product_id', $product->id)->get();
+        foreach ($variants as $variant) {
+            $variant->productVariantItems()->delete();
+            $variant->delete();
+        }
+
+        $product->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Deleted',
+        ]);
+    }
+
+    public function changeStatus(Request $request)
+    {
+        active($request, Product::findOrFail($request->id));
     }
 }
