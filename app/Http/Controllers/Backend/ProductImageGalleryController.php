@@ -12,6 +12,12 @@ use Illuminate\Http\Request;
 class ProductImageGalleryController extends Controller
 {
     use UploadImage;
+    private $model;
+
+    public function __construct()
+    {
+        $this->model = $this->model;
+    }
     public function index(Request $request, ProductImageGalleryDataTable $dataTable)
     {
         $product = Product::findOrFail($request->product);
@@ -29,7 +35,7 @@ class ProductImageGalleryController extends Controller
 
         $imagePaths = $this->uploadMultiImage($request, 'images', 'images/galleries');
         foreach ($imagePaths as $path) {
-            $productImageGallery = new ProductImageGallery();
+            $productImageGallery = $this->model;
             $productImageGallery->images = $path;
             $productImageGallery->product_id = $request->product;
             $productImageGallery->save();
@@ -43,7 +49,7 @@ class ProductImageGalleryController extends Controller
     public function destroy($id)
     {
 
-        $productImag = ProductImageGallery::findOrFail($id);
+        $productImag = $this->model->findOrFail($id);
         $this->deleteImage($productImag->images);
         $productImag->delete();
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\VendorProfile;
+namespace App\Http\Requests\VendorShopProfile;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreVendorProfileRequest extends FormRequest
+class StoreVendorShopProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

@@ -25,16 +25,17 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
     <!-- <link rel="stylesheet" href="css/rtl.css"> -->
+    @stack('styles')
 </head>
 
 <body>
 
-    @include('vendor.dashboard.layouts.header')
+    @include('vendor.layouts.header')
 
     <section id="wsus__dashboard">
         <div class="container-fluid">
 
-            @include('vendor.dashboard.layouts.sidebar')
+            @include('vendor.layouts.sidebar')
 
             <div class="row">
                 <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
@@ -90,6 +91,7 @@
 
     <!--main/custom js-->
     <script src="{{ asset('frontend/js/main.js') }}"></script>
+    @stack('scripts')
 </body>
 
 </html>
