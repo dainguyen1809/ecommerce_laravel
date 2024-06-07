@@ -12,6 +12,12 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('vendor.products.index') }}">
+                <i class="fas fa-store"></i>
+                {{ __('Product') }}
+            </a>
+        </li>
+        <li>
             <a href="{{ route('vendor.profile') }}">
                 <i class="far fa-user"></i>
                 {{ __('My Profile') }}

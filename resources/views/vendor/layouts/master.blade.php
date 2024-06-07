@@ -24,6 +24,17 @@
 
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <style>
+        .dataTables_filter,
+        .dataTables_paginate {
+            float: right;
+        }
+    </style>
+
     <!-- <link rel="stylesheet" href="css/rtl.css"> -->
     @stack('styles')
 </head>
@@ -37,9 +48,30 @@
 
             @include('vendor.layouts.sidebar')
 
+
             <div class="row">
                 <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
                     <div class="dashboard_content">
+                        <div class="row mb-2">
+                            <div class="col-12 d-flex">
+                                <div class="col-sm-6">
+                                    <h4>Dynamic Title</h4>
+                                </div>
+                                <div class="col-sm-6 d-flex justify-content-end">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb bg-light-lighten p-2">
+                                            <li class="breadcrumb-item"><a href="#">
+                                                    <i class="fas fa-house me-2"></i>Home</a>
+                                            </li>
+                                            <li class="breadcrumb-item">
+                                                <a href="#">Library</a>
+                                            </li>
+                                            <li class="breadcrumb-item active" aria-current="page">Data</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
                         <div class="wsus__dashboard">
                             @yield('content')
                         </div>
@@ -53,7 +85,18 @@
         <i class="fas fa-chevron-up"></i>
     </div>
 
+    <script>
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                @php
+                    toastr()->error($error);
+                @endphp
+            @endforeach
+        @endif
+    </script>
 
+    <script src="//cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap4.js"></script>
     <!--jquery library js-->
     <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>
     <!--bootstrap js-->

@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="row">
-        <h3><i class="far fa-user"></i> profile</h3>
         <div class="wsus__dashboard_profile">
             <div class="wsus__dash_pro_area">
                 <h4 class="text-info">Hi! {{ Auth::user()->name }}</h4>
