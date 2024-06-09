@@ -10,6 +10,8 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ChildCategory;
 use App\Models\Product;
+use App\Models\ProductImageGallery;
+use App\Models\ProductVariant;
 use App\Models\SubCategory;
 use App\Traits\UploadImage;
 use Illuminate\Http\Request;
@@ -86,7 +88,7 @@ class VendorProductController extends Controller
         $product->sub_category_id = $request->sub_category;
         $product->child_category_id = $request->child_category;
         $product->brand_id = $request->brand;
-        $product->is_approved = 1;
+        $product->is_approved = 0;
         $product->quantity = $request->quantity;
         $product->short_description = $request->short_description;
         $product->long_description = $request->long_description;
@@ -156,7 +158,7 @@ class VendorProductController extends Controller
         $product->sub_category_id = $request->sub_category;
         $product->child_category_id = $request->child_category;
         $product->brand_id = $request->brand;
-        $product->is_approved = $product->is_approved;
+        $product->is_approved = 0;
         $product->quantity = $request->quantity;
         $product->short_description = $request->short_description;
         $product->long_description = $request->long_description;
@@ -175,6 +177,48 @@ class VendorProductController extends Controller
         toastr('Update successfully', 'success');
 
         return redirect()->route('vendor.products.index');
+    }
+
+    public function destroy($id)
+    {
+        $product = Product::findOrFail($id);
+
+        if ($product->vendor_id != Auth::user()->vendor->id) {
+            abort(404);
+        }
+
+        // delete main image
+        $this->deleteImage($product->thumb_image);
+
+        // delete product gallery image
+        $imageGallery = ProductImageGallery::where('product_id', $product->id)->get();
+        foreach ($imageGallery as $gallery) {
+            $this->deleteImage($gallery->image);
+            $gallery->delete();
+        }
+
+        // check variant items
+        $variants = ProductVariant::where('product_id', $product->id)->get();
+        foreach ($variants as $variant) {
+            $variant->productVariantItems()->delete();
+            $variant->delete();
+        }
+
+        $product->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Deleted',
+        ]);
+
+    }
+    public function changeStatus(Request $request)
+    {
+        $varinat = Product::findOrFail($request->id);
+        $varinat->status = $request->status == 'true' ? 1 : 0;
+        $varinat->save();
+
+        return response(['message' => 'Status has been updated!']);
     }
 
 }

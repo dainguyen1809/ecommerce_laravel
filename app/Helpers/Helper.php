@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace App\Helpers;
 
 use Illuminate\Http\Request;
@@ -16,3 +16,4 @@ if (! function_exists('formatDate')) {
         ]);
     }
 }
+*/

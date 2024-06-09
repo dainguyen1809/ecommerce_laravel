@@ -106,17 +106,10 @@ class CategoryController extends Controller
 
     public function changeStatus(Request $request)
     {
-        active($request, $this->model->findOrFail($request->id));
+        $active = $this->model->findOrFail($request->id);
+        $active->status = $request->status == 'true' ? 1 : 0;
+        $active->save();
+
+        return response(['message' => 'Status has been updated!']);
     }
-
-    // public function changeStatus(Request $request)
-    // {
-    //     $category = $this->model->findOrFail($request->id);
-    //     $category->status = $request->status == 'true' ? 1 : 0;
-    //     $category->save();
-
-    //     return response()->json([
-    //         'message' => 'Status has been updated!',
-    //     ]);
-    // }
 }

@@ -91,12 +91,13 @@
     <!-- /Right-bar -->
 
     <script src="//cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- bundle -->
     <script src="{{ asset('backend/js/vendor.min.js') }}"></script>
     <script src="{{ asset('backend/js/app.min.js') }}"></script>
     <script src="{{ asset('backend/js/bootstrap-iconpicker.bundle.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
         @if ($errors->any())
@@ -132,21 +133,22 @@
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
-
                             success: function(data) {
                                 if (data.status == 'success') {
-                                    Swal.fire(
-                                        "Deleted!",
-                                        data.message,
-                                        'success'
-                                    );
-                                    window.location.reload();
+                                    Swal.fire({
+                                        icon: "success",
+                                        title: data.message,
+                                        showConfirmButton: false,
+                                        timer: 1000
+                                    }).then(() => {
+                                        window.location.reload();
+                                    })
                                 } else if (data.status == 'error') {
                                     Swal.fire(
-                                        "Cannot delte!",
+                                        'Cant Delete',
                                         data.message,
                                         'error'
-                                    );
+                                    )
                                 }
                             },
                             error: function(xhr, status, error) {

@@ -37,6 +37,15 @@ class VendorProductDataTable extends DataTable
 
                 }
             })
+            ->addColumn('approved', function ($query) {
+                $default = '<i class="badge bg-success p-2">Approved</i>';
+                $none = '<i class="badge bg-warning p-2">Pending</i> ';
+
+                if ($query->is_default == 0) {
+                    return $none;
+                }
+                return $default;
+            })
             ->addColumn('status', function ($query) {
                 $switchId = 'switch' . $query->id;
                 if ($query->status == 1) {
@@ -56,23 +65,24 @@ class VendorProductDataTable extends DataTable
             })
             ->addColumn('action', function ($query) {
                 $edit_btn = "<a class='btn btn-warning me-2' href='" . route('vendor.products.edit', $query->id) . "' /><i class='fas fa-pen-to-square'></i></a>";
-                $del_btn = "<a class='btn btn-danger me-2 delete-item' href='" . route('admin.products.destroy', $query->id) . "' /><i class='fas fa-trash'></i></a>";
-                $setting_btn = '<button type="button" 
-                class="btn btn-primary dropdown-toggle" 
-                data-toggle="dropdown" 
-                aria-haspopup="true" 
-                aria-expanded="false">
-                    <i class="fas fa-gear"></i>
-                </button>
-            <div class="dropdown-menu mr-3 border-none">
-                <a class="dropdown-item shadow-lg rounded" href="' . route('admin.products-image-gallery.index', ['product' => $query->id]) . '">Image Gallery</a>
-                <a class="dropdown-item shadow-lg rounded" href="' . route('admin.products-variant.index', ['product' => $query->id]) . '">Variants</a>
-            </div>';
+                $del_btn = "<a class='btn btn-danger me-2 delete-item' href='" . route('vendor.products.destroy', $query->id) . "' /><i class='fas fa-trash'></i></a>";
+                $setting_btn = '
+                    <div class="btn-group dropdown">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-gear"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item shadow-lg rounded" href="' . route('vendor.products-image-gallery.index', ['product' => $query->id]) . '">Image Gallery</a>
+                            <a class="dropdown-item shadow-lg rounded" href="' . route('vendor.products-variant.index', ['product' => $query->id]) . '">Variants</a>
+                        </div>
+                    </div>
+                ';
                 return $edit_btn . $del_btn . $setting_btn;
             })
             ->rawColumns([
                 'image',
                 'product_type',
+                'approved',
                 'status',
                 'action',
             ])
@@ -121,6 +131,7 @@ class VendorProductDataTable extends DataTable
             Column::make('slug'),
             Column::make('image'),
             Column::make('product_type'),
+            Column::make('approved'),
             Column::make('status'),
             Column::computed('action')
                 ->exportable(false)

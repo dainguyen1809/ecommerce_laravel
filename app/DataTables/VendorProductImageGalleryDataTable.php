@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ProductImageGalleryDataTable extends DataTable
+class VendorProductImageGalleryDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -27,11 +27,11 @@ class ProductImageGalleryDataTable extends DataTable
             })
             ->addColumn('action', function ($query) {
                 $del_btn = "<a 
-                    class='btn btn-danger delete-item' 
-                    href='" . route('admin.products-image-gallery.destroy', $query->id) . "' 
-                    />
-                    <i class='uil-trash'/></i>
-                </a>";
+                class='btn btn-danger delete-item' 
+                href='" . route('vendor.products-image-gallery.destroy', $query->id) . "' 
+                />
+                <i class='fas fa-trash'/></i>
+            </a>";
                 return $del_btn;
             })
             ->rawColumns([
@@ -55,7 +55,7 @@ class ProductImageGalleryDataTable extends DataTable
     public function html() : HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('productimagegallery-table')
+            ->setTableId('vendorproductimagegallery-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
@@ -77,7 +77,6 @@ class ProductImageGalleryDataTable extends DataTable
     public function getColumns() : array
     {
         return [
-
             Column::make('id'),
             Column::make('image'),
             Column::computed('action')
@@ -93,6 +92,6 @@ class ProductImageGalleryDataTable extends DataTable
      */
     protected function filename() : string
     {
-        return 'ProductImageGallery_' . date('YmdHis');
+        return 'VendorProductImageGallery_' . date('YmdHis');
     }
 }

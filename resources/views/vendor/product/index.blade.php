@@ -3,7 +3,6 @@
 @push('styles')
     <link href="{{ asset('backend/css/vendor/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('backend/css/vendor/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('backend/css/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
 @endpush
 
 @section('content')
@@ -30,7 +29,33 @@
     <script src="{{ asset('backend/js/vendor/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('backend/js/vendor/dataTables.bootstrap4.js') }}"></script>
     <script src="{{ asset('backend/js/vendor/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('backend/js/vendor/summernote-bs4.min.js') }}"></script>
-    <script src="{{ asset('backend/js/pages/demo.summernote.js') }}"></script>
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+
+    <script>
+        $(document).ready(function() {
+            $('body').on('click', '.change-status', function() {
+                const checked = $(this).is(':checked');
+                const id = $(this).data('id');
+
+                $.ajax({
+                    url: "{{ route('vendor.product.change-status') }}",
+                    method: "PUT",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        status: checked,
+                        id: id,
+                    },
+                    success: function(res) {
+                        toastr.success(res.message);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    },
+                });
+
+            })
+        });
+    </script>
 @endpush

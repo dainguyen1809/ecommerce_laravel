@@ -14,7 +14,7 @@
         <li>
             <a href="{{ route('vendor.products.index') }}">
                 <i class="fas fa-store"></i>
-                {{ __('Product') }}
+                {{ __('Products') }}
             </a>
         </li>
         <li>

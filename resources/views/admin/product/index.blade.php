@@ -51,7 +51,7 @@
                         id: id,
                     },
                     success: function(response) {
-                        console.log(response.data);
+                        toastr.success(response.message);
                     },
                     error: function(xhr, status, error) {
                         console.log(error);

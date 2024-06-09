@@ -160,8 +160,8 @@ class ProductController extends Controller
         $this->deleteImage($product->thumb_image);
 
         // delete product gallery image
-        $galleryCheck = ProductImageGallery::where('product_id', $product->id)->get();
-        foreach ($galleryCheck as $gallery) {
+        $galleryImage = ProductImageGallery::where('product_id', $product->id)->get();
+        foreach ($galleryImage as $gallery) {
             $this->deleteImage($gallery->image);
             $gallery->delete();
         }
@@ -183,6 +183,10 @@ class ProductController extends Controller
 
     public function changeStatus(Request $request)
     {
-        active($request, Product::findOrFail($request->id));
+        $active = $this->model->findOrFail($request->id);
+        $active->status = $request->status == 'true' ? 1 : 0;
+        $active->save();
+
+        return response(['message' => 'Status has been updated!']);
     }
 }

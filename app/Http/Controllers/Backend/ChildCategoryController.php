@@ -119,6 +119,10 @@ class ChildCategoryController extends Controller
 
     public function changeStatus(Request $request)
     {
-        active($request, $this->model->findOrFail($request->id));
+        $active = $this->model->findOrFail($request->id);
+        $active->status = $request->status == 'true' ? 1 : 0;
+        $active->save();
+
+        return response(['message' => 'Status has been updated!']);
     }
 }

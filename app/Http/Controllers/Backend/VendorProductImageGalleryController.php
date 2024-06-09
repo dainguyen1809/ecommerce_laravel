@@ -2,26 +2,30 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\DataTables\ProductImageGalleryDataTable;
+use App\DataTables\VendorProductImageGalleryDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductImageGallery;
 use App\Traits\UploadImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class ProductImageGalleryController extends Controller
+class VendorProductImageGalleryController extends Controller
 {
     use UploadImage;
-    private $model;
+    // private $model;
 
-    public function __construct()
-    {
-
-    }
-    public function index(Request $request, ProductImageGalleryDataTable $dataTable)
+    // public function __construct()
+    // {
+    //     $this->model = new ProductImageGallery();
+    // }
+    public function index(Request $request, VendorProductImageGalleryDataTable $dataTable)
     {
         $product = Product::findOrFail($request->product);
-        return $dataTable->render('admin.product.image-gallery.index', [
+        if ($product->vendor_id != Auth::user()->vendor->id) {
+            abort(404);
+        }
+        return $dataTable->render('vendor.product.image-gallery.index', [
             'product' => $product,
         ]);
     }
@@ -48,10 +52,12 @@ class ProductImageGalleryController extends Controller
 
     public function destroy($id)
     {
-
-        $productImag = ProductImageGallery::findOrFail($id);
-        $this->deleteImage($productImag->images);
-        $productImag->delete();
+        $productImg = ProductImageGallery::findOrFail($id);
+        if ($productImg->product->vendor_id !== Auth::user()->vendor->id) {
+            abort(404);
+        }
+        $this->deleteImage($productImg->images);
+        $productImg->delete();
 
         return response()->json([
             'status' => 'success',

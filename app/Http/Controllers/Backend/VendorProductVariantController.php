@@ -2,29 +2,32 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\DataTables\ProductVariantDataTable;
+use App\DataTables\VendorProductVariantDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Models\ProductVariantItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use function App\Helpers\active;
 
-class ProductVariantController extends Controller
+class VendorProductVariantController extends Controller
 {
-    public function index(Request $request, ProductVariantDataTable $dataTable)
+    public function index(Request $request, VendorProductVariantDataTable $dataTable)
     {
-
         $product = Product::findOrFail($request->product);
-        return $dataTable->render('admin.product.product-variant.index', [
+        if ($product->vendor_id != Auth::user()->vendor->id) {
+            abort(404);
+        }
+        return $dataTable->render('vendor.product.product-variant.index', [
             'product' => $product,
         ]);
     }
 
     public function create()
     {
-        return view('admin.product.product-variant.create');
+        return view('vendor.product.product-variant.create');
     }
 
     public function store(Request $request)
@@ -42,7 +45,7 @@ class ProductVariantController extends Controller
         $variant->save();
 
         toastr('Created', 'success');
-        return redirect()->route('admin.products-variant.index', [
+        return redirect()->route('vendor.products-variant.index', [
             'product' => $request->product,
         ]);
     }
@@ -50,7 +53,10 @@ class ProductVariantController extends Controller
     public function edit($id)
     {
         $productVariant = ProductVariant::findOrFail($id);
-        return view('admin.product.product-variant.edit', [
+        if ($productVariant->product->vendor_id !== Auth::user()->vendor->id) {
+            abort(404);
+        }
+        return view('vendor.product.product-variant.edit', [
             'productVariant' => $productVariant,
         ]);
     }
@@ -63,12 +69,15 @@ class ProductVariantController extends Controller
         ]);
 
         $variant = ProductVariant::findOrFail($id);
+        if ($variant->product->vendor_id !== Auth::user()->vendor->id) {
+            abort(404);
+        }
         $variant->name = $request->name;
         $variant->status = $request->status;
         $variant->save();
 
         toastr('Updated', 'success');
-        return redirect()->route('admin.products-variant.index', [
+        return redirect()->route('vendor.products-variant.index', [
             'product' => $variant->product_id,
         ]);
     }
