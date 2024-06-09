@@ -24,10 +24,10 @@
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="{{ route('admin.slider.index') }}">Slider</a>
+                    <a href="{{ route('admin.slider.index') }}">Sliders</a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.vendor-profile.index') }}"> Vendor </a>
+                    <a href="{{ route('admin.vendor-profile.index') }}"> Vendors </a>
                 </li>
             </ul>
         </li>
@@ -39,13 +39,13 @@
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="{{ route('admin.category.index') }}">Main Category</a>
+                    <a href="{{ route('admin.category.index') }}">Main Categories</a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.sub-category.index') }}">Sub Category</a>
+                    <a href="{{ route('admin.sub-category.index') }}">Sub Categories</a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.child-category.index') }}">Child Category</a>
+                    <a href="{{ route('admin.child-category.index') }}">Child Categories</a>
                 </li>
             </ul>
         </li>
@@ -57,10 +57,16 @@
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="{{ route('admin.brand.index') }}"> Brand </a>
+                    <a href="{{ route('admin.brand.index') }}"> Brands </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.products.index') }}"> Product </a>
+                    <a href="{{ route('admin.products.index') }}"> Products </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.seller-products.index') }}"> Seller Products </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.seller-pending-products.index') }}"> Seller Pending Products </a>
                 </li>
             </ul>
         </li>

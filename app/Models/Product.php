@@ -32,4 +32,10 @@ class Product extends Model
         'offer_start_date',
         'offer_end_date',
     ];
+
+    public function vendor()
+    {
+        return $this->belongsTo(Vendor::class);
+    }
+
 }

@@ -126,12 +126,12 @@ class ProductController extends Controller
         $product->thumb_image = empty(! $imagePath) ? $imagePath : $product->thumb_image;
         $product->name = $request->name;
         $product->slug = str()->slug($request->name);
-        $product->vendor_id = Auth::user()->vendor->id;
+        // $product->vendor_id = Auth::user()->vendor->id;
         $product->category_id = $request->category;
         $product->sub_category_id = $request->sub_category;
         $product->child_category_id = $request->child_category;
         $product->brand_id = $request->brand;
-        $product->is_approved = 1;
+        // $product->is_approved = 1;
         $product->quantity = $request->quantity;
         $product->short_description = $request->short_description;
         $product->long_description = $request->long_description;
