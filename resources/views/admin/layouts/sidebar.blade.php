@@ -29,6 +29,9 @@
                 <li>
                     <a href="{{ route('admin.vendor-profile.index') }}"> Vendors </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.flash-sale.index') }}"> Flash Sales </a>
+                </li>
             </ul>
         </li>
         <li class="side-nav-item">

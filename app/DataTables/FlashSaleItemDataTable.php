@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\ChildCategory;
+use App\Models\FlashSaleItem;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ChildCategoryDataTable extends DataTable
+class FlashSaleItemDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -22,34 +22,47 @@ class ChildCategoryDataTable extends DataTable
     public function dataTable(QueryBuilder $query) : EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('category', function ($query) {
-                return $query->category->name;
-            })
-            ->addColumn('sub_category', function ($query) {
-                return $query->subCategory->name;
+            ->addColumn('product_name', function ($query) {
+                return '<a href="' . route('admin.products.edit', $query->product->id) . '">' . $query->product->name . '</a>';
             })
             ->addColumn('status', function ($query) {
-                $switchId = 'switch' . $query->id;
+                $statusSwitchId = 'statusSwitch' . $query->id;
                 if ($query->status == 1) {
                     $switch = '
-                    <input type="checkbox" class="change-status" id="' . $switchId . '" checked data-switch="bool" data-id="' . $query->id . '"/>
-                    <label for="' . $switchId . '"></label>
+                    <input type="checkbox" class="change-status" id="' . $statusSwitchId . '" checked data-switch="bool" data-id="' . $query->id . '"/>
+                    <label for="' . $statusSwitchId . '"></label>
                     ';
                 } else {
                     $switch = '
-                    <input type="checkbox" class="change-status" id="' . $switchId . '" data-switch="bool" data-id="' . $query->id . '"/>
-                    <label for="' . $switchId . '"></label>
+                    <input type="checkbox" class="change-status" id="' . $statusSwitchId . '" data-switch="bool" data-id="' . $query->id . '"/>
+                    <label for="' . $statusSwitchId . '"></label>
+                    ';
+                }
+                return $switch;
+            })
+            ->addColumn('show_at_home', function ($query) {
+                $showAtHomeSwitchId = 'showAtHomeSwitch' . $query->id;
+                if ($query->show_at_home == 1) {
+                    $switch = '
+                    <input type="checkbox" class="show_at_home" id="' . $showAtHomeSwitchId . '" checked data-switch="bool" data-id="' . $query->id . '"/>
+                    <label for="' . $showAtHomeSwitchId . '"></label>
+                    ';
+                } else {
+                    $switch = '
+                    <input type="checkbox" class="show_at_home" id="' . $showAtHomeSwitchId . '" data-switch="bool" data-id="' . $query->id . '"/>
+                    <label for="' . $showAtHomeSwitchId . '"></label>
                     ';
                 }
                 return $switch;
             })
             ->addColumn('action', function ($query) {
-                $edit_btn = "<a class='btn btn-warning mr-3' href='" . route('admin.child-category.edit', $query->id) . "' /><i class='uil-pen'/></i></a>";
                 $del_btn = "<a class='btn btn-danger delete-item' href='" . route('admin.child-category.destroy', $query->id) . "' /><i class='uil-trash'/></i></a>";
-                return $edit_btn . $del_btn;
+                return $del_btn;
             })
             ->rawColumns([
+                'product_name',
                 'status',
+                'show_at_home',
                 'action',
             ])
             ->setRowId('id');
@@ -58,7 +71,7 @@ class ChildCategoryDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(ChildCategory $model) : QueryBuilder
+    public function query(FlashSaleItem $model) : QueryBuilder
     {
         return $model->newQuery();
     }
@@ -69,7 +82,7 @@ class ChildCategoryDataTable extends DataTable
     public function html() : HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('childcategory-table')
+            ->setTableId('flashsaleitem-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
@@ -92,12 +105,9 @@ class ChildCategoryDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('category'),
-            Column::make('sub_category'),
-            Column::make('name'),
+            Column::make('product_name'),
+            Column::make('show_at_home'),
             Column::make('status'),
-            // Column::make('created_at'),
-            // Column::make('updated_at'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
@@ -111,6 +121,6 @@ class ChildCategoryDataTable extends DataTable
      */
     protected function filename() : string
     {
-        return 'ChildCategory_' . date('YmdHis');
+        return 'FlashSaleItem_' . date('YmdHis');
     }
 }
