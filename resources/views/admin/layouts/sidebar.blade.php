@@ -74,6 +74,13 @@
             </ul>
         </li>
 
+        <li class="side-nav-item">
+            <a href="{{ route('admin.settings.index') }}" class="side-nav-link">
+                <i class="mdi mdi-settings-outline"></i>
+                <span> Settings </span>
+            </a>
+        </li>
+
     </ul>
 
     <!-- End Sidebar -->

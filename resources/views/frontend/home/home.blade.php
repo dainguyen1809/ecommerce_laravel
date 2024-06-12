@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <section class="product_popup_modal">
+    {{-- <section class="product_popup_modal">
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -142,7 +142,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     @include('frontend.home.sections.banner-slider')
     @include('frontend.home.sections.flash-sale')

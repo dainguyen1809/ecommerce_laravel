@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\FlashSaleController;
+use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductImageGalleryController;
 use App\Http\Controllers\Backend\ProductVariantController;
@@ -129,3 +130,10 @@ Route::put('flash-sale-change-status', [FlashSaleController::class, 'changeStatu
     ->name('flash-sale.change-status');
 Route::delete('flash-sale/{id}', [FlashSaleController::class, 'destroy'])
     ->name('flash-sale.destroy');
+
+// general settings
+
+Route::get('settings', [GeneralSettingController::class, 'index'])
+    ->name('settings.index');
+Route::put('general-setting-update', [GeneralSettingController::class, 'generalSettingUpdate'])
+    ->name('general-setting-update');

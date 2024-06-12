@@ -61,7 +61,9 @@
                                 <code class="fs-5">({{ $product->quantity }})</code>
                             </p>
                             @if (checkDiscount($product))
-                                <h4>${{ $product->offer_price }} <del>${{ $product->price }}</del></h4>
+                                <h4>{{ $product->offer_price }}<span>{{ $settings->currency_icon }}</span>
+                                    <del>{{ $product->price }} {{ $settings->currency_icon }}</del>
+                                </h4>
                             @else
                                 <h4>${{ $product->price }}</h4>
                             @endif
