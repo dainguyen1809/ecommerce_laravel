@@ -48,4 +48,19 @@ class Product extends Model
         return $this->hasMany(ProductImageGallery::class);
     }
 
+    public function productVariants()
+    {
+        return $this->hasMany(ProductVariant::class);
+    }
+
+    public function flashSales()
+    {
+        return $this->hasMany(FlashSaleItem::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
 }

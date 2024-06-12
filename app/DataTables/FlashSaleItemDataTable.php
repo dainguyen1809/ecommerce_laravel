@@ -56,7 +56,7 @@ class FlashSaleItemDataTable extends DataTable
                 return $switch;
             })
             ->addColumn('action', function ($query) {
-                $del_btn = "<a class='btn btn-danger delete-item' href='" . route('admin.child-category.destroy', $query->id) . "' /><i class='uil-trash'/></i></a>";
+                $del_btn = "<a class='btn btn-danger delete-item' href='" . route('admin.flash-sale.destroy', $query->id) . "' /><i class='uil-trash'/></i></a>";
                 return $del_btn;
             })
             ->rawColumns([

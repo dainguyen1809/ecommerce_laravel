@@ -19,4 +19,9 @@ class Vendor extends Model
         'fb_link',
         'ins_link',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

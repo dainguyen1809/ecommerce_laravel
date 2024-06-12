@@ -13,4 +13,10 @@ class FlashSaleItem extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function flashSale()
+    {
+        return $this->belongsTo(FlashSale::class);
+    }
+
 }
