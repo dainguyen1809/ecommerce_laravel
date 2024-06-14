@@ -32,6 +32,9 @@
                 <li>
                     <a href="{{ route('admin.flash-sale.index') }}"> Flash Sales </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.coupons.index') }}"> Coupons </a>
+                </li>
             </ul>
         </li>
         <li class="side-nav-item">
