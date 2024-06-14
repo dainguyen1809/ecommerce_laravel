@@ -27,13 +27,16 @@
                     <a href="{{ route('admin.slider.index') }}">Sliders</a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.vendor-profile.index') }}"> Vendors </a>
+                    <a href="{{ route('admin.vendor-profile.index') }}"> Vendors Profile </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.flash-sale.index') }}"> Flash Sales </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.coupons.index') }}"> Coupons </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.shipping-rule.index') }}"> Shipping Rule </a>
                 </li>
             </ul>
         </li>
