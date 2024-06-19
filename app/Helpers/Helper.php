@@ -1,6 +1,9 @@
 <?php
 
 // check discount
+
+use Gloudemans\Shoppingcart\Facades\Cart;
+
 function checkDiscount($product)
 {
     $currentDate = date('Y-m-d');
@@ -34,4 +37,13 @@ function formatProductType($type) : string
         default:
             return '';
     }
+}
+
+function getCartTotalAmount()
+{
+    $total = 0;
+    foreach (Cart::content() as $product) {
+        $total += ($product->price + $product->options->variants_total) * $product->qty;
+    }
+    return $total;
 }
