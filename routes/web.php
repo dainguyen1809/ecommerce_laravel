@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\FlashSaleController;
 use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -28,6 +29,17 @@ Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sal
 
 // Product Detail 
 Route::get('product-details/{slug}', [FrontendProductController::class, 'productDetail'])->name('product-details');
+
+// add to cart
+Route::post('add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
+Route::get('cart-details', [CartController::class, 'cartDetails'])->name('cart-details');
+Route::post('cart/update-quantity', [CartController::class, 'updateProductQuantity'])->name('cart.update-quantity');
+Route::get('clear-cart', [CartController::class, 'clearCart'])->name('clear-cart');
+Route::get('cart/remove-item/{rowId}', [CartController::class, 'removeItem'])->name('cart-remove-item');
+Route::get('cart-count', [CartController::class, 'getCartCount'])->name('cart-count');
+Route::get('cart-products]', [CartController::class, 'getCartProducts'])->name('cart-products');
+Route::post('cart/remove-sidebar-product]', [CartController::class, 'sidebarRemoveProduct'])->name('cart.remove-sidebar-product');
+Route::get('cart/sidebar-product-total]', [CartController::class, 'cartTotal'])->name('cart.sidebar-product-total');
 
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function () {
