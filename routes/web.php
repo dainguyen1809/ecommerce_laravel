@@ -37,9 +37,12 @@ Route::post('cart/update-quantity', [CartController::class, 'updateProductQuanti
 Route::get('clear-cart', [CartController::class, 'clearCart'])->name('clear-cart');
 Route::get('cart/remove-item/{rowId}', [CartController::class, 'removeItem'])->name('cart-remove-item');
 Route::get('cart-count', [CartController::class, 'getCartCount'])->name('cart-count');
-Route::get('cart-products]', [CartController::class, 'getCartProducts'])->name('cart-products');
-Route::post('cart/remove-sidebar-product]', [CartController::class, 'sidebarRemoveProduct'])->name('cart.remove-sidebar-product');
-Route::get('cart/sidebar-product-total]', [CartController::class, 'cartTotal'])->name('cart.sidebar-product-total');
+Route::get('cart-products', [CartController::class, 'getCartProducts'])->name('cart-products');
+Route::post('cart/remove-sidebar-product', [CartController::class, 'sidebarRemoveProduct'])->name('cart.remove-sidebar-product');
+Route::get('cart/sidebar-product-total', [CartController::class, 'cartTotal'])->name('cart.sidebar-product-total');
+
+Route::get('apply-coupon', [CartController::class, 'applyCoupon'])->name('apply-coupon');
+Route::get('coupon-calculation', [CartController::class, 'couponCalculation'])->name('coupon-calculation');
 
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function () {

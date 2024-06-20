@@ -113,17 +113,19 @@
                         <h6>total cart</h6>
                         <p>subtotal: <span id="sub-total">{{ $settings->currency_icon }}{{ getCartTotalAmount() }}</span>
                         </p>
-                        <p>delivery: <span>$00.00</span></p>
-                        <p>discount: <span>$10.00</span></p>
-                        <p class="total"><span>total:</span> <span>$134.00</span></p>
+                        <p>coupon: <span id="discount">{{ $settings->currency_icon }}{{ getCartDiscount() }}</span></p>
+                        <p class="total"><span>total: </span>
+                            <span id="cart-total">{{ $settings->currency_icon }}{{ getMainCartTotal() }}</span>
+                        </p>
 
-                        <form>
-                            <input type="text" placeholder="Coupon Code">
+                        <form id="form-coupon">
+                            <input type="text" placeholder="Coupon Code" name="coupon_code"
+                                value="{{ session()->has('coupon') ? session()->get('coupon')['coupon_code'] : '' }}">
                             <button type="submit" class="common_btn">apply</button>
                         </form>
                         <a class="common_btn mt-4 w-100 text-center" href="check_out.html">checkout</a>
-                        <a class="common_btn mt-1 w-100 text-center" href="product_grid_view.html"><i
-                                class="fab fa-shopify"></i> go shop</a>
+                        <a class="common_btn mt-1 w-100 text-center" href="{{ route('home') }}"><i
+                                class="fab fa-shopify"></i> keep shopping</a>
                     </div>
                 </div>
             </div>
@@ -190,6 +192,7 @@
                                 .product_total;
                             $(productId).text(totalAmount);
                             renderCartSubTotal();
+                            calculateCouponDiscount();
                             toastr.success(response.message);
                         } else if (response.status === 'error') {
                             toastr.error(response.message);
@@ -230,6 +233,7 @@
                                 .product_total;
                             $(productId).text(totalAmount);
                             renderCartSubTotal();
+                            calculateCouponDiscount();
                             toastr.success(response.message);
                         } else if (response.status === 'error') {
                             toastr.error(response.message);
@@ -298,6 +302,55 @@
                     },
                 });
             }
+
+            $('#form-coupon').on('submit', function(e) {
+                e.preventDefault();
+                const formData = $(this).serialize();
+                $.ajax({
+                    type: "get",
+                    url: "{{ route('apply-coupon') }}",
+                    data: formData,
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            calculateCouponDiscount();
+                            toastr.success(response.message);
+                        } else if (response.status === 'error') {
+                            toastr.error(response.message);
+                        }
+                    },
+                });
+            });
+
+            function couponDiscount() {
+                $.ajax({
+                    type: "get",
+                    url: "{{ route('apply-coupon') }}",
+                    data: formData,
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            toastr.success(response.message);
+                        } else if (response.status === 'error') {
+                            toastr.error(response.message);
+                        }
+                    },
+                });
+            }
+
+            function calculateCouponDiscount() {
+                $.ajax({
+                    type: "get",
+                    url: "{{ route('coupon-calculation') }}",
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            $('#discount').text("{{ $settings->currency_icon }}" + response.discount);
+                            $('#cart-total').text("{{ $settings->currency_icon }}" + response
+                                .cart_total);
+                        }
+                    },
+                });
+            }
+
+
         });
     </script>
 @endpush

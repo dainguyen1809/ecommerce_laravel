@@ -47,3 +47,38 @@ function getCartTotalAmount()
     }
     return $total;
 }
+
+function getMainCartTotal()
+{
+    if (session()->has('coupon')) {
+        $coupon = session()->get('coupon');
+        $subTotal = getCartTotalAmount();
+        if ($coupon['discount_type'] === 'amount') {
+            $total = $subTotal - $coupon['discount'];
+            return $total;
+        } else if ($coupon['discount_type'] === 'percent') {
+            $discount = $subTotal - ($subTotal * $coupon['discount'] / 100);
+            $total = $subTotal - $discount;
+            return $total;
+        }
+    } else {
+        return getCartTotalAmount();
+    }
+}
+
+function getCartDiscount()
+{
+    if (session()->has('coupon')) {
+        $coupon = session()->get('coupon');
+        $subTotal = getCartTotalAmount();
+        if ($coupon['discount_type'] === 'amount') {
+            $total = $subTotal - $coupon['discount'];
+            return $coupon['discount'];
+        } else if ($coupon['discount_type'] === 'percent') {
+            $discount = $subTotal - ($subTotal * $coupon['discount'] / 100);
+            return $discount;
+        }
+    } else {
+        return 0;
+    }
+}
