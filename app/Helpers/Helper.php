@@ -82,3 +82,17 @@ function getCartDiscount()
         return 0;
     }
 }
+
+function getShippingFee()
+{
+    if (session()->has('shipping_method')) {
+        return session()->get('shipping_method')['cost'];
+    }
+
+    return 0;
+}
+
+function totalAmount()
+{
+    return getMainCartTotal() + getShippingFee();
+}
