@@ -38,6 +38,9 @@
                 <li>
                     <a href="{{ route('admin.shipping-rule.index') }}"> Shipping Rule </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.payment-settings.index') }}"> Payments </a>
+                </li>
             </ul>
         </li>
         <li class="side-nav-item">
