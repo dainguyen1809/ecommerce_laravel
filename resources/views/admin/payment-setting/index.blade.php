@@ -9,10 +9,10 @@
                     <i class="mdi mdi-home-variant d-md-none d-block"></i>
                     <span class="d-none d-md-block">Paypal Settings</span>
                 </a>
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
-                    aria-controls="v-pills-profile" aria-selected="false">
+                <a class="nav-link" id="v-pills-stripe-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                    aria-controls="v-pills-stripe" aria-selected="false">
                     <i class="mdi mdi-account-circle d-md-none d-block"></i>
-                    <span class="d-none d-md-block">Profile</span>
+                    <span class="d-none d-md-block">Stripe</span>
                 </a>
                 <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
                     aria-controls="v-pills-settings" aria-selected="false">
@@ -26,7 +26,7 @@
             <div class="tab-content" id="v-pills-tabContent">
                 @include('admin.payment-setting.sections.paypal-setting')
                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                    <p class="mb-0">2</p>
+                    @include('admin.payment-setting.sections.paypal-setting')
                 </div>
                 <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                     <p class="mb-0">3</p>
