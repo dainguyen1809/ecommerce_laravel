@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\VendorController;
+use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Backend\VendorProductImageGalleryController;
 use App\Http\Controllers\Backend\VendorProductVariantController;
@@ -56,3 +57,13 @@ Route::delete('products-variant-item/{variantItemId}', [VendorProductVariantItem
 
 Route::put('products-variant-item-status/change-status', [VendorProductVariantItemController::class, 'changeStatus'])
     ->name('products-variant-item-status.change-status');
+
+
+Route::get('orders', [VendorOrderController::class, 'index'])
+    ->name('order.index');
+
+Route::get('orders/show/{id}', [VendorOrderController::class, 'show'])
+    ->name('order.show');
+
+Route::get('orders/status/{id}', [VendorOrderController::class, 'orderStatus'])
+    ->name('order.status');

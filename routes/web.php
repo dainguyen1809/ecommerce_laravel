@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\UserAddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
+use App\Http\Controllers\Frontend\UserOrderController;
 use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,15 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
 
     // address
     Route::resource('address', UserAddressController::class);
+
+    // order
+
+    Route::get('orders', [UserOrderController::class, 'index'])
+        ->name('order.index');
+
+    Route::get('orders/show/{id}', [UserOrderController::class, 'show'])
+        ->name('order.show');
+
 
     // checkout
     Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');

@@ -30,7 +30,7 @@
 </head>
 
 <body class="loading" data-layout="detached"
-    data-layout-config='{"layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":true, "showRightSidebarOnStart": false}'>
+    data-layout-config='{"layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": false}'>
     <!-- Topbar Start -->
     @include('admin.layouts.header')
     <!-- end Topbar -->

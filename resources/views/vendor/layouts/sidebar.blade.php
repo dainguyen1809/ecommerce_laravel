@@ -18,6 +18,11 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('vendor.order.index') }}">
+                <i class="fas fa-file-invoice-dollar"></i> {{ __('Orders') }}
+            </a>
+        </li>
+        <li>
             <a href="{{ route('vendor.profile') }}">
                 <i class="far fa-user"></i>
                 {{ __('My Profile') }}

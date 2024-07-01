@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\FlashSaleController;
 use App\Http\Controllers\Backend\GeneralSettingController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PaymentSettingController;
 use App\Http\Controllers\Backend\PaypalSettingController;
 use App\Http\Controllers\Backend\ProductController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\Backend\SellerProductController;
 use App\Http\Controllers\Backend\ShippingRuleController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\TransactionController;
 
 Route::get('dashboard', [AdminController::class, 'dashboard'])
     ->name('dashboard');
@@ -155,3 +157,22 @@ Route::resource('shipping-rule', ShippingRuleController::class);
 // payment settings
 Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
 Route::resource('paypal-settings', PaypalSettingController::class);
+
+// order
+Route::get('order-status', [OrderController::class, 'changeOrderStatus'])
+    ->name('order.status');
+Route::get('pending-order', [OrderController::class, 'pendingOrder'])
+    ->name('order.pending');
+Route::get('dropped-off-order', [OrderController::class, 'droppedOffOrder'])
+    ->name('order.dropped-off');
+Route::get('shipped-order', [OrderController::class, 'shippedOrder'])
+    ->name('order.shipped');
+Route::get('processed-order', [OrderController::class, 'processedOrder'])
+    ->name('order.processed');
+Route::get('payment-status', [OrderController::class, 'changePaymentStatus'])
+    ->name('order.payment-status');
+Route::resource('orders', OrderController::class);
+
+// transaction
+Route::get('transaction', [TransactionController::class, 'index'])
+    ->name('transaction.index');
