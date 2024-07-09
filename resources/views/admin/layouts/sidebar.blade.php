@@ -18,14 +18,11 @@
         <li class="side-nav-title side-nav-item">Managements</li>
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
-                <i class="uil-web-section"></i>
+                <i class="uil-store"></i>
                 <span> Ecommerce </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
-                <li>
-                    <a href="{{ route('admin.slider.index') }}">Sliders</a>
-                </li>
                 <li>
                     <a href="{{ route('admin.vendor-profile.index') }}"> Vendors Profile </a>
                 </li>
@@ -40,6 +37,21 @@
                 </li>
                 <li>
                     <a href="{{ route('admin.payment-settings.index') }}"> Payments </a>
+                </li>
+            </ul>
+        </li>
+        <li class="side-nav-item">
+            <a href="javascript: void(0);" class="side-nav-link">
+                <i class="uil-web-section"></i>
+                <span> Website </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <ul class="side-nav-second-level" aria-expanded="false">
+                <li>
+                    <a href="{{ route('admin.slider.index') }}">Sliders</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.home-page-setting') }}">Home Page Setting</a>
                 </li>
             </ul>
         </li>

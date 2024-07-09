@@ -54,6 +54,7 @@ class BrandController extends Controller
     {
         $brand = $this->model->findOrFail($id);
         $logoPath = $this->updateImage($request, 'logo', 'images/brands');
+        $brand->slug = str()->slug($request->name);
         $brand->fill($request->validated());
         $brand->logo = empty(! $logoPath) ? $logoPath : $brand->logo;
         $brand->save();

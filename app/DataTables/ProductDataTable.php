@@ -114,9 +114,9 @@ class ProductDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('name'),
+            Column::make('name')->width(250),
             Column::make('price'),
-            Column::make('slug'),
+            Column::make('slug')->width(200),
             Column::make('image'),
             Column::make('product_type'),
             Column::make('status'),

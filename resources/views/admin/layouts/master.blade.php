@@ -85,7 +85,7 @@
     <!-- END Container -->
 
     <!-- Right Sidebar -->
-    @include('admin.layouts.setting')
+    {{-- @include('admin.layouts.setting') --}}
 
     <div class="rightbar-overlay"></div>
     <!-- /Right-bar -->

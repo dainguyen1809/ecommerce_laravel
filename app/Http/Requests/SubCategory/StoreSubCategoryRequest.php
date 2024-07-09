@@ -28,7 +28,7 @@ class StoreSubCategoryRequest extends FormRequest
             'name' => [
                 'required',
                 'max:255',
-                'unique:sub_categories,name',
+                // 'unique:sub_categories,name',
             ],
             'status' => [
                 'required',

@@ -222,6 +222,7 @@
             $('body').on('change', '.main-category', function(event) {
                 $('.child-category').html('<option value="">Select</option>');
                 const id = $(this).val();
+                console.log(id);
                 $.ajax({
                     method: "GET",
                     url: "{{ route('admin.product.get-sub-categories') }}",

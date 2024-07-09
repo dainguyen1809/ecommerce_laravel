@@ -1,8 +1,8 @@
 @extends('vendor.layouts.master')
 
 @push('styles')
-    <link href="{{ asset('backend/css/vendor/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('backend/css/vendor/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+    {{-- <link href="{{ asset('backend/css/vendor/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/css/vendor/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" /> --}}
 @endpush
 
 @section('content')
@@ -27,8 +27,8 @@
 
 @push('scripts')
     <script src="{{ asset('backend/js/vendor/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('backend/js/vendor/dataTables.bootstrap4.js') }}"></script>
-    <script src="{{ asset('backend/js/vendor/dataTables.responsive.min.js') }}"></script>
+    {{-- <script src="{{ asset('backend/js/vendor/dataTables.bootstrap4.js') }}"></script> --}}
+    {{-- <script src="{{ asset('backend/js/vendor/dataTables.responsive.min.js') }}"></script> --}}
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 
     <script>

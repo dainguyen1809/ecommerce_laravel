@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\FlashSaleController;
 use App\Http\Controllers\Backend\GeneralSettingController;
+use App\Http\Controllers\Backend\HomePageSettingController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PaymentSettingController;
 use App\Http\Controllers\Backend\PaypalSettingController;
@@ -176,3 +177,19 @@ Route::resource('orders', OrderController::class);
 // transaction
 Route::get('transaction', [TransactionController::class, 'index'])
     ->name('transaction.index');
+
+// home page setting
+Route::get('home-page-setting', [HomePageSettingController::class, 'index'])
+    ->name('home-page-setting');
+
+Route::put('popular-category', [HomePageSettingController::class, 'updatePopularCategory'])
+    ->name('popular-category');
+
+Route::put('product-slider-section-one', [HomePageSettingController::class, 'updateProductSliderSectionOne'])
+    ->name('product-slider-section-one');
+
+Route::put('product-slider-section-two', [HomePageSettingController::class, 'updateProductSliderSectionTwo'])
+    ->name('product-slider-section-two');
+
+Route::put('weekly-best-products', [HomePageSettingController::class, 'weekylyBestProduct'])
+    ->name('weekly-best-products');

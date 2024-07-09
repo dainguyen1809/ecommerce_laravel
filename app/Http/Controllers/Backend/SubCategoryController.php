@@ -50,15 +50,8 @@ class SubCategoryController extends Controller
         $sub_category->slug = str()->slug($request->name);
         $sub_category->save();
 
+        toastr('Create successfully', 'success');
         return redirect()->route('admin.sub-category.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
     /**

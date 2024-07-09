@@ -131,9 +131,9 @@ class SellerProductDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('vendor'),
-            Column::make('name'),
-            Column::make('price'),
-            Column::make('slug'),
+            Column::make('name')->width(170),
+            Column::make('price')->addClass('text-center'),
+            Column::make('slug')->width(150),
             Column::make('image'),
             Column::make('type'),
             Column::make('approved'),

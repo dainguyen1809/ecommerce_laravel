@@ -22,3 +22,5 @@ public/frontend
 public/images/
 tests/
 .env.testing
+app/Http/Controllers/TestController.php
+resources/views/frontend/home/test.blade.php

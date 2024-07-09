@@ -96,3 +96,8 @@ function totalAmount()
 {
     return getMainCartTotal() + getShippingFee();
 }
+
+function limitText($text, $limit = 20)
+{
+    return str()->limit($text, $limit);
+}

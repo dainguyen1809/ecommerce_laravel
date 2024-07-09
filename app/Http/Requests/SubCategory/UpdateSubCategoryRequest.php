@@ -30,7 +30,7 @@ class UpdateSubCategoryRequest extends FormRequest
             'name' => [
                 'required',
                 'max:255',
-                Rule::unique(SubCategory::class)->ignore($this->route('sub_category')),
+                // Rule::unique(SubCategory::class)->ignore($this->route('sub_category')),
                 // dd($this->name)
             ],
             'status' => [

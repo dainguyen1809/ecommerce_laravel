@@ -117,13 +117,15 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="example-date">Offer Start Date</label>
-                    <input class="form-control" id="example-date" type="date" name="offer_start_date">
-                </div>offer_start_date
+                    <input class="form-control" id="example-date" type="date" name="offer_start_date"
+                        value="{{ $product->offer_start_date }}">
+                </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="example-date">Offer End Date</label>
-                    <input class="form-control" id="example-date" type="date" name="offer_end_date">
+                    <input class="form-control" id="example-date" type="date" name="offer_end_date"
+                        value="{{ $product->offer_end_date }}">
                 </div>
             </div>
         </div>

@@ -28,7 +28,6 @@ class UpdateChildCategoryRequest extends FormRequest
             'sub_category' => 'required',
             'name' => [
                 'required',
-                Rule::unique(ChildCategory::class)->ignore($this->route('child_category')),
             ],
             'status' => 'required',
         ];

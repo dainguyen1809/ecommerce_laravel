@@ -22,11 +22,10 @@
                         <i class="far fa-bars"></i>
                     </div>
                     <ul class="wsus_menu_cat_item show_home toggle_menu">
-                        <li><a href="#"><i class="fas fa-star"></i> hot promotions</a></li>
                         @foreach ($categories as $category)
                             <li>
                                 <a class="{{ count($category->subCategories) > 0 ? 'wsus__droap_arrow' : '' }}"
-                                    href="#">
+                                    href="{{ route('product.index', ['category' => $category->slug]) }}">
                                     <i class="{{ $category->icon }}"></i>
                                     {{ $category->name }}
                                 </a>
@@ -34,14 +33,20 @@
                                     <ul class="wsus_menu_cat_droapdown">
                                         @foreach ($category->subCategories as $subCategory)
                                             <li>
-                                                <a href="#">{{ $subCategory->name }}
+                                                <a href="{{ route('product.index', ['prod' => $subCategory->slug]) }}">{{ $subCategory->name }}
                                                     <i
-                                                        class="{{ count($subCategory->childCategories) > 0 ? 'fas fa-angle-right' : '' }}"></i>
+                                                        class="{{ count($subCategory->childCategories) > 0 ? 'fas fa-angle-right' : '' }}">
+                                                    </i>
                                                 </a>
                                                 @if (count($subCategory->childCategories) > 0)
                                                     <ul class="wsus__sub_category">
                                                         @foreach ($subCategory->childCategories as $childCategory)
-                                                            <li><a href="#">{{ $childCategory->name }}</a></li>
+                                                            <li>
+                                                                <a
+                                                                    href="{{ route('product.index', ['type' => $childCategory->slug]) }}">
+                                                                    {{ $childCategory->name }}
+                                                                </a>
+                                                            </li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
@@ -123,25 +128,9 @@
                             </div>
                         </li>
                         <li><a href="vendor.html">vendor</a></li>
+                        <li><a href="{{ route('product.index') }}">Products</a></li>
                         <li><a href="blog.html">blog</a></li>
                         <li><a href="daily_deals.html">campain</a></li>
-                        <li class="wsus__relative_li"><a href="#">pages <i class="fas fa-caret-down"></i></a>
-                            <ul class="wsus__menu_droapdown">
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="faqs.html">faq</a></li>
-                                <li><a href="invoice.html">invoice</a></li>
-                                <li><a href="about_us.html">about</a></li>
-                                <li><a href="product_grid_view.html">product</a></li>
-                                <li><a href="check_out.html">check out</a></li>
-                                <li><a href="team.html">team</a></li>
-                                <li><a href="change_password.html">change password</a></li>
-                                <li><a href="custom_page.html">custom page</a></li>
-                                <li><a href="forget_password.html">forget password</a></li>
-                                <li><a href="privacy_policy.html">privacy policy</a></li>
-                                <li><a href="product_category.html">product category</a></li>
-                                <li><a href="brands.html">brands</a></li>
-                            </ul>
-                        </li>
                         <li><a href="track_order.html">track order</a></li>
                         <li><a href="{{ route('flash-sale') }}">daily deals</a></li>
                     </ul>

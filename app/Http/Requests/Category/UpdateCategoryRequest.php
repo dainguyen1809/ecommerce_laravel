@@ -31,8 +31,6 @@ class UpdateCategoryRequest extends FormRequest
             'name' => [
                 'required',
                 'max:255',
-                Rule::unique(Category::class)->ignore($this->route('category')),
-
             ],
             'status' => [
                 'required',

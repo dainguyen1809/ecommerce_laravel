@@ -27,7 +27,6 @@ class StoreChildCategoryRequest extends FormRequest
             'sub_category' => 'required',
             'name' => [
                 'required',
-                'unique:child_categories',
             ],
             'status' => 'required',
         ];

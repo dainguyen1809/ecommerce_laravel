@@ -12,9 +12,11 @@ use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserOrderController;
 use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/test', [TestController::class, 'test'])->name('test');
 
 
 Route::middleware('auth')->group(function () {
@@ -31,7 +33,9 @@ Route::get('admin/login', [AdminController::class, 'login'])->name('admin.login'
 Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sale');
 
 // Product Detail 
+Route::get('products', [FrontendProductController::class, 'index'])->name('product.index');
 Route::get('product-details/{slug}', [FrontendProductController::class, 'productDetail'])->name('product-details');
+Route::get('change-product-view', [FrontendProductController::class, 'changeProductView'])->name('change-product-view');
 
 // add to cart
 Route::post('add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');

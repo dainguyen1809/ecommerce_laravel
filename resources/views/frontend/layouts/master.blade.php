@@ -158,6 +158,11 @@
             @endforeach
         @endif
     </script>
+    <script>
+        $(document).ready(function() {
+            $('.auto_click').click();
+        });
+    </script>
 </body>
 
 </html>
