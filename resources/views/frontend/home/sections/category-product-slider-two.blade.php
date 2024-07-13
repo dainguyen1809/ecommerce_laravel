@@ -70,8 +70,12 @@
                                     <i class="far fa-eye"></i>
                                 </a>
                             </li>
-                            <li><a href="#"><i class="far fa-heart"></i></a></li>
-                            <li><a href="#"><i class="far fa-random"></i></a>
+                            <li>
+                                <a href="#" class="wishlist" data-id="{{ $product->id }}">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+
                         </ul>
                         <div class="wsus__product_details">
                             <a class="wsus__category" href="#">{{ $product->category->name }} </a>
@@ -84,7 +88,7 @@
                                 <span>(133 review)</span>
                             </p>
                             <a class="wsus__pro_name"
-                                href="{{ route('product-details', $product->slug) }}">{{ $product->name }}</a>
+                                href="{{ route('product-details', $product->slug) }}">{{ limitText($product->name, 65) }}</a>
                             @if (checkDiscount($product))
                                 <p class="wsus__price">
                                     {{ $product->offer_price }}

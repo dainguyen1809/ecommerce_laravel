@@ -11,6 +11,7 @@ use App\Http\Controllers\Frontend\UserAddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserOrderController;
 use App\Http\Controllers\Frontend\UserProfileController;
+use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
@@ -58,6 +59,11 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     Route::put('profile', [UserProfileController::class, 'updateProfile'])->name('profile.update');
     Route::post('profile', [UserProfileController::class, 'updatePassword'])->name('profile.update.password');
 
+    // wishlist
+    Route::get('wishlist', [WishlistController::class, 'index'])->name('wishlist');
+    Route::get('wishlist/add-to-wishlist', [WishlistController::class, 'addToWishlist'])->name('wishlist.store');
+    Route::get('wishlist/remove-wishlist/{id}', [WishlistController::class, 'removeWishlistProduct'])->name('wishlist.destroy');
+
     // address
     Route::resource('address', UserAddressController::class);
 
@@ -68,7 +74,6 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
 
     Route::get('orders/show/{id}', [UserOrderController::class, 'show'])
         ->name('order.show');
-
 
     // checkout
     Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');

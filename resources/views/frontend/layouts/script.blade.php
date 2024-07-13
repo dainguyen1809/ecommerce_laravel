@@ -125,11 +125,34 @@
                 success: function(response) {
                     $('#mini-cart-subtotal').text("{{ $settings->currency_icon }}" + response);
                 },
-                error: function(response) {
-
-                },
             });
         }
+
+        $('.wishlist').on('click', function(e) {
+            e.preventDefault();
+            const id = $(this).data('id');
+
+            $.ajax({
+                type: "get",
+                url: "{{ route('user.wishlist.store') }}",
+                data: {
+                    id,
+                },
+                success: function(response) {
+                    if (response.status === 'success') {
+                        $('#wishlist-qty').text(response.count);
+                        toastr.success(response.message);
+                    } else if (response.status === 'warning') {
+                        toastr.warning(response.message);
+                    }
+                },
+                error: function(response) {
+                    if (response.status === 401) {
+                        toastr.error("You must be login to use this feature!");
+                    }
+                }
+            });
+        });
 
     });
 </script>
