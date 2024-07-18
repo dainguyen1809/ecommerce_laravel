@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FlashSaleController;
 use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\NewLetterController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\UserAddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
@@ -19,24 +20,27 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/test', [TestController::class, 'test'])->name('test');
 
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
 
 Route::get('admin/login', [AdminController::class, 'login'])->name('admin.login');
 
 // flash sale
 Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sale');
 
-// Product Detail 
+// Product Detail
 Route::get('products', [FrontendProductController::class, 'index'])->name('product.index');
 Route::get('product-details/{slug}', [FrontendProductController::class, 'productDetail'])->name('product-details');
 Route::get('change-product-view', [FrontendProductController::class, 'changeProductView'])->name('change-product-view');
+
+// new letter
+Route::post('subscribe', [NewLetterController::class, 'subscribe'])->name('subscribe');
+Route::get('subscribe-verify/{token}', [NewLetterController::class, 'verifyEmail'])->name('subscribe-verify');
 
 // add to cart
 Route::post('add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
@@ -51,7 +55,6 @@ Route::get('cart/sidebar-product-total', [CartController::class, 'cartTotal'])->
 
 Route::get('apply-coupon', [CartController::class, 'applyCoupon'])->name('apply-coupon');
 Route::get('coupon-calculation', [CartController::class, 'couponCalculation'])->name('coupon-calculation');
-
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
@@ -88,4 +91,5 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     Route::get('paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('paypal.payment');
     Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
     Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
+
 });

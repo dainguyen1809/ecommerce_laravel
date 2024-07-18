@@ -9,10 +9,10 @@
                     <i class="mdi mdi-home-variant d-md-none d-block"></i>
                     <span class="d-none d-md-block">General Settings</span>
                 </a>
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
-                    aria-controls="v-pills-profile" aria-selected="false">
+                <a class="nav-link" id="v-pills-email-tab" data-toggle="pill" href="#v-pills-email" role="tab"
+                    aria-controls="v-pills-email" aria-selected="false">
                     <i class="mdi mdi-account-circle d-md-none d-block"></i>
-                    <span class="d-none d-md-block">Profile</span>
+                    <span class="d-none d-md-block">Email Configuration</span>
                 </a>
                 <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
                     aria-controls="v-pills-settings" aria-selected="false">
@@ -25,9 +25,8 @@
         <div class="col-sm-9">
             <div class="tab-content" id="v-pills-tabContent">
                 @include('admin.setting.general-setting')
-                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                    <p class="mb-0">2</p>
-                </div>
+                @include('admin.setting.email-configuration')
+
                 <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                     <p class="mb-0">3</p>
                 </div>

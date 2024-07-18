@@ -35,9 +35,15 @@
                     <ul class="wsus__icon_area">
                         <li>
                             <a href="{{ route('user.wishlist') }}"><i class="fal fa-heart"></i>
-                                <span id="wishlist-qty">
-                                    {{ \App\Models\Wishlist::where('user_id', auth()->user()->id)->count() }}
-                                </span>
+                                @if (isset(auth()->user()->id))
+                                    <span id="wishlist-qty">
+                                        {{ \App\Models\Wishlist::where('user_id', auth()->user()->id)->count() }}
+                                    </span>
+                                @else
+                                    <span id="wishlist-qty">
+                                        0
+                                    </span>
+                                @endif
                             </a>
                         </li>
                         <li><a class="wsus__cart_icon" href="#"><i class="fal fa-shopping-bag"></i><span

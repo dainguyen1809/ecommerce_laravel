@@ -1,5 +1,5 @@
 <?php
-use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\AdminVendorProfileController;
 use App\Http\Controllers\Backend\BrandController;
@@ -7,6 +7,10 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\FlashSaleController;
+use App\Http\Controllers\Backend\FooterGridThreeController;
+use App\Http\Controllers\Backend\FooterGridTwoController;
+use App\Http\Controllers\Backend\FooterInfoController;
+use App\Http\Controllers\Backend\FooterSocialController;
 use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\HomePageSettingController;
 use App\Http\Controllers\Backend\OrderController;
@@ -21,11 +25,12 @@ use App\Http\Controllers\Backend\SellerProductController;
 use App\Http\Controllers\Backend\ShippingRuleController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\SubscribersController;
 use App\Http\Controllers\Backend\TransactionController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('dashboard', [AdminController::class, 'dashboard'])
     ->name('dashboard');
-
 
 // Profile
 Route::get('profile', [ProfileController::class, 'index'])
@@ -36,7 +41,6 @@ Route::post('profile/update', [ProfileController::class, 'updateProfile'])
 
 Route::post('profile/update/password', [ProfileController::class, 'updatePassword'])
     ->name('password.update');
-
 
 // Slider
 Route::resource('slider', SliderController::class);
@@ -144,6 +148,38 @@ Route::get('settings', [GeneralSettingController::class, 'index'])
     ->name('settings.index');
 Route::put('general-setting-update', [GeneralSettingController::class, 'generalSettingUpdate'])
     ->name('general-setting-update');
+Route::put('email-setting-update', [GeneralSettingController::class, 'emailSettingUpdate'])
+    ->name('email-setting-update');
+
+// subscriber
+Route::get('subscribers', [SubscribersController::class, 'index'])->name('subscriber.index');
+Route::delete('subscribers/{id}', [SubscribersController::class, 'destroy'])->name('subscriber.destroy');
+Route::get('subscribers/send-email', [SubscribersController::class, 'sendEmail'])->name('subscriber.sendEmail');
+
+// footer
+
+Route::resource('footer-info', FooterInfoController::class);
+
+Route::put('footer-socials/change-status', [FooterSocialController::class, 'changeStatus'])
+    ->name('footer-socials.change-status');
+
+Route::resource('footer-socials', FooterSocialController::class);
+
+Route::put('footer-grid-two/change-status', [FooterGridTwoController::class, 'changeStatus'])
+    ->name('footer-grid-two.change-status');
+
+Route::put('footer-grid-two/change-title', [FooterGridTwoController::class, 'changeTitle'])
+    ->name('footer-grid-two.change-title');
+
+Route::resource('footer-grid-two', FooterGridTwoController::class);
+
+Route::put('footer-grid-three/change-status', [FooterGridThreeController::class, 'changeStatus'])
+    ->name('footer-grid-three.change-status');
+
+Route::put('footer-grid-three/change-title', [FooterGridThreeController::class, 'changeTitle'])
+    ->name('footer-grid-three.change-title');
+
+Route::resource('footer-grid-three', FooterGridThreeController::class);
 
 // coupon
 Route::put('coupons/change-status', [CouponController::class, 'changeStatus'])
