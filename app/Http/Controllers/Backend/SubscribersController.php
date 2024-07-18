@@ -28,6 +28,7 @@ class SubscribersController extends Controller
         foreach ($subscribers as $email) {
             SendSubscribersEmail::dispatch($email, $request->subject, $request->message);
         }
+
         toastr()->success('Email sent!');
 
         return redirect()->back();
