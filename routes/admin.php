@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\AdminVendorProfileController;
+use App\Http\Controllers\Backend\AdvertisementController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildCategoryController;
@@ -155,6 +156,21 @@ Route::put('email-setting-update', [GeneralSettingController::class, 'emailSetti
 Route::get('subscribers', [SubscribersController::class, 'index'])->name('subscriber.index');
 Route::delete('subscribers/{id}', [SubscribersController::class, 'destroy'])->name('subscriber.destroy');
 Route::get('subscribers/send-email', [SubscribersController::class, 'sendEmail'])->name('subscriber.sendEmail');
+
+// advertisement
+Route::get('advertisements', [AdvertisementController::class, 'index'])->name('advertisement.index');
+Route::put('advertisements/homepage-banner-one', [AdvertisementController::class, 'bannerOne'])
+    ->name('advertisement.banner-one');
+Route::put('advertisements/homepage-banner-two', [AdvertisementController::class, 'bannerTwo'])
+    ->name('advertisement.banner-two');
+Route::put('advertisements/homepage-banner-three', [AdvertisementController::class, 'bannerThree'])
+    ->name('advertisement.banner-three');
+Route::put('advertisements/homepage-banner-four', [AdvertisementController::class, 'bannerFour'])
+    ->name('advertisement.banner-four');
+Route::put('advertisements/product-page-banner', [AdvertisementController::class, 'productBanner'])
+    ->name('advertisement.product-banner');
+Route::put('advertisements/cart-page-banner', [AdvertisementController::class, 'cartBanner'])
+    ->name('advertisement.cart-banner');
 
 // footer
 

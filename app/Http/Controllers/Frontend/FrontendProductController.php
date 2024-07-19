@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Advertisement;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ChildCategory;
@@ -103,10 +104,15 @@ class FrontendProductController extends Controller
         $categories = Category::where('status', 1)->get();
         $brands = Brand::where('status', 1)->get();
 
+        $productBanner = Advertisement::where('key', 'product_page_banner')->first();
+        $productBanner = json_decode($productBanner?->value);
+
+
         return view('frontend.pages.product', [
             'products' => $products,
             'categories' => $categories,
             'brands' => $brands,
+            'productBanner' => $productBanner,
         ]);
     }
 

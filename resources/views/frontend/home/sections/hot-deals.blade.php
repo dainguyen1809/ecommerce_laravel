@@ -7,129 +7,6 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="row hot_deals_slider_2">
-            <div class="col-xl-4 col-lg-6">
-                <div class="wsus__hot_deals_offer">
-                    <div class="wsus__hot_deals_img">
-                        <img src="images/pro0010.jpg" alt="mobile" class="img-fluid w-100">
-                    </div>
-                    <div class="wsus__hot_deals_text">
-                        <a class="wsus__hot_title" href="product_details.html">apple smart watch</a>
-                        <p class="wsus__rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span>(127 review)</span>
-                        </p>
-                        <p class="wsus__hot_deals_proce">$160 <del>$200</del></p>
-                        <P class="wsus__details">
-                            Lorem ipsum dolor sit amet, cons
-                            ectetur incid duut labore et dol.
-                            Re magna atellus in metus.
-                        </P>
-                        <ul>
-                            <li><a class="add_cart" href="#">add to cart</a></li>
-                            <li><a href="#"><i class="far fa-heart"></i></a></li>
-                           </li>
-                        </ul>
-                        <div class="simply-countdown simply-countdown-one"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6">
-                <div class="wsus__hot_deals_offer">
-                    <div class="wsus__hot_deals_img">
-                        <img src="images/pro0011.jpg" alt="mobile" class="img-fluid w-100">
-                    </div>
-                    <div class="wsus__hot_deals_text">
-                        <a class="wsus__hot_title" href="product_details.html">portable mobile Speaker</a>
-                        <p class="wsus__rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span>(176 review)</span>
-                        </p>
-                        <p class="wsus__hot_deals_proce">$200 <del>$220</del></p>
-                        <P class="wsus__details">
-                            Lorem ipsum dolor sit amet, cons
-                            ectetur incid duut labore et dol.
-                            Re magna atellus in metus.
-                        </P>
-                        <ul>
-                            <li><a class="add_cart" href="#">add to cart</a></li>
-                            <li><a href="#"><i class="far fa-heart"></i></a></li>
-                           </li>
-                        </ul>
-                        <div class="simply-countdown simply-countdown-one"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6">
-                <div class="wsus__hot_deals_offer">
-                    <div class="wsus__hot_deals_img">
-                        <img src="images/pro0012.jpg" alt="mobile" class="img-fluid w-100">
-                    </div>
-                    <div class="wsus__hot_deals_text">
-                        <a class="wsus__hot_title" href="product_details.html">apple smart watch</a>
-                        <p class="wsus__rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span>(127 review)</span>
-                        </p>
-                        <p class="wsus__hot_deals_proce">$160 <del>$200</del></p>
-                        <P class="wsus__details">
-                            Lorem ipsum dolor sit amet, cons
-                            ectetur incid duut labore et dol.
-                            Re magna atellus in metus.
-                        </P>
-                        <ul>
-                            <li><a class="add_cart" href="#">add to cart</a></li>
-                            <li><a href="#"><i class="far fa-heart"></i></a></li>
-                           </li>
-                        </ul>
-                        <div class="simply-countdown simply-countdown-one"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6">
-                <div class="wsus__hot_deals_offer">
-                    <div class="wsus__hot_deals_img">
-                        <img src="images/pro0013.jpg" alt="mobile" class="img-fluid w-100">
-                    </div>
-                    <div class="wsus__hot_deals_text">
-                        <a class="wsus__hot_title" href="product_details.html">portable mobile Speaker</a>
-                        <p class="wsus__rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span>(176 review)</span>
-                        </p>
-                        <p class="wsus__hot_deals_proce">$200 <del>$220</del></p>
-                        <P class="wsus__details">
-                            Lorem ipsum dolor sit amet, cons
-                            ectetur incid duut labore et dol.
-                            Re magna atellus in metus vulpue
-                            te eu sceleri que felis.
-                        </P>
-                        <ul>
-                            <li><a class="add_cart" href="#">add to cart</a></li>
-                            <li><a href="#"><i class="far fa-heart"></i></a></li>
-                           </li>
-                        </ul>
-                        <div class="simply-countdown simply-countdown-one"></div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
         <div class="wsus__hot_large_item">
             <div class="row">
                 <div class="col-xl-12">
@@ -237,44 +114,45 @@
         <section id="wsus__single_banner" class="home_2_single_banner">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="wsus__single_banner_content banner_1">
-                            <div class="wsus__single_banner_img">
-                                <img src="images/single_banner_44.jpg" alt="banner" class="img-fluid w-100">
-                            </div>
-                            <div class="wsus__single_banner_text">
-                                <h6>sell on <span>35% off</span></h6>
-                                <h3>smart watch</h3>
-                                <a class="shop_btn" href="#">shop now</a>
+                    @if ($bannerThree->banner_one->status == 1)
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="wsus__single_banner_content banner_1">
+                                <div class="wsus__single_banner_img">
+                                    <a href="{{ $bannerThree->banner_one->banner_url }}">
+                                        <img src="{{ asset($bannerThree->banner_one->banner_img) }}" alt="banner"
+                                            class="img-fluid w-100">
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                     <div class="col-xl-6 col-lg-6">
                         <div class="row">
-                            <div class="col-12">
-                                <div class="wsus__single_banner_content single_banner_2">
-                                    <div class="wsus__single_banner_img">
-                                        <img src="images/single_banner_55.jpg" alt="banner" class="img-fluid w-100">
-                                    </div>
-                                    <div class="wsus__single_banner_text">
-                                        <h6>New Collection</h6>
-                                        <h3>kid's fashion</h3>
-                                        <a class="shop_btn" href="#">shop now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 mt-lg-4">
-                                <div class="wsus__single_banner_content">
-                                    <div class="wsus__single_banner_img">
-                                        <img src="images/single_banner_66.jpg" alt="banner" class="img-fluid w-100">
-                                    </div>
-                                    <div class="wsus__single_banner_text">
-                                        <h6>sell on <span>42% off</span></h6>
-                                        <h3>winter collection</h3>
-                                        <a class="shop_btn" href="#">shop now</a>
+                            @if ($bannerThree->banner_two->status == 1)
+                                <div class="col-12">
+                                    <div class="wsus__single_banner_content single_banner_2">
+                                        <div class="wsus__single_banner_img">
+                                            <a href="{{ $bannerThree->banner_two->banner_url }}">
+                                                <img src="{{ asset($bannerThree->banner_two->banner_img) }}"
+                                                    alt="banner" class="img-fluid w-100">
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
+
+                            @if ($bannerThree->banner_three->status == 1)
+                                <div class="col-12 mt-lg-4">
+                                    <div class="wsus__single_banner_content">
+                                        <div class="wsus__single_banner_img">
+                                            <a href="{{ $bannerThree->banner_three->banner_url }}">
+                                                <img src="{{ asset($bannerThree->banner_three->banner_img) }}"
+                                                    alt="banner" class="img-fluid w-100">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

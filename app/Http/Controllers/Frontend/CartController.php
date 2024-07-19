@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Advertisement;
 use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\ProductVariantItem;
@@ -75,8 +76,13 @@ class CartController extends Controller
             toastr('Please add some products to your cart!', 'warning', 'Cart Is Empty!');
             return redirect()->route('home');
         }
+
+        $cartBanner = Advertisement::where('key', 'cart_page_banner')->first();
+        $cartBanner = json_decode($cartBanner?->value);
+
         return view('frontend.pages.cart-detail', [
             'cartItems' => $cartItems,
+            'cartBanner' => $cartBanner,
         ]);
     }
 

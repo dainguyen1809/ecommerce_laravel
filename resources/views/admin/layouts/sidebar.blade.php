@@ -1,7 +1,7 @@
 <div class="left-side-menu left-side-menu-detached">
     <div class="leftbar-user">
         <a href="{{ route('admin.profile') }}">
-            <img src="{{ asset(Auth::user()->avatar) }}" alt="user-image" height="42" class="rounded-circle shadow-sm"/>
+            <img src="{{ asset(Auth::user()->avatar) }}" alt="user-image" height="42" class="rounded-circle shadow-sm" />
             <span class="leftbar-user-name">{{ Auth::user()->name }}</span>
         </a>
     </div>
@@ -151,6 +151,13 @@
             <a href="{{ route('admin.subscriber.index') }}" class="side-nav-link">
                 <i class="mdi mdi-bell-outline"></i>
                 <span> Subscribers </span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="{{ route('admin.advertisement.index') }}" class="side-nav-link">
+                <i class="mdi mdi-bell-alert"></i>
+                <span> Advertisement </span>
             </a>
         </li>
 

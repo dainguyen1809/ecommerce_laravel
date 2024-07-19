@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Advertisement;
 use App\Models\Brand;
 use App\Models\FlashSale;
 use App\Models\FlashSaleItem;
@@ -34,6 +35,19 @@ class HomeController extends Controller
         $productByCategoryTwo = HomePageSetting::where('key', 'product_slider_section_two')->first();
         $weeklyProduct = HomePageSetting::where('key', 'weekly-products')->first();
 
+        $bannerOne = Advertisement::where('key', 'homepage_banner_section_one')->first();
+        $bannerOne = json_decode($bannerOne?->value);
+
+        $bannerTwo = Advertisement::where('key', 'homepage_banner_section_two')->first();
+        $bannerTwo = json_decode($bannerTwo?->value);
+
+        $bannerThree = Advertisement::where('key', 'homepage_banner_section_three')->first();
+        $bannerThree = json_decode($bannerThree?->value);
+
+        $bannerFour = Advertisement::where('key', 'homepage_banner_section_four')->first();
+        $bannerFour = json_decode($bannerFour?->value);
+
+
         return view('frontend.home.home', [
             'sliders' => $sliders,
             'counterFlashSale' => $counterFlashSale,
@@ -44,6 +58,10 @@ class HomeController extends Controller
             'productByCategoryOne' => $productByCategoryOne,
             'productByCategoryTwo' => $productByCategoryTwo,
             'weeklyProduct' => $weeklyProduct,
+            'bannerOne' => $bannerOne,
+            'bannerTwo' => $bannerTwo,
+            'bannerThree' => $bannerThree,
+            'bannerFour' => $bannerFour,
         ]);
     }
 

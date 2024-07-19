@@ -132,36 +132,36 @@
         </div>
     </section>
 
-    {{-- <section id="wsus__single_banner">
+    <section id="wsus__single_banner">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-6">
                     <div class="wsus__single_banner_content">
                         <div class="wsus__single_banner_img">
-                            <img src="images/single_banner_2.jpg" alt="banner" class="img-fluid w-100">
-                        </div>
-                        <div class="wsus__single_banner_text">
-                            <h6>sell on <span>35% off</span></h6>
-                            <h3>smart watch</h3>
-                            <a class="shop_btn" href="#">shop now</a>
+                            @if ($cartBanner->banner_one->status == 1)
+                                <a href="{{ $cartBanner->banner_one->banner_url }}">
+                                    <img src="{{ asset($cartBanner->banner_one->banner_img) }}" alt="banner"
+                                        class="img-fluid w-100">
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6">
                     <div class="wsus__single_banner_content single_banner_2">
                         <div class="wsus__single_banner_img">
-                            <img src="images/single_banner_3.jpg" alt="banner" class="img-fluid w-100">
-                        </div>
-                        <div class="wsus__single_banner_text">
-                            <h6>New Collection</h6>
-                            <h3>Cosmetics</h3>
-                            <a class="shop_btn" href="#">shop now</a>
+                            @if ($cartBanner->banner_two->status == 1)
+                                <a href="{{ $cartBanner->banner_two->banner_url }}">
+                                    <img src="{{ asset($cartBanner->banner_two->banner_img) }}" alt="banner"
+                                        class="img-fluid w-100">
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
 @endsection
 
 @push('scripts')
