@@ -51,7 +51,7 @@
                         <div class="col-12">
                             <button class="btn btn-primary col-sm-2 mr-3">{{ __('Update') }}</button>
                             <a href="{{ route('admin.vendor-profile.index') }}" class="btn btn-secondary col-sm-2">
-                                <i class="uil-arrow-left"></i>
+                                <i class="fas fa-arrow-left"></i>
                                 {{ __('Back to dashboard') }}
                             </a>
                         </div>

@@ -10,12 +10,12 @@ use App\Models\ChildCategory;
 use App\Models\FlashSale;
 use App\Models\FlashSaleItem;
 use App\Models\Product;
+use App\Models\ProductReview;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 class FrontendProductController extends Controller
 {
-
     public function index(Request $request)
     {
         if ($request->has('category')) {
@@ -23,7 +23,7 @@ class FrontendProductController extends Controller
             $products = Product::where([
                 'category_id' => $category->id,
                 'status' => 1,
-                'is_approved' => 1
+                'is_approved' => 1,
             ])
                 ->when($request->has('price_range'), function ($query) use ($request) {
                     $price = explode(';', $request->price_range);
@@ -39,7 +39,7 @@ class FrontendProductController extends Controller
             $products = Product::where([
                 'sub_category_id' => $subCategory->id,
                 'status' => 1,
-                'is_approved' => 1
+                'is_approved' => 1,
             ])
                 ->when($request->has('price_range'), function ($query) use ($request) {
                     $price = explode(';', $request->price_range);
@@ -55,7 +55,7 @@ class FrontendProductController extends Controller
             $products = Product::where([
                 'child_category_id' => $childCategory->id,
                 'status' => 1,
-                'is_approved' => 1
+                'is_approved' => 1,
             ])
                 ->when($request->has('price_range'), function ($query) use ($request) {
                     $price = explode(';', $request->price_range);
@@ -66,12 +66,12 @@ class FrontendProductController extends Controller
                         ->where('price', '<=', $to);
                 })
                 ->paginate(2);
-        } else if ($request->has('brand')) {
+        } elseif ($request->has('brand')) {
             $brand = Brand::where('slug', $request->brand)->firstOrFail();
             $products = Product::where([
                 'brand_id' => $brand->id,
                 'status' => 1,
-                'is_approved' => 1
+                'is_approved' => 1,
             ])
                 ->when($request->has('price_range'), function ($query) use ($request) {
                     $price = explode(';', $request->price_range);
@@ -107,7 +107,6 @@ class FrontendProductController extends Controller
         $productBanner = Advertisement::where('key', 'product_page_banner')->first();
         $productBanner = json_decode($productBanner?->value);
 
-
         return view('frontend.pages.product', [
             'products' => $products,
             'categories' => $categories,
@@ -132,10 +131,14 @@ class FrontendProductController extends Controller
             ->paginate(5) : collect();
         $counterFlashSale = FlashSale::first();
 
+        $reviews = ProductReview::where('product_id', $product->id)
+            ->where('status', 1)->paginate(5);
+
         return view('frontend.pages.product-detail', [
             'product' => $product,
             'flashSaleItems' => $flashSaleItems,
             'counterFlashSale' => $counterFlashSale,
+            'reviews' => $reviews,
         ]);
     }
 

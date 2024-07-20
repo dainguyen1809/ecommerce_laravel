@@ -144,6 +144,9 @@
                 <li>
                     <a href="{{ route('admin.seller-pending-products.index') }}"> Seller Pending Products </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.review.index') }}"> Product Reviews </a>
+                </li>
             </ul>
         </li>
 

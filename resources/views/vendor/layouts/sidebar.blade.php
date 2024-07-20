@@ -13,8 +13,14 @@
         </li>
         <li>
             <a href="{{ route('vendor.products.index') }}">
-                <i class="fas fa-store"></i>
+                <i class="fas fa-cube"></i>
                 {{ __('Products') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('vendor.review.index') }}">
+                <i class="fas fa-star"></i>
+                {{ __('Reivews') }}
             </a>
         </li>
         <li>

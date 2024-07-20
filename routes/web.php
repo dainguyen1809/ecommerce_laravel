@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\NewLetterController;
 use App\Http\Controllers\Frontend\PaymentController;
+use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\Frontend\UserAddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserOrderController;
@@ -26,7 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('admin/login', [AdminController::class, 'login'])->name('admin.login');
 
@@ -66,6 +67,10 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     Route::get('wishlist', [WishlistController::class, 'index'])->name('wishlist');
     Route::get('wishlist/add-to-wishlist', [WishlistController::class, 'addToWishlist'])->name('wishlist.store');
     Route::get('wishlist/remove-wishlist/{id}', [WishlistController::class, 'removeWishlistProduct'])->name('wishlist.destroy');
+
+    // product review
+    Route::get('reviews', [ReviewController::class, 'index'])->name('review.index');
+    Route::post('review', [ReviewController::class, 'create'])->name('review.create');
 
     // address
     Route::resource('address', UserAddressController::class);

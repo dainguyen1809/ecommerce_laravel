@@ -128,7 +128,7 @@ class VendorProductDataTable extends DataTable
             Column::make('id'),
             Column::make('name'),
             Column::make('price'),
-            Column::make('slug'),
+            Column::make('slug')->width(300),
             Column::make('image'),
             Column::make('product_type'),
             Column::make('approved'),

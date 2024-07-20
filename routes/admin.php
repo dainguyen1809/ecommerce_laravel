@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\AdminProductReviewController;
 use App\Http\Controllers\Backend\AdminVendorProfileController;
 use App\Http\Controllers\Backend\AdvertisementController;
 use App\Http\Controllers\Backend\BrandController;
@@ -245,3 +246,10 @@ Route::put('product-slider-section-two', [HomePageSettingController::class, 'upd
 
 Route::put('weekly-best-products', [HomePageSettingController::class, 'weekylyBestProduct'])
     ->name('weekly-best-products');
+
+// reviews
+
+Route::put('reviews/change-status', [AdminProductReviewController::class, 'changeStatus'])
+    ->name('review.change-status');
+Route::get('reviews', [AdminProductReviewController::class, 'index'])
+    ->name('review.index');

@@ -20,33 +20,35 @@
     <section id="wsus__daily_deals">
         <div class="container">
             <div class="wsus__offer_details_area">
-                <div class="row">
-                    <div class="col-xl-6 col-md-6">
-                        <div class="wsus__offer_details_banner">
-                            <img src="images/offer_banner_2.png" alt="offrt img" class="img-fluid w-100">
-                            <div class="wsus__offer_details_banner_text">
-                                <p>apple watch</p>
-                                <span>up 50% 0ff</span>
-                                <p>for all poduct</p>
-                                <p><b>today only</b></p>
+                <div class="row mb-5">
+                    @if ($bannerTwo->banner_one->status == 1)
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="wsus__single_banner_content">
+                                <div class="wsus__single_banner_img">
+                                    <a href="{{ $bannerTwo->banner_one->banner_url }}">
+                                        <img src="{{ $bannerTwo->banner_one->banner_img }}" alt="banner"
+                                            class="img-fluid w-100">
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-6 col-md-6">
-                        <div class="wsus__offer_details_banner">
-                            <img src="images/offer_banner_3.png" alt="offrt img" class="img-fluid w-100">
-                            <div class="wsus__offer_details_banner_text">
-                                <p>xiaomi power bank</p>
-                                <span>up 37% 0ff</span>
-                                <p>for all poduct</p>
-                                <p><b>today only</b></p>
+                    @endif
+                    @if ($bannerTwo->banner_two->status == 1)
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="wsus__single_banner_content">
+                                <div class="wsus__single_banner_img">
+                                    <a href="{{ $bannerTwo->banner_two->banner_url }}">
+                                        <img src="{{ $bannerTwo->banner_two->banner_img }}" alt="banner"
+                                            class="img-fluid w-100">
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
 
                 <div class="row">
-                    <div class="col-xl-12">
+                    <div class="col-xl-12 mt-4">
                         <div class="wsus__section_header rounded-0">
                             <h3>flash sell</h3>
                             <div class="wsus__offer_countdown">
@@ -60,7 +62,7 @@
                 <div class="row">
                     @foreach ($flashSaleItems as $flashSaleItem)
                         @php
-                            $product = \App\Models\Product::find($flashSaleItem->product_id);
+                            $product = \App\Models\Product::with('reviews')->find($flashSaleItem->product_id);
                         @endphp
                         <div class="col-xl-3 col-sm-6 col-lg-4">
                             <div class="wsus__product_item">
@@ -92,12 +94,17 @@
                                 <div class="wsus__product_details">
                                     <a class="wsus__category" href="#">{{ $product->category->name }} </a>
                                     <p class="wsus__pro_rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                        <span>(133 review)</span>
+                                        @php
+                                            $avgRating = round($product->reviews()->avg('rating'));
+                                        @endphp
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            @if ($i <= $avgRating)
+                                                <i class="fas fa-star"></i>
+                                            @else
+                                                <i class="far fa-star"></i>
+                                            @endif
+                                        @endfor
+                                        <span>({{ count($product->reviews) }} review)</span>
                                     </p>
                                     <a class="wsus__pro_name"
                                         href="{{ route('product-details', $product->slug) }}">{{ $product->name }}</a>
@@ -157,7 +164,7 @@
 
     @foreach ($flashSaleItems as $flashSaleItem)
         @php
-            $product = \App\Models\Product::find($flashSaleItem->product_id);
+            $product = \App\Models\Product::with('reviews')->find($flashSaleItem->product_id);
         @endphp
         <section class="product_popup_modal">
             <div class="modal fade" id="exampleModal-{{ $product->id }}" tabindex="-1" aria-hidden="true">
@@ -219,12 +226,17 @@
                                             <h4>${{ $product->price }}</h4>
                                         @endif
                                         <p class="review">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <span>20 review</span>
+                                            @php
+                                                $avgRating = round($product->reviews()->avg('rating'));
+                                            @endphp
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                @if ($i <= $avgRating)
+                                                    <i class="fas fa-star"></i>
+                                                @else
+                                                    <i class="far fa-star"></i>
+                                                @endif
+                                            @endfor
+                                            <span>({{ count($product->reviews) }} review)</span>
                                         </p>
                                         <p class="description">{!! $product->short_description !!}</p>
 
