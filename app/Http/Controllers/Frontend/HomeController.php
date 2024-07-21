@@ -5,11 +5,15 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
 use App\Models\Brand;
+use App\Models\Category;
+use App\Models\ChildCategory;
 use App\Models\FlashSale;
 use App\Models\FlashSaleItem;
 use App\Models\HomePageSetting;
 use App\Models\Product;
 use App\Models\Slider;
+use App\Models\SubCategory;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -86,5 +90,40 @@ class HomeController extends Controller
         ])->orderBy('id', 'desc')->take(8)->get();
 
         return $typeProducts;
+    }
+
+    public function vendorPage()
+    {
+        $vendors = Vendor::where('status', 1)->paginate(6);
+        return view('frontend.pages.vendor', [
+            'vendors' => $vendors,
+        ]);
+    }
+
+    public function vendorProductPage(Request $request, $id)
+    {
+
+        $products = Product::where([
+            'status' => 1,
+            'is_approved' => 1,
+            'vendor_id' => $id,
+        ])->orderBy('id', 'desc')->paginate(12);
+
+
+        $categories = Category::where('status', 1)->get();
+        $brands = Brand::where('status', 1)->get();
+
+        // $productBanner = Advertisement::where('key', 'product_page_banner')->first();
+        // $productBanner = json_decode($productBanner?->value);
+
+        $vendor = Vendor::findOrFail($id);
+
+        return view('frontend.pages.vendor-product', [
+            'products' => $products,
+            'categories' => $categories,
+            'brands' => $brands,
+            // 'productBanner' => $productBanner,
+            'vendor' => $vendor,
+        ]);
     }
 }

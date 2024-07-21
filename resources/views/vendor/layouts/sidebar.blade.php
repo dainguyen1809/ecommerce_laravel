@@ -6,6 +6,18 @@
     <a href="#" class="dash_logo"><img src="images/logo.png" alt="logo" class="img-fluid"></a>
     <ul class="dashboard_link">
         <li>
+            <a href="{{ route('user.dashboard') }}">
+                <i class="fas fa-angles-left"></i>
+                {{ __('Back to user Dashboard') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('vendor.vendor-profile.index') }}">
+                <i class="fas fa-tachometer"></i>
+                {{ __('Dashboard') }}
+            </a>
+        </li>
+        <li>
             <a href="{{ route('vendor.vendor-profile.index') }}">
                 <i class="fas fa-store"></i>
                 {{ __('Shop Profile') }}
@@ -34,7 +46,6 @@
                 {{ __('My Profile') }}
             </a>
         </li>
-        <li><a href="#"><i class="fal fa-gift-card"></i> {{ __('Addresses') }}</a></li>
         <li>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

@@ -29,6 +29,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubscribersController;
 use App\Http\Controllers\Backend\TransactionController;
+use App\Http\Controllers\Backend\VendorRegisterController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('dashboard', [AdminController::class, 'dashboard'])
@@ -172,6 +173,13 @@ Route::put('advertisements/product-page-banner', [AdvertisementController::class
     ->name('advertisement.product-banner');
 Route::put('advertisements/cart-page-banner', [AdvertisementController::class, 'cartBanner'])
     ->name('advertisement.cart-banner');
+
+// vendor register
+Route::get('vendor-registers', [VendorRegisterController::class, 'index'])->name('vendor-register.index');
+Route::get('vendor-registers/{id}/show', [VendorRegisterController::class, 'show'])->name('vendor-register.show');
+Route::put('vendor-registers/{id}/change-status', [VendorRegisterController::class, 'changeStatus'])
+    ->name('vendor-register.change-status');
+
 
 // footer
 

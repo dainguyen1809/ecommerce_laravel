@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li><a href="vendor.html">vendor</a></li>
+                        <li><a href="{{ route('vendor.index') }}">vendor</a></li>
                         <li><a href="{{ route('product.index') }}">Products</a></li>
                         <li><a href="blog.html">blog</a></li>
                         <li><a href="daily_deals.html">campain</a></li>
