@@ -133,7 +133,10 @@
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="{{ route('admin.vendor-register.index') }}">Customers</a>
+                    <a href="{{ route('admin.customer.index') }}">Customers</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.vendor.index') }}">Vendors</a>
                 </li>
                 <li>
                     <a href="{{ route('admin.vendor-register.index') }}">Pending Vendors</a>

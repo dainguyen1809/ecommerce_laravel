@@ -15,6 +15,8 @@ use App\Http\Controllers\Backend\FooterInfoController;
 use App\Http\Controllers\Backend\FooterSocialController;
 use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\HomePageSettingController;
+use App\Http\Controllers\Backend\ListCustomerController;
+use App\Http\Controllers\Backend\ListVendorController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PaymentSettingController;
 use App\Http\Controllers\Backend\PaypalSettingController;
@@ -180,6 +182,17 @@ Route::get('vendor-registers/{id}/show', [VendorRegisterController::class, 'show
 Route::put('vendor-registers/{id}/change-status', [VendorRegisterController::class, 'changeStatus'])
     ->name('vendor-register.change-status');
 
+//  list customer
+
+Route::get('customers', [ListCustomerController::class, 'index'])->name('customer.index');
+Route::put('customers/change-status', [ListCustomerController::class, 'changeStatus'])
+    ->name('customer.change-status');
+
+//  list vendor
+
+Route::get('vendors', [ListVendorController::class, 'index'])->name('vendor.index');
+Route::put('vendors/change-status', [ListVendorController::class, 'changeStatus'])
+    ->name('vendor.change-status');
 
 // footer
 
