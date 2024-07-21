@@ -42,6 +42,7 @@
                                     $category = \App\Models\Category::find($lastKey['category']);
                                     $products[] = \App\Models\Product::with('reviews')
                                         ->where('category_id', $category->id)
+                                        ->where('is_approved', 1)
                                         ->where('status', 1)
                                         ->orderBy('id', 'desc')
                                         ->take(12)
@@ -50,6 +51,7 @@
                                     $category = \App\Models\SubCategory::find($lastKey['sub_category']);
                                     $products[] = \App\Models\Product::with('reviews')
                                         ->where('sub_category_id', $category->id)
+                                        ->where('is_approved', 1)
                                         ->where('status', 1)
                                         ->orderBy('id', 'desc')
                                         ->take(12)
@@ -58,6 +60,7 @@
                                     $category = \App\Models\ChildCategory::find($lastKey['child_category']);
                                     $products[] = \App\Models\Product::with('reviews')
                                         ->where('child_category_id', $category->id)
+                                        ->where('is_approved', 1)
                                         ->where('status', 1)
                                         ->orderBy('id', 'desc')
                                         ->take(12)

@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\UserAddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserOrderController;
 use App\Http\Controllers\Frontend\UserProfileController;
+use App\Http\Controllers\Frontend\UserRegisterVendorController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
@@ -43,6 +44,10 @@ Route::get('change-product-view', [FrontendProductController::class, 'changeProd
 Route::post('subscribe', [NewLetterController::class, 'subscribe'])->name('subscribe');
 Route::get('subscribe-verify/{token}', [NewLetterController::class, 'verifyEmail'])->name('subscribe-verify');
 
+// vendor
+Route::get('vendors', [HomeController::class, 'vendorPage'])->name('vendor.index');
+Route::get('vendor-products/{id}', [HomeController::class, 'vendorProductPage'])->name('vendor.products');
+
 // add to cart
 Route::post('add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
 Route::get('cart-details', [CartController::class, 'cartDetails'])->name('cart-details');
@@ -71,6 +76,12 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     // product review
     Route::get('reviews', [ReviewController::class, 'index'])->name('review.index');
     Route::post('review', [ReviewController::class, 'create'])->name('review.create');
+
+    // register vendor
+    Route::get('vendor-register', [UserRegisterVendorController::class, 'index'])
+        ->name('vendor-register.index');
+    Route::post('vendor-register', [UserRegisterVendorController::class, 'create'])
+        ->name('vendor-register.create');
 
     // address
     Route::resource('address', UserAddressController::class);

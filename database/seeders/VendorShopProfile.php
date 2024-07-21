@@ -23,6 +23,7 @@ class VendorShopProfile extends Seeder
         $vendor->address = 'Ho Chi Minh City';
         $vendor->description = 'Shop Description';
         $vendor->user_id = $user->id;
+        $vendor->status = 1;
         $vendor->save();
     }
 }

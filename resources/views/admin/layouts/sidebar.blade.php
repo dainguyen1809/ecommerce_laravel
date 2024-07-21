@@ -15,6 +15,8 @@
                 <i class="uil-home-alt"></i>
                 <span> Dashboards </span>
             </a>
+        </li>
+
         <li class="side-nav-title side-nav-item">Managements</li>
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
@@ -40,6 +42,7 @@
                 </li>
             </ul>
         </li>
+
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
                 <i class="uil-web-section"></i>
@@ -55,6 +58,7 @@
                 </li>
             </ul>
         </li>
+
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
                 <i class="uil-web-section"></i>
@@ -76,6 +80,7 @@
                 </li>
             </ul>
         </li>
+
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
                 <i class="uil-label"></i>
@@ -93,36 +98,6 @@
                     <a href="{{ route('admin.child-category.index') }}">Child Categories</a>
                 </li>
             </ul>
-        </li>
-        <li class="side-nav-item">
-            <a href="javascript: void(0);" class="side-nav-link">
-                <i class="uil-bill"></i>
-                <span> Orders </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <ul class="side-nav-second-level" aria-expanded="false">
-                <li>
-                    <a href="{{ route('admin.orders.index') }}">All Orders</a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.order.pending') }}">Pending Orders</a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.order.dropped-off') }}">Dropped Off Orders</a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.order.shipped') }}">Shipped Orders</a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.order.processed') }}">Processed Orders</a>
-                </li>
-            </ul>
-        </li>
-        <li class="side-nav-item">
-            <a href="{{ route('admin.transaction.index') }}" class="side-nav-link">
-                <i class="uil-money-bill"></i>
-                <span> Transaction </span>
-            </a>
         </li>
 
         <li class="side-nav-item">
@@ -149,6 +124,55 @@
                 </li>
             </ul>
         </li>
+
+        <li class="side-nav-item">
+            <a href="javascript: void(0);" class="side-nav-link">
+                <i class="uil-user-check"></i>
+                <span> Users </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <ul class="side-nav-second-level" aria-expanded="false">
+                <li>
+                    <a href="{{ route('admin.vendor-register.index') }}">Customers</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.vendor-register.index') }}">Pending Vendors</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="javascript: void(0);" class="side-nav-link">
+                <i class="uil-bill"></i>
+                <span> Orders </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <ul class="side-nav-second-level" aria-expanded="false">
+                <li>
+                    <a href="{{ route('admin.orders.index') }}">All Orders</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.order.pending') }}">Pending Orders</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.order.dropped-off') }}">Dropped Off Orders</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.order.shipped') }}">Shipped Orders</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.order.processed') }}">Processed Orders</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="{{ route('admin.transaction.index') }}" class="side-nav-link">
+                <i class="uil-money-bill"></i>
+                <span> Transaction </span>
+            </a>
+        </li>
+
 
         <li class="side-nav-item">
             <a href="{{ route('admin.subscriber.index') }}" class="side-nav-link">

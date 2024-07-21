@@ -214,6 +214,7 @@
 @endsection
 
 @push('scripts')
+    <script src="{{ asset('backend/js/vendor.min.js') }}"></script>
     <script src="{{ asset('backend/js/vendor/summernote-bs4.min.js') }}"></script>
     <script src="{{ asset('backend/js/pages/demo.summernote.js') }}"></script>
 

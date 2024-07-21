@@ -38,13 +38,10 @@ class VendorProductDataTable extends DataTable
                 }
             })
             ->addColumn('approved', function ($query) {
-                $default = '<i class="badge bg-success p-2">Approved</i>';
-                $none = '<i class="badge bg-warning p-2">Pending</i> ';
-
-                if ($query->is_default == 0) {
-                    return $none;
+                if ($query->is_approved == 0) {
+                    return '<i class="badge bg-warning p-2">Pending</i> ';
                 }
-                return $default;
+                return '<i class="badge bg-success p-2">Approved</i>';
             })
             ->addColumn('status', function ($query) {
                 $switchId = 'switch' . $query->id;
