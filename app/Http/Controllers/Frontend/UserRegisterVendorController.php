@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Vendor;
+use App\Models\VendorCondition;
 use App\Traits\UploadImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +14,9 @@ class UserRegisterVendorController extends Controller
     use UploadImage;
     public function index()
     {
-        return view('frontend.dashboard.vendor.index');
+        $content = VendorCondition::first();
+
+        return view('frontend.dashboard.vendor.index', compact('content'));
     }
 
     public function create(Request $request)

@@ -10,10 +10,10 @@ return new class extends Migration {
      */
     public function up() : void
     {
-        Schema::table('vendors', function (Blueprint $table) {
-            if (Schema::hasColumn('vendors', 'vendors')) {
-                $table->boolean('vendors')->after('user_id')->default(0);
-            }
+        Schema::create('vendor_conditions', function (Blueprint $table) {
+            $table->id();
+            $table->text('content');
+            $table->timestamps();
         });
     }
 
@@ -22,8 +22,6 @@ return new class extends Migration {
      */
     public function down() : void
     {
-        Schema::table('vendors', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('vendor_conditions');
     }
 };

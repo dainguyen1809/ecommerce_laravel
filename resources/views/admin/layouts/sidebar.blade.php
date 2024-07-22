@@ -56,6 +56,15 @@
                 <li>
                     <a href="{{ route('admin.home-page-setting') }}">Home Page Setting</a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.vendor-condition.index') }}">Vendor Condition</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.about.index') }}">About</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.term.index') }}">Terms And Condition</a>
+                </li>
             </ul>
         </li>
 

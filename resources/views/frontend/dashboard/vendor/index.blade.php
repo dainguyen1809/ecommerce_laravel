@@ -5,6 +5,13 @@
 @endpush
 
 @section('content')
+    <div class="row mb-5">
+        <div class="wsus__dashboard_profile">
+            <div class="wsus__dash_pro_area">
+                {!! @$content->content !!}
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="wsus__dashboard_profile">
             <div class="wsus__dash_pro_area">

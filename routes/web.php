@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\FlashSaleController;
 use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\NewLetterController;
+use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\Frontend\UserAddressController;
@@ -43,6 +44,11 @@ Route::get('change-product-view', [FrontendProductController::class, 'changeProd
 // new letter
 Route::post('subscribe', [NewLetterController::class, 'subscribe'])->name('subscribe');
 Route::get('subscribe-verify/{token}', [NewLetterController::class, 'verifyEmail'])->name('subscribe-verify');
+
+// pages
+Route::get('about', [PageController::class, 'about'])->name('about');
+Route::get('terms-and-conditions', [PageController::class, 'termsAndCondition'])->name('terms-and-conditions');
+Route::get('contact-us', [PageController::class, 'contact'])->name('contact');
 
 // vendor
 Route::get('vendors', [HomeController::class, 'vendorPage'])->name('vendor.index');
