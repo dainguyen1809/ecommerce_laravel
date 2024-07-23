@@ -49,6 +49,7 @@ Route::get('subscribe-verify/{token}', [NewLetterController::class, 'verifyEmail
 Route::get('about', [PageController::class, 'about'])->name('about');
 Route::get('terms-and-conditions', [PageController::class, 'termsAndCondition'])->name('terms-and-conditions');
 Route::get('contact-us', [PageController::class, 'contact'])->name('contact');
+Route::post('contact-us', [PageController::class, 'contactForm'])->name('contact-form');
 
 // vendor
 Route::get('vendors', [HomeController::class, 'vendorPage'])->name('vendor.index');

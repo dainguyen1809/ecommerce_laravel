@@ -1,6 +1,6 @@
 <script>
-    $(document).ready(function () {
-        $('.form-shopping-cart').on('submit', function (e) {
+    $(document).ready(function() {
+        $('.form-shopping-cart').on('submit', function(e) {
             e.preventDefault();
             const formData = $(this).serialize();
             $.ajax({
@@ -10,7 +10,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                success: function (response) {
+                success: function(response) {
                     if (response.status === 'success') {
                         getCartCount();
                         fetchCartProducts();
@@ -20,7 +20,7 @@
                         toastr.error(response.message)
                     }
                 },
-                error: function (response) {
+                error: function(response) {
                     console.log(response.error);
                 },
             });
@@ -33,10 +33,10 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                success: function (response) {
+                success: function(response) {
                     $('#cart-count').text(response);
                 },
-                error: function (response) {
+                error: function(response) {
                     console.log(response.error);
                 },
             });
@@ -46,7 +46,7 @@
             $.ajax({
                 type: "get",
                 url: "{{ route('cart-products') }}",
-                success: function (response) {
+                success: function(response) {
                     console.log(response);
                     $('.mini-cart-warpper').html("");
                     var html = '';
@@ -82,13 +82,13 @@
                     $('.mini-cart-warpper').html(html);
                     getSubTotalSidebar();
                 },
-                error: function (response) {
+                error: function(response) {
                     console.log(response);
                 },
             });
         }
 
-        $('body').on('click', '.sidebar-remove-item', function (e) {
+        $('body').on('click', '.sidebar-remove-item', function(e) {
             e.preventDefault();
             const rowId = $(this).data('rowid')
             $.ajax({
@@ -100,7 +100,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                success: function (response) {
+                success: function(response) {
                     const productId = '#mini-cart-' + rowId;
                     $(productId).remove();
                     getSubTotalSidebar()
@@ -112,7 +112,7 @@
                     }
                     toastr.success(response.message);
                 },
-                error: function (response) {
+                error: function(response) {
                     toastr.error(response.message);
                 },
             });
@@ -122,13 +122,13 @@
             $.ajax({
                 type: "get",
                 url: "{{ route('cart.sidebar-product-total') }}",
-                success: function (response) {
+                success: function(response) {
                     $('#mini-cart-subtotal').text("{{ $settings->currency_icon }}" + response);
                 },
             });
         }
 
-        $('.wishlist').on('click', function (e) {
+        $('.wishlist').on('click', function(e) {
             e.preventDefault();
             const id = $(this).data('id');
 
@@ -138,7 +138,7 @@
                 data: {
                     id,
                 },
-                success: function (response) {
+                success: function(response) {
                     if (response.status === 'success') {
                         $('#wishlist-qty').text(response.count);
                         toastr.success(response.message);
@@ -146,7 +146,7 @@
                         toastr.warning(response.message);
                     }
                 },
-                error: function (response) {
+                error: function(response) {
                     if (response.status === 401) {
                         toastr.error("You must be login to use this feature!");
                     }
@@ -154,18 +154,18 @@
             });
         });
 
-        $('#new_letter').on('submit', function (e) {
+        $('#new_letter').on('submit', function(e) {
             e.preventDefault();
             const data = $(this).serialize()
 
             $.ajax({
                 method: "POST",
-                url: "{{route('subscribe')}}",
+                url: "{{ route('subscribe') }}",
                 data: data,
                 beforeSend() {
                     $('.subscribe').html('<i class="fas fa-circle-notch fa-spin"></i>');
                 },
-                success: function (response) {
+                success: function(response) {
                     if (response.status === 'success') {
                         $('.subscribe').html('<i class="fas fa-check fa-fade"></i>');
                         $('.subscribe_field').val('');
@@ -178,7 +178,7 @@
 
                     }
                 },
-                error: function (response) {
+                error: function(response) {
                     if (response.status === 422) {
                         const errors = response.responseJSON.errors;
                         toastr.error(errors.email[0]);

@@ -22,10 +22,14 @@ class GeneralSettingController extends Controller
 
     public function generalSettingUpdate(Request $request)
     {
+
         $request->validate([
             'site_name' => ['required', 'max:255'],
             'layouts' => ['required', 'max:255'],
             'contact_email' => ['required', 'max:255'],
+            'contact_phone' => ['required', 'min:11', 'numeric'],
+            'contact_address' => ['required', 'max:255'],
+            'map' => ['required'],
             'currency_name' => ['required', 'max:255'],
             'currency_icon' => ['required', 'max:15'],
             'timezone' => ['required', 'max:255'],
@@ -37,6 +41,9 @@ class GeneralSettingController extends Controller
                 'site_name' => $request->site_name,
                 'layouts' => $request->layouts,
                 'contact_email' => $request->contact_email,
+                'contact_phone' => $request->contact_phone,
+                'contact_address' => $request->contact_address,
+                'map' => $request->map,
                 'currency_name' => $request->currency_name,
                 'currency_icon' => $request->currency_icon,
                 'timezone' => $request->timezone,
