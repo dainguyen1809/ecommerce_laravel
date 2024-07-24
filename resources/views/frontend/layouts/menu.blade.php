@@ -131,7 +131,7 @@
                         <li><a href="{{ route('product.index') }}">Products</a></li>
                         <li><a href="blog.html">blog</a></li>
                         <li><a href="daily_deals.html">campain</a></li>
-                        <li><a href="track_order.html">track order</a></li>
+                        <li><a href="{{ route('order-tracking.index') }}">track order</a></li>
                         <li><a href="{{ route('flash-sale') }}">daily deals</a></li>
                     </ul>
                     <ul class="wsus__menu_item wsus__menu_item_right">

@@ -115,7 +115,12 @@
                             <span>Shipping Fee (+):</span> {{ $settings->currency_icon }}{{ $shipping->cost }}
                         </p>
                         <p>
-                            <span>Coupon(-):</span> {{ $settings->currency_icon }}{{ $coupon->discount }}
+                            <span>Coupon(-):</span>
+                            @if (!empty($coupon->discount))
+                                {{ $settings->currency_icon }}{{ $coupon->discount }}
+                            @else
+                                {{ $settings->currency_icon }}0
+                            @endif
                         </p>
                         <p>
                             <span>Total Amount:</span> {{ $settings->currency_icon }}{{ $order->amount }}

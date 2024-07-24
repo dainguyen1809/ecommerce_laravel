@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\FlashSaleController;
 use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\NewLetterController;
+use App\Http\Controllers\Frontend\OrderTrackingController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\ReviewController;
@@ -50,6 +51,7 @@ Route::get('about', [PageController::class, 'about'])->name('about');
 Route::get('terms-and-conditions', [PageController::class, 'termsAndCondition'])->name('terms-and-conditions');
 Route::get('contact-us', [PageController::class, 'contact'])->name('contact');
 Route::post('contact-us', [PageController::class, 'contactForm'])->name('contact-form');
+Route::get('order-tracking', [OrderTrackingController::class, 'index'])->name('order-tracking.index');
 
 // vendor
 Route::get('vendors', [HomeController::class, 'vendorPage'])->name('vendor.index');
