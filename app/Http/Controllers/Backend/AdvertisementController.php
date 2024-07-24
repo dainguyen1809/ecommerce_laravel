@@ -167,7 +167,7 @@ class AdvertisementController extends Controller
         if (! empty($imagePathThree)) {
             $value['banner_three']['banner_img'] = $imagePathThree;
         } else {
-            $value['banner_three']['banner_img'] = $request->banner_three_old_image;
+            $value['banner_three']['banner_img'] = $request->banner_three_old_img;
         }
 
         $value = json_encode($value);

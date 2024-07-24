@@ -142,6 +142,9 @@
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
                 <li>
+                    <a href="{{ route('admin.manage-user.index') }}">Manage Users</a>
+                </li>
+                <li>
                     <a href="{{ route('admin.customer.index') }}">Customers</a>
                 </li>
                 <li>
@@ -149,6 +152,9 @@
                 </li>
                 <li>
                     <a href="{{ route('admin.vendor-register.index') }}">Pending Vendors</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.admin-list.index') }}">Admin List</a>
                 </li>
             </ul>
         </li>

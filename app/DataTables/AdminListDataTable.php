@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ListCustomerDataTable extends DataTable
+class AdminListDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -22,28 +22,33 @@ class ListCustomerDataTable extends DataTable
     public function dataTable(QueryBuilder $query) : EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('avatar', function ($query) {
-                $class = $query->avatar ? 'class="img-thumbnail avt_user"' : "";
-                return '<img src="' . $query->avatar . '" alt="' . $query->name . '"  ' . $class . ' />';
-            })
             ->addColumn('status', function ($query) {
-                $switchId = 'switch' . $query->id;
-                if ($query->status == 'active') {
-                    $switch = '
+                if ($query->id != 1) {
+                    $switchId = 'switch' . $query->id;
+                    if ($query->status == 'active') {
+                        $switch = '
                     <input type="checkbox" class="change-status" id="' . $switchId . '" checked data-switch="bool" data-id="' . $query->id . '"/>
                     <label for="' . $switchId . '"></label>
                     ';
-                } else {
-                    $switch = '
+                    } else {
+                        $switch = '
                     <input type="checkbox" class="change-status" id="' . $switchId . '" data-switch="bool" data-id="' . $query->id . '"/>
                     <label for="' . $switchId . '"></label>
                     ';
+                    }
+                    return $switch;
                 }
-                return $switch;
+            })
+            ->addColumn('action', function ($query) {
+                if ($query->id != 1) {
+                    $del_btn = "<a class='btn btn-danger delete-item' href='" . route('admin.admin-list.destroy', $query->id) . "' /><i class='uil-trash'/></i></a>";
+                    return $del_btn;
+                }
             })
             ->rawColumns([
                 'avatar',
                 'status',
+                'action',
             ])
             ->setRowId('id');
     }
@@ -53,7 +58,7 @@ class ListCustomerDataTable extends DataTable
      */
     public function query(User $model) : QueryBuilder
     {
-        return $model->where('role', 'user')->newQuery();
+        return $model->where('role', 'admin')->newQuery();
     }
 
     /**
@@ -62,11 +67,11 @@ class ListCustomerDataTable extends DataTable
     public function html() : HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('listcustomer-table')
+            ->setTableId('adminlist-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
-            ->orderBy(1)
+            // ->orderBy(1)
             ->selectStyleSingle()
             ->buttons([
                 Button::make('excel'),
@@ -85,10 +90,15 @@ class ListCustomerDataTable extends DataTable
     {
         return [
             Column::make('id')->addClass('text-center'),
-            Column::make('avatar')->addClass('text-center'),
             Column::make('name')->addClass('text-center'),
             Column::make('email')->addClass('text-center'),
+            Column::make('role')->addClass('text-center'),
             Column::make('status')->addClass('text-center'),
+            Column::computed('action')
+                ->exportable(false)
+                ->printable(false)
+                ->width(150)
+                ->addClass('text-center'),
         ];
     }
 
@@ -97,6 +107,6 @@ class ListCustomerDataTable extends DataTable
      */
     protected function filename() : string
     {
-        return 'ListCustomer_' . date('YmdHis');
+        return 'AdminList_' . date('YmdHis');
     }
 }

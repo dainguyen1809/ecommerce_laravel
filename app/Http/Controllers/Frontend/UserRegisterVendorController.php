@@ -32,7 +32,7 @@ class UserRegisterVendorController extends Controller
             'phone' => 'required|max:255',
             'email' => 'required|email|max:255',
             'address' => 'required|max:255',
-            'description' => 'required|max:300',
+            'description' => 'required|max:1000',
             'fb_link' => 'nullable|url|max:255',
             'ins_link' => 'nullable|url|max:255',
         ]);

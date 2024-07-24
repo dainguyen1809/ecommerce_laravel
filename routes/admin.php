@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\AdminListController;
 use App\Http\Controllers\Backend\AdminProductReviewController;
 use App\Http\Controllers\Backend\AdminVendorProfileController;
 use App\Http\Controllers\Backend\AdvertisementController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\CustomerListController;
 use App\Http\Controllers\Backend\FlashSaleController;
 use App\Http\Controllers\Backend\FooterGridThreeController;
 use App\Http\Controllers\Backend\FooterGridTwoController;
@@ -16,8 +18,7 @@ use App\Http\Controllers\Backend\FooterInfoController;
 use App\Http\Controllers\Backend\FooterSocialController;
 use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\HomePageSettingController;
-use App\Http\Controllers\Backend\ListCustomerController;
-use App\Http\Controllers\Backend\ListVendorController;
+use App\Http\Controllers\Backend\ManageUserController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PaymentSettingController;
 use App\Http\Controllers\Backend\PaypalSettingController;
@@ -34,6 +35,7 @@ use App\Http\Controllers\Backend\SubscribersController;
 use App\Http\Controllers\Backend\TermsAndConditionController;
 use App\Http\Controllers\Backend\TransactionController;
 use App\Http\Controllers\Backend\VendorConditionController;
+use App\Http\Controllers\Backend\VendorListController;
 use App\Http\Controllers\Backend\VendorRegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -187,14 +189,26 @@ Route::put('vendor-registers/{id}/change-status', [VendorRegisterController::cla
 
 //  list customer
 
-Route::get('customers', [ListCustomerController::class, 'index'])->name('customer.index');
-Route::put('customers/change-status', [ListCustomerController::class, 'changeStatus'])
+Route::get('customers', [CustomerListController::class, 'index'])->name('customer.index');
+Route::put('customers/change-status', [CustomerListController::class, 'changeStatus'])
     ->name('customer.change-status');
+
+//  admin customer
+
+Route::get('admin-list', [AdminListController::class, 'index'])->name('admin-list.index');
+Route::put('admin-list/change-status', [AdminListController::class, 'changeStatus'])
+    ->name('admin-list.change-status');
+Route::delete('admin-list/{id}', [AdminListController::class, 'destroy'])
+    ->name('admin-list.destroy');
+
+// manage users
+Route::get('manage-users', [ManageUserController::class, 'index'])->name('manage-user.index');
+Route::post('manage-users', [ManageUserController::class, 'store'])->name('manage-user.store');
 
 //  list vendor
 
-Route::get('vendors', [ListVendorController::class, 'index'])->name('vendor.index');
-Route::put('vendors/change-status', [ListVendorController::class, 'changeStatus'])
+Route::get('vendors', [VendorListController::class, 'index'])->name('vendor.index');
+Route::put('vendors/change-status', [VendorListController::class, 'changeStatus'])
     ->name('vendor.change-status');
 
 // vendor condition

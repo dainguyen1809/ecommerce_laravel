@@ -95,7 +95,15 @@ class HomeController extends Controller
 
     public function vendorPage()
     {
-        $vendors = Vendor::where('status', 1)->paginate(6);
+        $vendors = Vendor::with(['user' => function ($query) {
+            $query->select('status'); // thêm cột status vào select
+        }])
+            ->where('status', 1)
+            ->whereHas('user', function ($query) {
+                $query->where('status', 'active'); // lọc user có status là active
+            })
+            ->paginate(6);
+
         return view('frontend.pages.vendor', [
             'vendors' => $vendors,
         ]);

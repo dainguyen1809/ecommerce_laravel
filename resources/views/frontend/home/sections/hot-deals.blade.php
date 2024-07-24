@@ -135,7 +135,7 @@
                         <div class="row">
                             @if ($bannerThree->banner_two->status == 1)
                                 <div class="col-12">
-                                    <div class="wsus__single_banner_content single_banner_2">
+                                    <div class="wsus__single_banner_content single_banner_2 single_banner_2_top">
                                         <div class="wsus__single_banner_img">
                                             <a href="{{ $bannerThree->banner_two->banner_url }}">
                                                 <img src="{{ asset($bannerThree->banner_two->banner_img) }}"
@@ -148,7 +148,7 @@
 
                             @if ($bannerThree->banner_three->status == 1)
                                 <div class="col-12 mt-lg-4">
-                                    <div class="wsus__single_banner_content">
+                                    <div class="wsus__single_banner_content single_banner_2_bottom">
                                         <div class="wsus__single_banner_img">
                                             <a href="{{ $bannerThree->banner_three->banner_url }}">
                                                 <img src="{{ asset($bannerThree->banner_three->banner_img) }}"

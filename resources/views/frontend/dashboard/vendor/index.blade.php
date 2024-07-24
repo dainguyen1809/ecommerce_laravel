@@ -30,19 +30,19 @@
                     </div>
                     <div class="form-group mb-3">
                         <label>Shop Name</label>
-                        <input type="text" name="shop_name" class="form-control" value="{{ @$profile->shop_name }}">
+                        <input type="text" name="shop_name" class="form-control" value="{{ old('shop_name') }}">
                     </div>
                     <div class="form-group mb-3">
                         <label>Phone</label>
-                        <input type="text" name="phone" class="form-control" value="{{ @$profile->phone }}">
+                        <input type="text" name="phone" class="form-control" value="{{ old('phone') }}">
                     </div>
                     <div class="form-group mb-3">
                         <label>Email</label>
-                        <input type="text" name="email" class="form-control" value="{{ @$profile->email }}">
+                        <input type="text" name="email" class="form-control" value="{{ old('email') }}">
                     </div>
                     <div class="form-group mb-3">
                         <label>Address</label>
-                        <input type="text" name="address" class="form-control" value="{{ @$profile->address }}">
+                        <input type="text" name="address" class="form-control" value="{{ old('address') }}">
                     </div>
                     <div class="form-group">
                         <label for="example-textarea">Long Description</label>
@@ -52,11 +52,11 @@
                     </div>
                     <div class="form-group mb-3">
                         <label>Facebook</label>
-                        <input type="text" name="fb_link" class="form-control" value="{{ @$profile->fb_link }}">
+                        <input type="text" name="fb_link" class="form-control" value="{{ old('fb_link') }}">
                     </div>
                     <div class="form-group mb-3">
                         <label>Instagram</label>
-                        <input type="text" name="ins_link" class="form-control" value="{{ @$profile->ins_link }}">
+                        <input type="text" name="ins_link" class="form-control" value="{{ old('ins_link') }}">
                     </div>
                     <div class="row">
                         <div class="col-12">
