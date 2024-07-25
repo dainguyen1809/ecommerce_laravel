@@ -46,7 +46,7 @@ class VendorProductReviewsDataTable extends DataTable
      */
     public function query(ProductReview $model) : QueryBuilder
     {
-        return $model->where('vendor_id', auth()->user()->id)->newQuery();
+        return $model->where('vendor_id', auth()->user()->vendor->id)->newQuery();
     }
 
     /**

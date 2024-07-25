@@ -66,19 +66,9 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group mb-3">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="checkbox-signin"
-                                            checked>
-                                        <label class="custom-control-label"
-                                            for="checkbox-signin">{{ __('Remember me') }}</label>
-                                    </div>
-                                </div>
-
                                 <div class="form-group mb-0 text-center">
                                     <button class="btn btn-primary" type="submit"> Log In </button>
                                 </div>
-
                             </form>
                         </div> <!-- end card-body -->
                     </div>

@@ -291,7 +291,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-4 col-lg-5 mt-4 mt-lg-0">
-                                                    @if (!empty(auth()->user()->id))
+                                                    @auth
                                                         @php
                                                             $isBought = false;
                                                             $orders = \App\Models\Order::where([
@@ -317,8 +317,7 @@
                                                                     <div class="row">
                                                                         <div class="col-md-12">
                                                                             <div class="wsus__selectbox">
-                                                                                <select name="rating"
-                                                                                    class="form-control">
+                                                                                <select name="rating" class="form-control">
                                                                                     <option value="">Select</option>
                                                                                     <option value="1">1</option>
                                                                                     <option value="2">2</option>
@@ -341,8 +340,7 @@
                                                                     </div>
                                                                     <div class="img_upload">
                                                                         <div class="gallery">
-                                                                            <label for="img_review"
-                                                                                class="btn_upload">Upload
+                                                                            <label for="img_review" class="btn_upload">Upload
                                                                                 Image Reivew</label>
                                                                             <input type="file" name="images[]"
                                                                                 id="img_review" hidden multiple>
@@ -357,7 +355,7 @@
                                                                 </form>
                                                             </div>
                                                         @endif
-                                                    @endif
+                                                    @endauth
                                                 </div>
                                             </div>
                                         </div>

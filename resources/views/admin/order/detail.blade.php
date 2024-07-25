@@ -2,6 +2,11 @@
 
 @push('styles')
     <link href="{{ asset('backend/css/vendor/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+    <style>
+        td.prod_name {
+            width: 50%;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -76,8 +81,8 @@
 
                                 <div class="col-sm-4">
                                     <div class="text-sm-right">
-                                        <img src="{{ asset('images/barcode.png') }}" alt="barcode-image"
-                                            class="img-fluid mr-2" />
+                                        <img src="{{ asset('images/qrcode.svg') }}" alt="qrcode"
+                                            class="img-fluid mr-2 w-25" />
                                     </div>
                                 </div> <!-- end col-->
                             </div>
@@ -106,7 +111,7 @@
                                                     <tr>
                                                         <td>{{ ++$loop->index }}</td>
                                                         @if (isset($product->product->slug))
-                                                            <td>
+                                                            <td class="prod_name">
                                                                 <a href="{{ route('product-details', $product->product->slug) }}"
                                                                     target="_blank">
                                                                     {{ $product->product_name }}

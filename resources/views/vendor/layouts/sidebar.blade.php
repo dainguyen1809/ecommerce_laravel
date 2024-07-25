@@ -12,7 +12,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('vendor.vendor-profile.index') }}">
+            <a href="{{ route('vendor.dashboard') }}">
                 <i class="fas fa-tachometer"></i>
                 {{ __('Dashboard') }}
             </a>
