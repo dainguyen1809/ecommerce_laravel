@@ -9,7 +9,7 @@
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <link rel="shortcut icon" href="{{ @$logoSetting->favicon }}" />
 
     <!-- App css -->
     <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
@@ -54,17 +54,20 @@
                         <div class="col-12">
                             <div class="page-title-box">
                                 {{-- <div class="page-title-right">
-                                <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item">
-                                        <a href="javascript: void(0);">Hyper</a>
-                                    </li>
-                                    <li class="breadcrumb-item">
-                                        <a href="javascript: void(0);">Layout</a>
-                                    </li>
-                                    <li class="breadcrumb-item active">Detached</li>
-                                </ol>
-                            </div> --}}
-                                <h4 class="page-title">Admin Dashboard</h4>
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item">
+                                            <a href="javascript: void(0);">Hyper</a>
+                                        </li>
+                                        <li class="breadcrumb-item">
+                                            <a href="javascript: void(0);">Layout</a>
+                                        </li>
+                                        <li class="breadcrumb-item active">Detached</li>
+                                    </ol>
+                                </div>
+                                <h4 class="page-title">Admin Dashboard</h4> --}}
+                                <div class="row mt-3">
+                                    @include('components.breadcrumb')
+                                </div>
                             </div>
                         </div>
                     </div>

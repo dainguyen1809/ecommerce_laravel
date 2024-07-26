@@ -1,4 +1,4 @@
-<section id="wsus__large_banner">
+<section id="ts__large_banner">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">

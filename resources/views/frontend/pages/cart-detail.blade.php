@@ -1,16 +1,16 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <section id="wsus__breadcrumb">
+    <section id="ts__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <h4>cart View</h4>
                         <ul>
-                            <li><a href="#">home</a></li>
-                            <li><a href="#">peoduct</a></li>
-                            <li><a href="#">cart view</a></li>
+                            <li><a href="{{ url('/') }}">home</a></li>
+                            <li><a href="{{ route('product.index') }}">products</a></li>
+                            <li><a href="{{ route('cart-details') }}">cart view</a></li>
                         </ul>
                     </div>
                 </div>
@@ -18,38 +18,38 @@
         </div>
     </section>
 
-    <section id="wsus__cart_view">
+    <section id="ts__cart_view">
         <div class="container">
             <div class="row">
                 <div class="col-xl-9">
-                    <div class="wsus__cart_list">
+                    <div class="ts__cart_list">
                         <div class="table-responsive">
                             <table>
                                 <tbody>
                                     <tr class="d-flex">
-                                        <th class="wsus__pro_img">
+                                        <th class="ts__pro_img">
                                             product item
                                         </th>
 
-                                        <th class="wsus__pro_name">
+                                        <th class="ts__pro_name">
                                             product details
                                         </th>
 
-                                        <th class="wsus__pro_select">
+                                        <th class="ts__pro_select">
                                             quantity
                                         </th>
 
-                                        <th class="wsus__pro_tk">
+                                        <th class="ts__pro_tk">
                                             unit price
                                         </th>
 
-                                        <th class="wsus__pro_status">
+                                        <th class="ts__pro_status">
                                             total
                                         </th>
                                         @if (Cart::content()->count() === 0)
-                                            <th class="wsus__pro_icon"></th>
+                                            <th class="ts__pro_icon"></th>
                                         @else
-                                            <th class="wsus__pro_icon">
+                                            <th class="ts__pro_icon">
                                                 <a href="#" class="common_btn clear-cart">clear cart</a>
                                             </th>
                                         @endif
@@ -57,11 +57,11 @@
 
                                     @foreach ($cartItems as $item)
                                         <tr class="d-flex">
-                                            <td class="wsus__pro_img"><img src="{{ $item->options->image }}" alt="product"
+                                            <td class="ts__pro_img"><img src="{{ $item->options->image }}" alt="product"
                                                     class="img-fluid w-100">
                                             </td>
 
-                                            <td class="wsus__pro_name">
+                                            <td class="ts__pro_name">
                                                 <p>{!! $item->name !!}</p>
                                                 @foreach ($item->options->variants as $key => $variant)
                                                     <span>{{ $key }}: {{ $variant['name'] }}
@@ -70,7 +70,7 @@
                                                 @endforeach
                                             </td>
 
-                                            <td class="wsus__pro_select">
+                                            <td class="ts__pro_select">
                                                 <button class="btn btn-secondary decrease">-</button>
                                                 <input class="product-quantity" data-rowId="{{ $item->rowId }}"
                                                     type="text" min="1" max="100" readonly
@@ -78,17 +78,17 @@
                                                 <button class="btn btn-secondary increase">+</button>
                                             </td>
 
-                                            <td class="wsus__pro_tk">
+                                            <td class="ts__pro_tk">
                                                 <h6>{{ $settings->currency_icon . $item->price }}</h6>
                                             </td>
 
-                                            <td class="wsus__pro_status">
+                                            <td class="ts__pro_status">
                                                 <h6 id="{{ $item->rowId }}">
                                                     {{ $settings->currency_icon . ($item->price + $item->options->variants_total) * $item->qty }}
                                                 </h6>
                                             </td>
 
-                                            <td class="wsus__pro_icon">
+                                            <td class="ts__pro_icon">
                                                 <a href="{{ route('cart-remove-item', $item->rowId) }}">
                                                     <i class="far fa-times"></i>
                                                 </a>
@@ -98,7 +98,7 @@
 
                                     @if (count($cartItems) === 0)
                                         <tr class="d-flex justify-content-center">
-                                            <td class="wsus__pro_name">
+                                            <td class="ts__pro_name">
                                                 <h4>Cart is empty!</h4>
                                             </td>
                                         </tr>
@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 <div class="col-xl-3">
-                    <div class="wsus__cart_list_footer_button" id="sticky_sidebar">
+                    <div class="ts__cart_list_footer_button" id="sticky_sidebar">
                         <h6>total cart</h6>
                         <p>subtotal: <span id="sub-total">{{ $settings->currency_icon }}{{ getCartTotalAmount() }}</span>
                         </p>
@@ -132,12 +132,12 @@
         </div>
     </section>
 
-    <section id="wsus__single_banner">
+    <section id="ts__single_banner">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-6">
-                    <div class="wsus__single_banner_content">
-                        <div class="wsus__single_banner_img">
+                    <div class="ts__single_banner_content">
+                        <div class="ts__single_banner_img">
                             @if ($cartBanner->banner_one->status == 1)
                                 <a href="{{ $cartBanner->banner_one->banner_url }}">
                                     <img src="{{ asset($cartBanner->banner_one->banner_img) }}" alt="banner"
@@ -148,8 +148,8 @@
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6">
-                    <div class="wsus__single_banner_content single_banner_2">
-                        <div class="wsus__single_banner_img">
+                    <div class="ts__single_banner_content single_banner_2">
+                        <div class="ts__single_banner_img">
                             @if ($cartBanner->banner_two->status == 1)
                                 <a href="{{ $cartBanner->banner_two->banner_url }}">
                                     <img src="{{ asset($cartBanner->banner_two->banner_img) }}" alt="banner"

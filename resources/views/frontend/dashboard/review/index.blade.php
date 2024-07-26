@@ -7,8 +7,8 @@
 
 @section('content')
     <div class="row">
-        <div class="wsus__dashboard_profile">
-            <div class="wsus__dash_pro_area">
+        <div class="ts__dashboard_profile">
+            <div class="ts__dash_pro_area">
                 {{ $dataTable->table() }}
             </div>
         </div>

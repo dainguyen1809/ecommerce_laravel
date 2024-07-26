@@ -1,15 +1,15 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <section id="wsus__breadcrumb">
+    <section id="ts__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <h4>forget password</h4>
                         <ul>
-                            <li><a href="#">login</a></li>
-                            <li><a href="#">forget password</a></li>
+                            <li><a href="{{ route('login') }}">login</a></li>
+                            <li><a href="{{ route('password.request') }}">forget password</a></li>
                         </ul>
                     </div>
                 </div>
@@ -17,18 +17,18 @@
         </div>
     </section>
 
-    <section id="wsus__login_register">
+    <section id="ts__login_register">
         <div class="container">
             <div class="row">
                 <div class="col-xl-5 m-auto">
-                    <div class="wsus__forget_area">
+                    <div class="ts__forget_area">
                         <span class="qiestion_icon"><i class="fal fa-question-circle"></i></span>
                         <h4>forgot password ?</h4>
                         <p>enter the email address to register with <span>e-shop</span></p>
-                        <div class="wsus__login">
+                        <div class="ts__login">
                             <form method="post" action="{{ route('password.email') }}">
                                 @csrf
-                                <div class="wsus__login_input">
+                                <div class="ts__login_input">
                                     <i class="fal fa-envelope"></i>
                                     <input type="email" name="email" id="email" value="{{ old('email') }}"
                                         placeholder="Your Email">

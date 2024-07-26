@@ -1,16 +1,16 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <section id="wsus__breadcrumb">
+    <section id="ts__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <h4>wishlist</h4>
                         <ul>
-                            <li><a href="#">home</a></li>
-                            <li><a href="#">peoduct</a></li>
-                            <li><a href="#">wishlist</a></li>
+                            <li><a href="{{ url('/') }}">home</a></li>
+                            <li><a href="{{ route('product.index') }}">products</a></li>
+                            <li><a href="{{ route('user.wishlist') }}">wishlist</a></li>
                         </ul>
                     </div>
                 </div>
@@ -18,7 +18,7 @@
         </div>
     </section>
 
-    <section id="wsus__cart_view">
+    <section id="ts__cart_view">
         <div class="container">
             <div class="row">
                 <table class="table table-hover">
@@ -32,6 +32,7 @@
                         </tr>
                     </thead>
                     <tbody>
+
                         @foreach ($wishlists as $item)
                             <tr class="text-center">
                                 <td>
@@ -53,6 +54,13 @@
                         @endforeach
                     </tbody>
                 </table>
+                @if (count($wishlists) <= 0)
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <h4 class="text-center">Wishlist is empty!</h4>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </section>

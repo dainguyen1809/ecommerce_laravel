@@ -160,6 +160,8 @@ Route::put('general-setting-update', [GeneralSettingController::class, 'generalS
     ->name('general-setting-update');
 Route::put('email-setting-update', [GeneralSettingController::class, 'emailSettingUpdate'])
     ->name('email-setting-update');
+Route::put('logo-setting-update', [GeneralSettingController::class, 'logoSettingUpdate'])
+    ->name('logo-setting-update');
 
 // subscriber
 Route::get('subscribers', [SubscribersController::class, 'index'])->name('subscriber.index');

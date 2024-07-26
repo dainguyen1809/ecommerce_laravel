@@ -17,7 +17,7 @@
                 <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
                     aria-controls="v-pills-settings" aria-selected="false">
                     <i class="mdi mdi-settings-outline d-md-none d-block"></i>
-                    <span class="d-none d-md-block">Settings</span>
+                    <span class="d-none d-md-block">Logo And Favicon</span>
                 </a>
             </div>
         </div> <!-- end col-->
@@ -26,10 +26,8 @@
             <div class="tab-content" id="v-pills-tabContent">
                 @include('admin.setting.general-setting')
                 @include('admin.setting.email-configuration')
+                @include('admin.setting.logo-favicon')
 
-                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                    <p class="mb-0">3</p>
-                </div>
             </div> <!-- end tab-content-->
         </div> <!-- end col-->
     </div>

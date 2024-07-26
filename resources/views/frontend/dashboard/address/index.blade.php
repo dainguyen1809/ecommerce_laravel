@@ -1,12 +1,11 @@
 @extends('frontend.dashboard.layouts.master')
 @section('content')
     <div class="dashboard_content">
-        <h3><i class="fal fa-gift-card"></i> address</h3>
-        <div class="wsus__dashboard_add">
+        <div class="ts__dashboard_add">
             <div class="row">
                 @foreach ($userAddress as $address)
                     <div class="col-xl-6">
-                        <div class="wsus__dash_add_single">
+                        <div class="ts__dash_add_single">
                             <h4>Billing Address <span>office</span></h4>
                             <ul>
                                 <li><span>name :</span> {{ $address->name }}</li>
@@ -18,7 +17,7 @@
                                 <li><span>zip code :</span> {{ $address->zipcode }}</li>
                                 <li><span>address :</span> {{ $address->address }}</li>
                             </ul>
-                            <div class="wsus__address_btn">
+                            <div class="ts__address_btn">
                                 <div class="col-12 d-flex align-items-center">
                                     <div class="col-sm-6">
                                         <a href="{{ route('user.address.edit', $address->id) }}" class="edit">

@@ -1,16 +1,16 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <section id="wsus__breadcrumb">
+    <section id="ts__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <h4>check out</h4>
                         <ul>
-                            <li><a href="#">home</a></li>
-                            <li><a href="#">peoduct</a></li>
-                            <li><a href="#">check out</a></li>
+                            <li><a href="{{ url('/') }}">home</a></li>
+                            <li><a href="{{ route('product.index') }}">products</a></li>
+                            <li><a href="{{ route('user.checkout') }}">check out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -19,18 +19,18 @@
     </section>
 
 
-    <section id="wsus__cart_view">
+    <section id="ts__cart_view">
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 col-lg-7">
-                    <div class="wsus__check_form">
+                    <div class="ts__check_form">
                         <h5>Billing Details <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">add
                                 new address</a></h5>
 
                         <div class="row">
                             @foreach ($addresses as $address)
                                 <div class="col-xl-6">
-                                    <div class="wsus__checkout_single_address">
+                                    <div class="ts__checkout_single_address">
                                         <div class="form-check">
                                             <input class="form-check-input shipping-address" data-id="{{ $address->id }}"
                                                 type="radio" name="flexRadioDefault"
@@ -56,8 +56,8 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-5">
-                    <div class="wsus__order_details" id="sticky_sidebar">
-                        <p class="wsus__product">shipping Methods</p>
+                    <div class="ts__order_details" id="sticky_sidebar">
+                        <p class="ts__product">shipping Methods</p>
                         @foreach ($shippingMethods as $shippingMethod)
                             @if ($shippingMethod->type === 'min_cost' && getCartTotalAmount() >= $shippingMethod->min_cost)
                                 <div class="form-check">
@@ -81,7 +81,7 @@
                                 </div>
                             @endif
                         @endforeach
-                        <div class="wsus__order_details_summery">
+                        <div class="ts__order_details_summery">
                             <p>subtotal: <span>{{ $settings->currency_icon }}{{ getCartTotalAmount() }}</span></p>
                             <p>shipping fee: <span id="shipping-fee">{{ $settings->currency_icon }}0</span></p>
                             <p>coupon: <span>{{ $settings->currency_icon }}{{ getCartDiscount() }}</span></p>
@@ -114,7 +114,7 @@
         </div>
     </section>
 
-    <div class="wsus__popup_address">
+    <div class="ts__popup_address">
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -123,30 +123,30 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body p-0">
-                        <div class="wsus__check_form p-3">
+                        <div class="ts__check_form p-3">
                             <form action="{{ route('user.checkout.address-create') }}" method="post">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="wsus__check_single_form">
+                                        <div class="ts__check_single_form">
                                             <input type="text" placeholder="Fullname" name="name"
                                                 value="{{ old('name') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="wsus__check_single_form">
+                                        <div class="ts__check_single_form">
                                             <input type="text" placeholder="Phone *" name="phone"
                                                 value="{{ old('phone') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="wsus__check_single_form">
+                                        <div class="ts__check_single_form">
                                             <input type="email" placeholder="Email *" name="email"
                                                 value="{{ old('email') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="wsus__check_single_form">
+                                        <div class="ts__check_single_form">
                                             <select class="select_2" name="country">
                                                 <option value="">Country / Region *</option>
                                                 @foreach (config('settings.country_list') as $country)
@@ -157,31 +157,31 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="wsus__check_single_form">
+                                        <div class="ts__check_single_form">
                                             <input type="text" placeholder="State *" name="state"
                                                 value="{{ old('state') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="wsus__check_single_form">
+                                        <div class="ts__check_single_form">
                                             <input type="text" placeholder="Town / City *" name="city"
                                                 value="{{ old('city') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="wsus__check_single_form">
+                                        <div class="ts__check_single_form">
                                             <input type="text" placeholder="Zipcode *" name="zipcode"
                                                 value="{{ old('zipcode') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <div class="wsus__check_single_form">
+                                        <div class="ts__check_single_form">
                                             <input type="text" placeholder="Address *" name="address"
                                                 value="{{ old('address') }}">
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
-                                        <div class="wsus__check_single_form">
+                                        <div class="ts__check_single_form">
                                             <button type="submit" class="btn btn-primary">Save changes</button>
                                         </div>
                                     </div>

@@ -4,22 +4,22 @@
     <form action="{{ route('vendor.products-variant-item.update', $variantItem->id) }}" method="post">
         @csrf
         @method('put')
-        <div class="wsus__add_address_single">
+        <div class="ts__add_address_single">
             <label>Variant Name</label>
             <input type="text" name="variant_name" class="form-control" value="{{ $variantItem->productVariant->name }}"
                 readonly>
         </div>
-        <div class="wsus__add_address_single">
+        <div class="ts__add_address_single">
             <label>Item Name</label>
             <input type="text" name="name" class="form-control" value="{{ $variantItem->name }}">
         </div>
-        <div class="wsus__add_address_single">
+        <div class="ts__add_address_single">
             <label>Price <code>(Set 0 for make it free)</code></label>
             <input type="text" name="price" class="form-control" value="{{ $variantItem->price }}">
         </div>
-        <div class="wsus__add_address_single">
+        <div class="ts__add_address_single">
             <label for="">Is Default</label>
-            <div class="wsus__topbar_select">
+            <div class="ts__topbar_select">
                 <select class="select_2" name="is_default">
                     <option value="">Select</option>
                     <option {{ $variantItem->is_default == 1 ? 'selected' : '' }} value="1">Yes</option>
@@ -27,9 +27,9 @@
                 </select>
             </div>
         </div>
-        <div class="wsus__add_address_single">
+        <div class="ts__add_address_single">
             <label>Status</label>
-            <div class="wsus__topbar_select">
+            <div class="ts__topbar_select">
                 <select class="select_2" name="status">
                     <option {{ $variantItem->status == 1 ? 'selected' : '' }} value="1">Enable</option>
                     <option {{ $variantItem->status == 0 ? 'selected' : '' }} value="0">Disable</option>

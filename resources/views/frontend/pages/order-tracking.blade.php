@@ -1,15 +1,15 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <section id="wsus__breadcrumb">
+    <section id="ts__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <h4>order tracking</h4>
                         <ul>
-                            <li><a href="#">home</a></li>
-                            <li><a href="#">order tracking</a></li>
+                            <li><a href="{{ url('/') }}">home</a></li>
+                            <li><a href="{{ route('order-tracking.index') }}">order tracking</a></li>
                         </ul>
                     </div>
                 </div>
@@ -17,15 +17,15 @@
         </div>
     </section>
 
-    <section id="wsus__login_register">
+    <section id="ts__login_register">
         <div class="container">
-            <div class="wsus__track_area">
+            <div class="ts__track_area">
                 <div class="row">
                     <div class="col-xl-5 col-md-10 col-lg-8 m-auto">
                         <form class="tack_form" action="{{ route('order-tracking.index') }}">
                             <h4 class="text-center">order tracking</h4>
                             <p class="text-center">tracking your order status</p>
-                            <div class="wsus__track_input">
+                            <div class="ts__track_input">
                                 <label class="d-block mb-2">Invoice id*</label>
                                 <input type="text" placeholder="#PD12-83629183" name="tracker"
                                     value="{{ request()->tracker }}">
@@ -37,29 +37,29 @@
                 @if (isset($order))
                     <div class="row">
                         <div class="col-xl-12">
-                            <div class="wsus__track_header">
-                                <div class="wsus__track_header_text">
+                            <div class="ts__track_header">
+                                <div class="ts__track_header_text">
                                     <div class="row">
                                         <div class="col-xl-3 col-sm-6 col-lg-3">
-                                            <div class="wsus__track_header_single">
+                                            <div class="ts__track_header_single">
                                                 <h5>Order Date</h5>
                                                 <p>{{ date('d M Y', strtotime(@$order->created_at)) }}</p>
                                             </div>
                                         </div>
                                         <div class="col-xl-3 col-sm-6 col-lg-3">
-                                            <div class="wsus__track_header_single">
+                                            <div class="ts__track_header_single">
                                                 <h5>shopping by:</h5>
                                                 <p>{{ @$order->user->name }}</p>
                                             </div>
                                         </div>
                                         <div class="col-xl-3 col-sm-6 col-lg-3">
-                                            <div class="wsus__track_header_single">
+                                            <div class="ts__track_header_single">
                                                 <h5>status:</h5>
                                                 <p>{{ @$order->order_status }}</p>
                                             </div>
                                         </div>
                                         <div class="col-xl-3 col-sm-6 col-lg-3">
-                                            <div class="wsus__track_header_single border_none">
+                                            <div class="ts__track_header_single border_none">
                                                 <h5>tracking:</h5>
                                                 <p>{{ @$order->invoice_id }}</p>
                                             </div>
@@ -99,12 +99,14 @@
                             </ul>
                         </div>
                     </div>
-                @endif
-                <div class="row">
-                    <div class="col-xl-12">
-                        <h3 class="text-center">We Haven't Found Your Order. Please Try Again</h3>
+                @elseif(request()->tracker !== @$order->invoice_id)
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <h3 class="text-center">We Haven't Found Your Order. Please Try Again</h3>
+                        </div>
                     </div>
-                </div>
+                @endif
+
                 <div class="col-xl-12">
                     <a href="{{ url('/') }}" class="common_btn"><i class="fas fa-chevron-left"></i> back to
                         home</a>

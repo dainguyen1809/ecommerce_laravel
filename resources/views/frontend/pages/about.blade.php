@@ -1,16 +1,15 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <section id="wsus__breadcrumb">
+    <section id="ts__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <h4>About</h4>
                         <ul>
-                            <li><a href="#">home</a></li>
-                            <li><a href="#">pages</a></li>
-                            <li><a href="#">about</a></li>
+                            <li><a href="{{ url('') }}">home</a></li>
+                            <li><a href="{{ route('about') }}">about</a></li>
                         </ul>
                     </div>
                 </div>

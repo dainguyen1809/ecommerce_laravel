@@ -1,15 +1,15 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <section id="wsus__breadcrumb">
+    <section id="ts__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <h4>login / register</h4>
                         <ul>
-                            <li><a href="#">home</a></li>
-                            <li><a href="#">login / register</a></li>
+                            <li><a href="{{ url('/') }}">home</a></li>
+                            <li><a href="{{ route('login') }}">login / register</a></li>
                         </ul>
                     </div>
                 </div>
@@ -17,11 +17,11 @@
         </div>
     </section>
 
-    <section id="wsus__login_register">
+    <section id="ts__login_register">
         <div class="container">
             <div class="row">
                 <div class="col-xl-5 m-auto">
-                    <div class="wsus__login_reg_area">
+                    <div class="ts__login_reg_area">
                         <ul class="nav nav-pills mb-3" id="pills-tab2" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="pills-home-tab2" data-bs-toggle="pill"
@@ -37,19 +37,19 @@
                         <div class="tab-content" id="pills-tabContent2">
                             <div class="tab-pane fade show active" id="pills-homes" role="tabpanel"
                                 aria-labelledby="pills-home-tab2">
-                                <div class="wsus__login">
+                                <div class="ts__login">
                                     <form method="post" action="{{ route('login') }}">
                                         @csrf
-                                        <div class="wsus__login_input">
+                                        <div class="ts__login_input">
                                             <i class="fas fa-user-tie"></i>
                                             <input type="email" id="email" value="{{ old('email') }}" name="email"
                                                 placeholder="Email address">
                                         </div>
-                                        <div class="wsus__login_input">
+                                        <div class="ts__login_input">
                                             <i class="fas fa-key"></i>
                                             <input type="password" id="password" name="password" placeholder="Password">
                                         </div>
-                                        <div class="wsus__login_save">
+                                        <div class="ts__login_save">
                                             <div class="form-check form-switch">
                                                 <input class="form-check-input" type="checkbox" name="remember"
                                                     id="remember_me">
@@ -60,7 +60,7 @@
                                         </div>
                                         <button class="common_btn" type="submit">login</button>
                                         <p class="social_text">Sign in with social account</p>
-                                        <ul class="wsus__login_link">
+                                        <ul class="ts__login_link">
                                             <li><a href="#"><i class="fab fa-google"></i></a></li>
                                             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -71,30 +71,30 @@
                             </div>
                             <div class="tab-pane fade" id="pills-profiles" role="tabpanel"
                                 aria-labelledby="pills-profile-tab2">
-                                <div class="wsus__login">
+                                <div class="ts__login">
                                     <form method="post" action="{{ route('register') }}">
                                         @csrf
-                                        <div class="wsus__login_input">
+                                        <div class="ts__login_input">
                                             <i class="fas fa-user-tie"></i>
                                             <input type="text" name="name" id="name" value="{{ old('name') }}"
                                                 placeholder="Name">
                                         </div>
-                                        <div class="wsus__login_input">
+                                        <div class="ts__login_input">
                                             <i class="fas fa-user-tie"></i>
                                             <input type="text" name="username" id="name"
                                                 value="{{ old('username') }}" placeholder="Username">
                                         </div>
-                                        <div class="wsus__login_input">
+                                        <div class="ts__login_input">
                                             <i class="far fa-envelope"></i>
                                             <input type="email" name="email" id="email"
                                                 value="{{ old('email') }}" placeholder="Email">
                                         </div>
-                                        <div class="wsus__login_input">
+                                        <div class="ts__login_input">
                                             <i class="fas fa-key"></i>
                                             <input type="password" id="password" name="password"
                                                 placeholder="Password">
                                         </div>
-                                        <div class="wsus__login_input mb-5">
+                                        <div class="ts__login_input mb-5">
                                             <i class="fas fa-key"></i>
                                             <input id="password_confirmation" type="password"
                                                 name="password_confirmation">

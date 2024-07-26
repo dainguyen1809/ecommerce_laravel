@@ -35,7 +35,7 @@
 
     @include('frontend.dashboard.layouts.header')
 
-    <section id="wsus__dashboard">
+    <section id="ts__dashboard">
         <div class="container-fluid">
 
             @include('frontend.dashboard.layouts.sidebar')
@@ -43,16 +43,19 @@
             <div class="row">
                 <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
                     <div class="dashboard_content">
-                        <div class="wsus__dashboard">
-                            @yield('content')
+                        <div class="row mb-2">
+                            @include('components.breadcrumb')
                         </div>
+                    </div>
+                    <div class="ts__dashboard">
+                        @yield('content')
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="wsus__scroll_btn">
+    <div class="ts__scroll_btn">
         <i class="fas fa-chevron-up"></i>
     </div>
 

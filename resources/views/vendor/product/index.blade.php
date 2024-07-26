@@ -7,8 +7,8 @@
 
 @section('content')
     <div class="row">
-        <div class="wsus__dashboard_profile">
-            <div class="wsus__dash_pro_area">
+        <div class="ts__dashboard_profile">
+            <div class="ts__dash_pro_area">
                 <div class="text-end">
                     <div class="row mb-3">
                         <div class="text-end">
@@ -27,8 +27,8 @@
 
 @push('scripts')
     <script src="{{ asset('backend/js/vendor/jquery.dataTables.min.js') }}"></script>
-    {{-- <script src="{{ asset('backend/js/vendor/dataTables.bootstrap4.js') }}"></script> --}}
-    {{-- <script src="{{ asset('backend/js/vendor/dataTables.responsive.min.js') }}"></script> --}}
+    <script src="{{ asset('backend/js/vendor/dataTables.bootstrap4.js') }}"></script>
+    <script src="{{ asset('backend/js/vendor/dataTables.responsive.min.js') }}"></script>
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 
     <script>

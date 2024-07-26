@@ -1,15 +1,15 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <section id="wsus__breadcrumb">
+    <section id="ts__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <h4>contact us</h4>
                         <ul>
-                            <li><a href="#">home</a></li>
-                            <li><a href="#">contact us</a></li>
+                            <li><a href="{{ url('/') }}">home</a></li>
+                            <li><a href="{{ route('contact') }}">contact us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -17,14 +17,14 @@
         </div>
     </section>
 
-    <section id="wsus__contact">
+    <section id="ts__contact">
         <div class="container">
-            <div class="wsus__contact_area">
+            <div class="ts__contact_area">
                 <div class="row">
                     <div class="col-xl-4">
                         <div class="row">
                             <div class="col-xl-12">
-                                <div class="wsus__contact_single">
+                                <div class="ts__contact_single">
                                     <i class="fal fa-envelope"></i>
                                     <h5>mail address</h5>
                                     <a href="mailto:{{ $settings->contact_email }}">
@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                             <div class="col-xl-12">
-                                <div class="wsus__contact_single">
+                                <div class="ts__contact_single">
                                     <i class="far fa-phone-alt"></i>
                                     <h5>phone number</h5>
                                     <a href="macallto:{{ $settings->contact_phone }}">
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                             <div class="col-xl-12">
-                                <div class="wsus__contact_single">
+                                <div class="ts__contact_single">
                                     <i class="fal fa-map-marker-alt"></i>
                                     <h5>contact address</h5>
                                     <p>
@@ -56,28 +56,28 @@
                         </div>
                     </div>
                     <div class="col-xl-8">
-                        <div class="wsus__contact_question">
+                        <div class="ts__contact_question">
                             <h5>Send Us a Message</h5>
                             <form id="contact-form">
                                 @csrf
                                 <div class="row">
                                     <div class="col-xl-12">
-                                        <div class="wsus__con_form_single">
+                                        <div class="ts__con_form_single">
                                             <input type="text" placeholder="Your Name" name="name">
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
-                                        <div class="wsus__con_form_single">
+                                        <div class="ts__con_form_single">
                                             <input type="email" placeholder="Email" name="email">
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
-                                        <div class="wsus__con_form_single">
+                                        <div class="ts__con_form_single">
                                             <input type="text" placeholder="Subject" name="subject">
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
-                                        <div class="wsus__con_form_single">
+                                        <div class="ts__con_form_single">
                                             <textarea cols="3" rows="5" placeholder="Message" name="message"></textarea>
                                         </div>
                                         <button type="submit" class="common_btn send_msg">send now</button>
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="col-xl-12">
-                        <div class="wsus__con_map">
+                        <div class="ts__con_map">
                             {!! $settings->map !!}
                         </div>
                     </div>

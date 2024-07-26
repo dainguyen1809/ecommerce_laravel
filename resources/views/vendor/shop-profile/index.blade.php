@@ -6,8 +6,8 @@
 
 @section('content')
     <div class="row">
-        <div class="wsus__dashboard_profile">
-            <div class="wsus__dash_pro_area">
+        <div class="ts__dashboard_profile">
+            <div class="ts__dash_pro_area">
                 <h4 class="text-info">Hi! {{ Auth::user()->name }}</h4>
                 <form action="{{ route('vendor.vendor-profile.store') }}" method="post" enctype="multipart/form-data">
                     @csrf

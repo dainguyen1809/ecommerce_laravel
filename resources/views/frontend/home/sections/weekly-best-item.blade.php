@@ -3,7 +3,7 @@
 
 @endphp
 
-<section id="wsus__weekly_best" class="home2_wsus__weekly_best_2 ">
+<section id="ts__weekly_best" class="home2_ts__weekly_best_2 ">
     <div class="container">
         <div class="row">
             @foreach ($weeklyProductCategories as $weeklyProductCategory)
@@ -49,20 +49,20 @@
                 @endphp
 
                 <div class="col-xl-6 col-sm-6">
-                    <div class="wsus__section_header">
+                    <div class="ts__section_header">
                         <h3>{{ $category->name }}</h3>
                     </div>
                     <div class="row weekly_best2">
                         @foreach ($products as $item)
                             <div class="col-xl-4 col-lg-4">
-                                <a class="wsus__hot_deals__single" href="{{ route('product-details', $item->slug) }}">
-                                    <div class="wsus__hot_deals__single_img">
+                                <a class="ts__hot_deals__single" href="{{ route('product-details', $item->slug) }}">
+                                    <div class="ts__hot_deals__single_img">
                                         <img src="{{ asset($item->thumb_image) }}" alt="{{ $item->name }}"
                                             class="img-fluid w-100">
                                     </div>
-                                    <div class="wsus__hot_deals__single_text">
+                                    <div class="ts__hot_deals__single_text">
                                         <h5>{!! limitText($item->name) !!}</h5>
-                                        <p class="wsus__rating">
+                                        <p class="ts__rating">
                                             @php
                                                 $avgRating = round($item->reviews()->avg('rating'));
                                             @endphp
@@ -76,12 +76,12 @@
                                             <span>({{ count($item->reviews) }} review)</span>
                                         </p>
                                         @if (checkDiscount($item))
-                                            <p class="wsus__tk">
+                                            <p class="ts__tk">
                                                 {{ $settings->currency_icon }}{{ $item->offer_price }}
                                                 <del>{{ $settings->currency_icon }}{{ $item->price }}</del>
                                             </p>
                                         @else
-                                            <p class="wsus__tk">
+                                            <p class="ts__tk">
                                                 {{ $settings->currency_icon }}{{ $item->price }}
                                             </p>
                                         @endif
