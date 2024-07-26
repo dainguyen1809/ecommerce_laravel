@@ -54,7 +54,7 @@
                         const product = response[item];
                         html += `
                                 <li id="mini-cart-${product.rowId}" class="d-flex align-items-center">
-                                    <div class="wsus__cart_img">
+                                    <div class="ts__cart_img">
                                         <a href="{{ url('product-detais/') }}${product.options.slug}">
                                             <img src="{{ asset('/') }}${product.options.image}" alt="product" class="img-fluid w-100">
                                         </a>
@@ -62,8 +62,8 @@
                                             <i class="fas fa-minus-circle"></i>
                                         </a>
                                     </div>
-                                    <div class="wsus__cart_text">
-                                        <a class="wsus__cart_title" href="{{ url('product-detais/') }}${product.options.slug}">${product.name}</a>
+                                    <div class="ts__cart_text">
+                                        <a class="ts__cart_title" href="{{ url('product-detais/') }}${product.options.slug}">${product.name}</a>
                                         <p>{{ $settings->currency_icon }} ${product.price}</p>
                                         <small>
                                             <strong>Varian Total:</strong>

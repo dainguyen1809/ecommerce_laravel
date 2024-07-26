@@ -1,10 +1,10 @@
-<section id="wsus__flash_sell" class="wsus__flash_sell_2">
+<section id="ts__flash_sell" class="ts__flash_sell_2">
     <div class=" container">
         <div class="row">
             <div class="col-xl-12">
                 <div class="offer_time">
-                    <div class="wsus__flash_coundown">
-                        <span class=" end_text">flash sell</span>
+                    <div class="ts__flash_coundown">
+                        <span class=" end_text">flash sale</span>
                         <div class="simply-countdown simply-countdown-one"></div>
                         <a class="common_btn" href="{{ route('flash-sale') }}">see more <i
                                 class="fas fa-caret-right"></i></a>
@@ -18,14 +18,14 @@
                     $product = \App\Models\Product::with('reviews')->find($flashSaleItem->product_id);
                 @endphp
                 <div class="col-xl-3 col-sm-6 col-lg-4">
-                    <div class="wsus__product_item">
-                        <span class="wsus__new">{{ formatProductType($product->product_type) }}</span>
+                    <div class="ts__product_item">
+                        <span class="ts__new">{{ formatProductType($product->product_type) }}</span>
                         @if (checkDiscount($product))
-                            <span class="wsus__minus">
+                            <span class="ts__minus">
                                 -{{ calculateDiscountPercent($product->price, $product->offer_price) }}%
                             </span>
                         @endif
-                        <a class="wsus__pro_link" href="{{ route('product-details', $product->slug) }}">
+                        <a class="ts__pro_link" href="{{ route('product-details', $product->slug) }}">
                             <img src="{{ asset($product->thumb_image) }}" alt="{{ $product->name }}"
                                 class="img-fluid w-100 img_1" />
                             <img src="
@@ -34,7 +34,7 @@
                             {{ asset($product->thumb_image) }} @endif"
                                 alt="{{ $product->name }}" class="img-fluid w-100 img_2" />
                         </a>
-                        <ul class="wsus__single_pro_icon">
+                        <ul class="ts__single_pro_icon">
                             <li>
                                 <a href="#" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal-{{ $product->id }}">
@@ -48,9 +48,9 @@
                             </li>
 
                         </ul>
-                        <div class="wsus__product_details">
-                            <a class="wsus__category" href="#">{{ $product->category->name }} </a>
-                            <p class="wsus__pro_rating">
+                        <div class="ts__product_details">
+                            <a class="ts__category" href="#">{{ $product->category->name }} </a>
+                            <p class="ts__pro_rating">
                                 @php
                                     $avgRating = round($product->reviews()->avg('rating'));
                                 @endphp
@@ -63,10 +63,10 @@
                                 @endfor
                                 <span>({{ count($product->reviews) }} review)</span>
                             </p>
-                            <a class="wsus__pro_name"
+                            <a class="ts__pro_name"
                                 href="{{ route('product-details', $product->slug) }}">{{ limitText($product->name, 65) }}</a>
                             @if (checkDiscount($product))
-                                <p class="wsus__price">
+                                <p class="ts__price">
                                     {{ $product->offer_price }}
                                     {{ $settings->currency_icon }}
                                     <del>
@@ -74,7 +74,7 @@
                                     </del>
                                 </p>
                             @else
-                                <p class="wsus__price">{{ $product->price }}
+                                <p class="ts__price">{{ $product->price }}
                                     {{ $settings->currency_icon }}
                                 </p>
                             @endif
@@ -122,9 +122,9 @@
                                 class="far fa-times"></i></button>
                         <div class="row">
                             <div class="col-xl-6 col-12 col-sm-10 col-md-8 col-lg-6 m-auto display">
-                                <div class="wsus__quick_view_img">
+                                <div class="ts__quick_view_img">
                                     @if ($product->video_link)
-                                        <a class="venobox wsus__pro_det_video" data-autoplay="true" data-vbtype="video"
+                                        <a class="venobox ts__pro_det_video" data-autoplay="true" data-vbtype="video"
                                             href="{{ $product->video_link }}">
                                             <i class="fas fa-play"></i>
                                         </a>
@@ -159,10 +159,10 @@
                             </div>
 
                             <div class="col-xl-6 col-12 col-sm-12 col-md-12 col-lg-6">
-                                <div class="wsus__pro_details_text">
+                                <div class="ts__pro_details_text">
                                     <a class="title"
                                         href="{{ route('product-details', $product->slug) }}">{{ $product->name }}</a>
-                                    <p class="wsus__stock_area"><span class="in_stock">in stock</span>
+                                    <p class="ts__stock_area"><span class="in_stock">in stock</span>
                                         ({{ $product->quantity }} item)</p>
                                     @if (checkDiscount($product))
                                         <h4>{{ $product->offer_price }}<span>{{ $settings->currency_icon }}</span>
@@ -194,7 +194,7 @@
                                     @endif
                                     <form class="form-shopping-cart">
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                        <div class="wsus__selectbox">
+                                        <div class="ts__selectbox">
                                             <div class="row">
                                                 @foreach ($product->productVariants as $variant)
                                                     @if ($variant->status != 0)
@@ -217,14 +217,14 @@
                                                 @endforeach
                                             </div>
                                         </div>
-                                        <div class="wsus__quentity">
+                                        <div class="ts__quentity">
                                             <h5>quantity :</h5>
                                             <div class="select_number">
                                                 <input class="number_area" name="quantity" type="text"
                                                     min="1" max="100" value="1" />
                                             </div>
                                         </div>
-                                        <ul class="wsus__button_area">
+                                        <ul class="ts__button_area">
                                             <li>
                                                 <button type="submit" class="add_cart">
                                                     add to cart

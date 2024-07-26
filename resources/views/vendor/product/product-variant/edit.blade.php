@@ -4,13 +4,13 @@
     <form action="{{ route('vendor.products-variant.update', $productVariant->id) }}" method="post">
         @csrf
         @method('put')
-        <div class="wsus__add_address_single">
+        <div class="ts__add_address_single">
             <label>Name</label>
             <input type="text" name="name" class="form-control" value="{{ $productVariant->name }}">
         </div>
-        <div class="wsus__add_address_single">
+        <div class="ts__add_address_single">
             <label>Status</label>
-            <div class="wsus__topbar_select">
+            <div class="ts__topbar_select">
                 <select class="select_2" name="status">
                     <option {{ $productVariant->status == 1 ? 'selected' : '' }} value="1">Enable</option>
                     <option {{ $productVariant->status == 0 ? 'selected' : '' }} value="0">Disable</option>

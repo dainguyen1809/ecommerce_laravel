@@ -22,7 +22,7 @@ use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/test', [TestController::class, 'test'])->name('test');
+Route::get('/test/testing', [TestController::class, 'test'])->name('test.testing');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -1,10 +1,10 @@
-<section id="wsus__monthly_top" class="wsus__monthly_top_2">
+<section id="ts__monthly_top" class="ts__monthly_top_2">
     <div class="container">
         <div class="row">
             @if ($bannerOne->banner_one->status == 1)
                 <div class="col-xl-12 col-lg-12">
-                    <div class="wsus__monthly_top_banner">
-                        <div class="wsus__monthly_top_banner_img">
+                    <div class="ts__monthly_top_banner">
+                        <div class="ts__monthly_top_banner_img">
                             <a href="{{ $bannerOne->banner_one->banner_url }}">
                                 <img src="{{ asset($bannerOne->banner_one->banner_img) }}" alt=""
                                     class="img-fluid w-100">
@@ -16,7 +16,7 @@
         </div>
         <div class="row">
             <div class="col-xl-12">
-                <div class="wsus__section_header for_md">
+                <div class="ts__section_header for_md">
                     <h3>Popular Categories</h3>
                     <div class="monthly_top_filter">
                         @php
@@ -80,14 +80,14 @@
                     @foreach ($products as $key => $product)
                         @foreach ($product as $item)
                             <div class="col-xl-2 col-6 col-sm-6 col-md-4 col-lg-3 category-{{ $key }}">
-                                <a class="wsus__hot_deals__single" href="{{ route('product-details', $item->slug) }}">
-                                    <div class="wsus__hot_deals__single_img">
+                                <a class="ts__hot_deals__single" href="{{ route('product-details', $item->slug) }}">
+                                    <div class="ts__hot_deals__single_img">
                                         <img src="{{ asset($item->thumb_image) }}" alt="{{ $item->name }}"
                                             class="img-fluid w-100">
                                     </div>
-                                    <div class="wsus__hot_deals__single_text">
+                                    <div class="ts__hot_deals__single_text">
                                         <h5>{!! limitText($item->name) !!}</h5>
-                                        <p class="wsus__rating">
+                                        <p class="ts__rating">
                                             @php
                                                 $avgRating = round($item->reviews()->avg('rating'));
                                             @endphp
@@ -101,11 +101,11 @@
                                             <span>({{ count($item->reviews) }} review)</span>
                                         </p>
                                         @if (checkDiscount($item))
-                                            <p class="wsus__tk">{{ $settings->currency_icon }}{{ $item->offer_price }}
+                                            <p class="ts__tk">{{ $settings->currency_icon }}{{ $item->offer_price }}
                                                 <del>{{ $settings->currency_icon }}{{ $item->price }}</del>
                                             </p>
                                         @else
-                                            <p class="wsus__tk">
+                                            <p class="ts__tk">
                                                 {{ $settings->currency_icon }}{{ $item->price }}
                                             </p>
                                         @endif

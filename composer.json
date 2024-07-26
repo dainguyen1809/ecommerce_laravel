@@ -39,7 +39,8 @@
         },
         "files": [
             "app/Helpers/Helper.php",
-            "app/Helpers/MailHelper.php"
+            "app/Helpers/MailHelper.php",
+            "app/Helpers/Breadcrumbs.php"
         ]
     },
     "autoload-dev": {

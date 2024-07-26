@@ -2,19 +2,20 @@
     <div class="container">
         <div class="row">
             <div class="col-2 col-md-1 d-lg-none">
-                <div class="wsus__mobile_menu_area">
-                    <span class="wsus__mobile_menu_icon"><i class="fal fa-bars"></i></span>
+                <div class="ts__mobile_menu_area">
+                    <span class="ts__mobile_menu_icon"><i class="fal fa-bars"></i></span>
                 </div>
             </div>
             <div class="col-xl-2 col-7 col-md-8 col-lg-2">
                 <div class="wsus_logo_area">
-                    <a class="wsus__header_logo" href="{{ url('/') }}">
-                        <img src="{{ asset('images/logo.webp') }}" alt="logo" class="img-fluid w-100">
+                    <a class="ts__header_logo" href="{{ url('/') }}">
+                        <img src="{{ asset($logoSetting->logo) }}" alt="logo" class="img-fluid w-100"
+                            style="position: relative; bottom: 20px">
                     </a>
                 </div>
             </div>
             <div class="col-xl-7 col-md-6 col-lg-4 d-none d-lg-block">
-                <div class="wsus__search">
+                <div class="ts__search">
                     <form action="{{ route('product.index') }}" method="get">
                         <input type="text" name="search" placeholder="Search...">
                         <button type="submit"><i class="far fa-search"></i></button>
@@ -22,8 +23,8 @@
                 </div>
             </div>
             <div class="col-xl-3 col-3 col-md-3 col-lg-6">
-                <div class="wsus__call_icon_area">
-                    <ul class="wsus__icon_area">
+                <div class="ts__call_icon_area">
+                    <ul class="ts__icon_area">
                         <li>
                             <a href="{{ route('user.wishlist') }}"><i class="fal fa-heart"></i>
                                 @if (isset(auth()->user()->id))
@@ -37,19 +38,19 @@
                                 @endif
                             </a>
                         </li>
-                        <li><a class="wsus__cart_icon" href="#"><i class="fal fa-shopping-bag"></i><span
+                        <li><a class="ts__cart_icon" href="#"><i class="fal fa-shopping-bag"></i><span
                                     id="cart-count">{{ Cart::content()->count() }}</span></a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <div class="wsus__mini_cart">
+    <div class="ts__mini_cart">
         <h4>shopping cart <span class="wsus_close_mini_cart"><i class="far fa-times"></i></span></h4>
         <ul class="mini-cart-warpper">
             @foreach (Cart::content() as $item)
                 <li id="mini-cart-{{ $item->rowId }}" class="d-flex align-items-center">
-                    <div class="wsus__cart_img mb-3">
+                    <div class="ts__cart_img mb-3">
                         <a href="{{ route('product-details', $item->options->slug) }}">
                             <img src="{{ asset($item->options->image) }}" alt="product" class="img-fluid w-100">
                         </a>
@@ -57,8 +58,8 @@
                             <i class="fas fa-minus-circle"></i>
                         </a>
                     </div>
-                    <div class="wsus__cart_text">
-                        <a class="wsus__cart_title"
+                    <div class="ts__cart_text">
+                        <a class="ts__cart_title"
                             href="{{ route('product-details', $item->options->slug) }}">{{ $item->name }}</a>
                         <p>
                             {{ $settings->currency_icon }}
@@ -88,7 +89,7 @@
                     {{ getCartTotalAmount() }}
                 </span>
             </h5>
-            <div class="wsus__minicart_btn_area">
+            <div class="ts__minicart_btn_area">
                 <a class="common_btn" href="{{ route('cart-details') }}">view cart</a>
                 <a class="common_btn" href="check_out.html">checkout</a>
             </div>

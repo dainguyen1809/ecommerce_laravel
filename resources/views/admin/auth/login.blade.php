@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Log In | Hyper - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>{{ $settings->site_name }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
-
+    <link rel="icon" href="{{ asset($logoSetting->favicon) }}">
     <!-- App css -->
     <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('backend/css/app-creative.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
@@ -23,12 +23,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5">
                     <div class="card">
-
-                        <!-- Logo -->
-                        <div class="card-header pt-4 pb-4 text-center bg-primary"></div>
-
                         <div class="card-body p-4">
-
                             <div class="text-center w-75 m-auto">
                                 <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Sign In</h4>
                                 <p class="text-muted mb-4">Enter your email address and password to access admin panel.
@@ -82,7 +77,9 @@
     <!-- end page -->
 
     <footer class="footer footer-alt">
-        {{ date('Y') }}
+        <div class="ts__copyright d-flex justify-content-center">
+            <p>© Nguyễn Hữu Đại &dash; {{ Date('m/Y') }}</p>
+        </div>
     </footer>
 
     <!-- bundle -->

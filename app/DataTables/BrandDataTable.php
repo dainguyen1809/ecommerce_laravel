@@ -24,7 +24,7 @@ class BrandDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', 'brand.action')
             ->addColumn('logo', function ($query) {
-                return '<img src="' . asset($query->logo) . '" height="150" alt="brand"/>';
+                return '<img src="' . asset($query->logo) . '" height="50"  alt="brand" />';
             })
             ->addColumn('featured', function ($query) {
                 $yes = '<i class="badge badge-success p-2">Yes</i>';

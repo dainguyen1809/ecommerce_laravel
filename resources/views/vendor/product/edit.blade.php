@@ -6,8 +6,8 @@
 
 @section('content')
     <div class="row">
-        <div class="wsus__dashboard_profile">
-            <div class="wsus__dash_pro_area">
+        <div class="ts__dashboard_profile">
+            <div class="ts__dash_pro_area">
                 <form action="{{ route('vendor.products.update', $product->id) }}" method="post"
                     enctype="multipart/form-data">
                     @csrf
@@ -16,19 +16,19 @@
                         <h4>Preview</h4>
                         <img src="{{ asset($product->thumb_image) }}" width="150" alt="{{ $product->name }}">
                     </div>
-                    <div class="wsus__add_address_single">
+                    <div class="ts__add_address_single">
                         <label>Image</label>
                         <input type="file" name="image" class="form-control-file">
                     </div>
-                    <div class="wsus__add_address_single">
+                    <div class="ts__add_address_single">
                         <label>Name</label>
                         <input type="text" name="name" class="form-control" value="{{ $product->name }}">
                     </div>
                     <div class="row">
                         <div class="col-sm-4">
-                            <div class="wsus__add_address_single">
+                            <div class="ts__add_address_single">
                                 <label>Category</label>
-                                <div class="wsus__topbar_select">
+                                <div class="ts__topbar_select">
                                     <select class="select_2 main-category" name="category">
                                         <option value="">Select</option>
                                         @foreach ($categories as $category)
@@ -40,9 +40,9 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <div class="wsus__add_address_single">
+                            <div class="ts__add_address_single">
                                 <label>Sub Category</label>
-                                <div class="wsus__topbar_select">
+                                <div class="ts__topbar_select">
                                     <select class="select_2 sub-category" name="sub_category">
                                         <option value="">Select</option>
                                         @foreach ($subCategories as $subCategory)
@@ -55,9 +55,9 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <div class="wsus__add_address_single">
+                            <div class="ts__add_address_single">
                                 <label>Child Category</label>
-                                <div class="wsus__topbar_select">
+                                <div class="ts__topbar_select">
                                     <select class="select_2 child-category" name="child_category">
                                         <option value="">Select</option>
                                         @foreach ($childCategories as $childCategory)
@@ -75,9 +75,9 @@
 
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="wsus__add_address_single">
+                            <div class="ts__add_address_single">
                                 <label>Product Types</label>
-                                <div class="wsus__topbar_select">
+                                <div class="ts__topbar_select">
                                     <select class="select_2" name="product_type">
                                         <option value="">Select</option>
                                         <option {{ $product->product_type == 'new_arrival' ? 'selected' : '' }}
@@ -97,9 +97,9 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="wsus__add_address_single">
+                            <div class="ts__add_address_single">
                                 <label>Brand</label>
-                                <div class="wsus__topbar_select">
+                                <div class="ts__topbar_select">
                                     <select class="select_2" name="brand">
                                         <option value="">Select</option>
                                         @foreach ($brands as $brand)
@@ -113,31 +113,31 @@
                         </div>
                     </div>
 
-                    <div class="wsus__add_address_single">
+                    <div class="ts__add_address_single">
                         <label>SKU</label>
                         <input type="text" name="sku" class="form-control" value="{{ $product->sku }}">
                     </div>
 
-                    <div class="wsus__add_address_single">
+                    <div class="ts__add_address_single">
                         <label>Price</label>
                         <input type="text" name="price" class="form-control" value="{{ $product->price }}">
                     </div>
 
-                    <div class="wsus__add_address_single">
+                    <div class="ts__add_address_single">
                         <label>Offer Price</label>
                         <input type="text" name="offer_price" class="form-control" value="{{ $product->offer_price }}">
                     </div>
 
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="wsus__add_address_single">
+                            <div class="ts__add_address_single">
                                 <label for="example-date">Offer Start Date</label>
                                 <input class="form-control" id="example-date" type="date" name="offer_start_date"
                                     value="{{ $product->offer_start_date }}">
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="wsus__add_address_single">
+                            <div class="ts__add_address_single">
                                 <label for="example-date">Offer End Date</label>
                                 <input class="form-control" id="example-date" type="date"
                                     name="offer_end_date"value="{{ $product->offer_end_date }}">
@@ -145,18 +145,18 @@
                         </div>
                     </div>
 
-                    <div class="wsus__add_address_single">
+                    <div class="ts__add_address_single">
                         <label>Stock Quantity</label>
                         <input type="number" min="0" name="quantity" class="form-control"
                             value="{{ $product->quantity }}">
                     </div>
 
-                    <div class="wsus__add_address_single">
+                    <div class="ts__add_address_single">
                         <label>Video Link</label>
                         <input type="text" name="video_link" class="form-control" value="{{ $product->video_link }}">
                     </div>
 
-                    <div class="wsus__add_address_single">
+                    <div class="ts__add_address_single">
                         <label>Short Description</label>
                         <p class="text-muted font-13">
                             Only contains 255 characters
@@ -166,19 +166,19 @@
                         </textarea>
                     </div>
 
-                    <div class="wsus__add_address_single">
+                    <div class="ts__add_address_single">
                         <label for="example-textarea">Long Description</label>
                         <textarea id="summernote-basic" name="long_description">
                             {{ $product->long_description }}
                         </textarea>
                     </div>
 
-                    <div class="wsus__add_address_single">
+                    <div class="ts__add_address_single">
                         <label>SEO Title</label>
                         <input type="text" name="seo_title" class="form-control" value="{{ $product->seo_title }}">
                     </div>
 
-                    <div class="wsus__add_address_single">
+                    <div class="ts__add_address_single">
                         <label>SEO Description</label>
                         <p class="text-muted font-13">
                             Only contains 255 characters
@@ -188,9 +188,9 @@
                         </textarea>
                     </div>
 
-                    <div class="wsus__add_address_single">
+                    <div class="ts__add_address_single">
                         <label>Status</label>
-                        <div class="wsus__topbar_select">
+                        <div class="ts__topbar_select">
                             <select class="select_2" name="status">
                                 <option {{ $product->status == 1 ? 'selected' : '' }} value="1">Enable</option>
                                 <option {{ $product->status == 0 ? 'selected' : '' }} value="0">Disable</option>

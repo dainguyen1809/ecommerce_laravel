@@ -6,15 +6,15 @@
 
 @section('content')
     <div class="row mb-5">
-        <div class="wsus__dashboard_profile">
-            <div class="wsus__dash_pro_area">
+        <div class="ts__dashboard_profile">
+            <div class="ts__dash_pro_area">
                 {!! @$content->content !!}
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="wsus__dashboard_profile">
-            <div class="wsus__dash_pro_area">
+        <div class="ts__dashboard_profile">
+            <div class="ts__dash_pro_area">
                 <form action="{{ route('user.vendor-register.create') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @if (isset($profile->banner))

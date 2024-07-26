@@ -5,14 +5,14 @@
 
 @section('content')
     <div class="row">
-        <div class="wsus__dashboard_profile">
-            <div class="wsus__invoice_area">
+        <div class="ts__dashboard_profile">
+            <div class="ts__invoice_area">
                 <div class="invoice-content">
-                    <div class="wsus__invoice_header">
-                        <div class="wsus__invoice_content">
+                    <div class="ts__invoice_header">
+                        <div class="ts__invoice_content">
                             <div class="row">
                                 <div class="col-xl-4 col-md-4 mb-5 mb-md-0">
-                                    <div class="wsus__invoice_single">
+                                    <div class="ts__invoice_single">
                                         <h5>Invoice To</h5>
                                         <h6>{{ $address->name }}</h6>
                                         <p>{{ $address->email }}</p>
@@ -26,7 +26,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-md-4 mb-5 mb-md-0">
-                                    <div class="wsus__invoice_single text-md-center">
+                                    <div class="ts__invoice_single text-md-center">
                                         <h5>Shipping Information</h5>
                                         <h6>{{ $address->name }}</h6>
                                         <p>{{ $address->email }}</p>
@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-md-4">
-                                    <div class="wsus__invoice_single text-md-end">
+                                    <div class="ts__invoice_single text-md-end">
                                         <h5>Order ID # {{ $order->invoice_id }}</h5>
                                         <h6>Order Status:
                                             {{ config('order_status.order_status_admin')[$order->order_status]['status'] }}
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="wsus__invoice_description">
+                        <div class="ts__invoice_description">
                             <div class="table-responsive">
                                 <table class="table">
                                     <tr>
@@ -114,7 +114,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="wsus__invoice_footer">
+                    <div class="ts__invoice_footer">
                         <p><span>Total Amount:</span> {{ $settings->currency_icon }}{{ $total }} </p>
                     </div>
                 </div>

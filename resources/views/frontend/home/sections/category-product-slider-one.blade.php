@@ -40,11 +40,11 @@
 
 @endphp
 
-<section id="wsus__electronic">
+<section id="ts__electronic">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
-                <div class="wsus__section_header">
+                <div class="ts__section_header">
                     <h3>{{ $category->name }}</h3>
                     <a class="see_btn" href="#">see more <i class="fas fa-caret-right"></i></a>
                 </div>
@@ -53,14 +53,14 @@
         <div class="row flash_sell_slider">
             @foreach ($products as $product)
                 <div class="col-xl-3 col-sm-6 col-lg-4">
-                    <div class="wsus__product_item">
-                        <span class="wsus__new">{{ formatProductType($product->product_type) }}</span>
+                    <div class="ts__product_item">
+                        <span class="ts__new">{{ formatProductType($product->product_type) }}</span>
                         @if (checkDiscount($product))
-                            <span class="wsus__minus">
+                            <span class="ts__minus">
                                 -{{ calculateDiscountPercent($product->price, $product->offer_price) }}%
                             </span>
                         @endif
-                        <a class="wsus__pro_link" href="{{ route('product-details', $product->slug) }}">
+                        <a class="ts__pro_link" href="{{ route('product-details', $product->slug) }}">
                             <img src="{{ asset($product->thumb_image) }}" alt="{{ $product->name }}"
                                 class="img-fluid w-100 img_1" />
                             <img src="
@@ -69,7 +69,7 @@
                             {{ asset($product->thumb_image) }} @endif"
                                 alt="{{ $product->name }}" class="img-fluid w-100 img_2" />
                         </a>
-                        <ul class="wsus__single_pro_icon">
+                        <ul class="ts__single_pro_icon">
                             <li>
                                 <a href="#" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal-{{ $product->id }}">
@@ -79,9 +79,9 @@
                             <li><a href="#"><i class="far fa-heart"></i></a></li>
 
                         </ul>
-                        <div class="wsus__product_details">
-                            <a class="wsus__category" href="#">{{ $product->category->name }} </a>
-                            <p class="wsus__pro_rating">
+                        <div class="ts__product_details">
+                            <a class="ts__category" href="#">{{ $product->category->name }} </a>
+                            <p class="ts__pro_rating">
                                 @php
                                     $avgRating = round($product->reviews()->avg('rating'));
                                 @endphp
@@ -94,10 +94,10 @@
                                 @endfor
                                 <span>({{ count($product->reviews) }} review)</span>
                             </p>
-                            <a class="wsus__pro_name"
+                            <a class="ts__pro_name"
                                 href="{{ route('product-details', $product->slug) }}">{{ limitText($product->name, 65) }}</a>
                             @if (checkDiscount($product))
-                                <p class="wsus__price">
+                                <p class="ts__price">
                                     {{ $product->offer_price }}
                                     {{ $settings->currency_icon }}
                                     <del>
@@ -105,7 +105,7 @@
                                     </del>
                                 </p>
                             @else
-                                <p class="wsus__price">{{ $product->price }}
+                                <p class="ts__price">{{ $product->price }}
                                     {{ $settings->currency_icon }}
                                 </p>
                             @endif

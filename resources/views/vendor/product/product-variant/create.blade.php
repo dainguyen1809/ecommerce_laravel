@@ -8,9 +8,9 @@
             <input type="text" name="name" class="form-control" value="{{ old('name') }}">
             <input type="hidden" name="product" class="form-control" value="{{ request()->product }}">
         </div>
-        <div class="wsus__add_address_single">
+        <div class="ts__add_address_single">
             <label>Status</label>
-            <div class="wsus__topbar_select">
+            <div class="ts__topbar_select">
                 <select class="select_2" name="status">
                     <option value="1">Enable</option>
                     <option value="0">Disable</option>

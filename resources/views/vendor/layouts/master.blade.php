@@ -46,36 +46,20 @@
 
     @include('vendor.layouts.header')
 
-    <section id="wsus__dashboard">
+    <section id="ts__dashboard">
         <div class="container-fluid">
 
             @include('vendor.layouts.sidebar')
 
-
             <div class="row">
                 <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
                     <div class="dashboard_content">
-                        <div class="row mb-2">
-                            <div class="col-12 d-flex">
-                                <div class="col-sm-6">
-                                    <h4>Dynamic Title</h4>
-                                </div>
-                                <div class="col-sm-6 d-flex justify-content-end">
-                                    <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb bg-light-lighten p-2">
-                                            <li class="breadcrumb-item"><a href="#">
-                                                    <i class="fas fa-house me-2"></i>Home</a>
-                                            </li>
-                                            <li class="breadcrumb-item">
-                                                <a href="#">Library</a>
-                                            </li>
-                                            <li class="breadcrumb-item active" aria-current="page">Data</li>
-                                        </ol>
-                                    </nav>
-                                </div>
+                        <div class="dashboard_content">
+                            <div class="row mb-2">
+                                @include('components.breadcrumb')
                             </div>
                         </div>
-                        <div class="wsus__dashboard">
+                        <div class="ts__dashboard">
                             @yield('content')
                         </div>
                     </div>
@@ -84,7 +68,7 @@
         </div>
     </section>
 
-    <div class="wsus__scroll_btn">
+    <div class="ts__scroll_btn">
         <i class="fas fa-chevron-up"></i>
     </div>
 

@@ -16,8 +16,8 @@
 @endpush
 
 @section('content')
-    <div class="wsus__dashboard_profile">
-        <div class="wsus__dash_pro_area">
+    <div class="ts__dashboard_profile">
+        <div class="ts__dash_pro_area">
             <div class="text-start">
                 <h4 class="text-info">Product: {{ $product->name }}</h4>
             </div>
