@@ -17,7 +17,7 @@
                 <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
                     aria-controls="v-pills-settings" aria-selected="false">
                     <i class="mdi mdi-settings-outline d-md-none d-block"></i>
-                    <span class="d-none d-md-block">Settings</span>
+                    <span class="d-none d-md-block">COD</span>
                 </a>
             </div>
         </div> <!-- end col-->
@@ -25,12 +25,8 @@
         <div class="col-sm-9">
             <div class="tab-content" id="v-pills-tabContent">
                 @include('admin.payment-setting.sections.paypal-setting')
-                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                    @include('admin.payment-setting.sections.paypal-setting')
-                </div>
-                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                    <p class="mb-0">3</p>
-                </div>
+                @include('admin.payment-setting.sections.stripe-setting')
+                @include('admin.payment-setting.sections.cod-setting')
             </div> <!-- end tab-content-->
         </div> <!-- end col-->
     </div>

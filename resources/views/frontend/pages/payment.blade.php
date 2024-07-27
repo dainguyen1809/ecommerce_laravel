@@ -37,6 +37,10 @@
                                 <button class="nav-link common_btn" id="v-pills-settings-tab" data-bs-toggle="pill"
                                     data-bs-target="#v-pills-momo" type="button" role="tab"
                                     aria-controls="v-pills-momo" aria-selected="false">Momo</button>
+
+                                <button class="nav-link common_btn" id="v-pills-settings-tab" data-bs-toggle="pill"
+                                    data-bs-target="#v-pills-cod" type="button" role="tab" aria-controls="v-pills-cod"
+                                    aria-selected="false">COD</button>
                             </div>
                         </div>
                     </div>
@@ -74,55 +78,10 @@
                                     </div>
                                 </div>
                             </div>
+                            @include('frontend.pages.cod')
                         </div>
 
                         {{-- <div class="tab-content" id="v-pills-tabContent" id="sticky_sidebar">
-                            <div class="tab-pane fade show active" id="v-pills-paypal" role="tabpanel"
-                                aria-labelledby="v-pills-home-tab">
-                                <div class="row">
-                                    <div class="col-xl-12 m-auto">
-                                        <div class="ts__payment_area">
-                                            <form>
-                                                <div class="ts__pay_caed_header">
-                                                    <h5>credit or debit card</h5>
-                                                    <img src="images/payment5.png" alt="payment" class="img-=fluid">
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <input class="input" type="text"
-                                                            placeholder="MD. MAHAMUDUL HASSAN SAZAL">
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <input class="input" type="text"
-                                                            placeholder="2540 4587 **** 3215">
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <input class="input" type="text" placeholder="MM/YY">
-                                                    </div>
-                                                    <div class="col-4 ms-auto">
-                                                        <input class="input" type="text" placeholder="1234">
-                                                    </div>
-                                                </div>
-                                                <div class="ts__save_payment">
-                                                    <h6><i class="fas fa-user-lock"></i> 100% secure payment with :</h6>
-                                                    <img src="images/payment1.png" alt="payment" class="img-fluid">
-                                                    <img src="images/payment2.png" alt="payment" class="img-fluid">
-                                                    <img src="images/payment3.png" alt="payment" class="img-fluid">
-                                                </div>
-                                                <div class="ts__save_card">
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            id="flexSwitchCheckDefault">
-                                                        <label class="form-check-label" for="flexSwitchCheckDefault">save
-                                                            thid Card</label>
-                                                    </div>
-                                                </div>
-                                                <button type="submit" class="common_btn">confirm</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
                                 aria-labelledby="v-pills-profile-tab">
                                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero, tempora cum optio

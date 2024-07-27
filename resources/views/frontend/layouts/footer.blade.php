@@ -11,8 +11,8 @@
         <div class="row justify-content-between">
             <div class="col-xl-3 col-sm-7 col-md-6 col-lg-3">
                 <div class="ts__footer_content">
-                    <a class="ts__footer_2_logo" href="#">
-                        <img src="{{ $footerInfo->logo }}" alt="logo">
+                    <a class="ts__footer_2_logo" href="{{ url('/') }}">
+                        <img src="{{ asset($footerInfo->logo) }}" alt="logo">
                     </a>
                     <a class="action" href="callto:{{ $footerInfo->phone }}">
                         <i class="fas fa-phone-alt"></i>
@@ -75,10 +75,10 @@
                         <input type="text" placeholder="Email" name="email" class="subscribe_field">
                         <button type="submit" class="common_btn subscribe">subscribe</button>
                     </form>
-                    <div class="footer_payment">
+                    {{-- <div class="footer_payment">
                         <p>We're using safe payment for :</p>
                         <img src="images/credit2.png" alt="card" class="img-fluid">
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\CodSetting;
 use App\Models\GeneralSetting;
 use App\Models\Order;
 use App\Models\OrderProduct;
@@ -170,5 +171,21 @@ class PaymentController extends Controller
     {
         toastr('Something wrong. Please try again later', 'error', 'Error');
         return redirect()->route('user.payment');
+    }
+
+    public function payWithCod(Request $request)
+    {
+        $codSetting = CodSetting::first();
+        $setting = GeneralSetting::first();
+        if ($codSetting->status === 0) {
+            return redirect()->back();
+        }
+
+        // amount calculation
+        $total = round(totalAmount(), 2);
+        $this->storeOrder('COD', 0, str()->random(32), $total, $setting->currency_name);
+        $this->clearSession();
+
+        return redirect()->route('user.payment-success');
     }
 }
