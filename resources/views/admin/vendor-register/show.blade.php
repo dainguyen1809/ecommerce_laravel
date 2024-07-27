@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @push('styles')
-    <link href="{{ asset('backend/css/vendor/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/css/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 @endpush
 
 @section('content')

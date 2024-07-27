@@ -68,6 +68,9 @@ class AdminController extends Controller
 
     public function login()
     {
+        if (auth()->check() && auth()->user()->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        }
         return view('admin.auth.login');
     }
 }

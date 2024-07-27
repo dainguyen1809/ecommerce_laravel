@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Detached | Hyper - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>{{ @$settings->site_name }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ @$logoSetting->favicon }}" />
+    <link rel="shortcut icon" href="{{ asset(@$logoSetting->favicon) }}" />
 
     <!-- App css -->
     <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
@@ -72,15 +72,14 @@
     </div>
     <div class="rightbar-overlay"></div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="//cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
-
     <!-- bundle -->
     <script src="{{ asset('backend/js/vendor.min.js') }}"></script>
     <script src="{{ asset('backend/js/app.min.js') }}"></script>
     <script src="{{ asset('backend/js/bootstrap-iconpicker.bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
     <script>
         @if ($errors->any())
             @foreach ($errors->all() as $error)

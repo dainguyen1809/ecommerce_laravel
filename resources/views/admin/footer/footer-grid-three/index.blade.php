@@ -3,9 +3,9 @@
 @push('styles')
     <link rel="stylesheet" href="//cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css">
     <!-- Datatables css -->
-    {{-- <link href="{{ asset('backend/css/vendor/select.bootstrap4.css') }}" rel="stylesheet" type="text/css" /> --}}
-    <link href="{{ asset('backend/css/vendor/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('backend/css/vendor/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css"/>
+    {{-- <link href="{{ asset('backend/css/select.bootstrap4.css') }}" rel="stylesheet" type="text/css" /> --}}
+    <link href="{{ asset('backend/css/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/css/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap4.css">
 @endpush
 
@@ -14,12 +14,13 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{route('admin.footer-grid-three.change-title')}}" method="post">
+                    <form action="{{ route('admin.footer-grid-three.change-title') }}" method="post">
                         @csrf
                         @method('put')
                         <div class="form-group">
                             <label>Title</label>
-                            <input type="text" name="title" class="form-control" value="{{ @$title->footer_grid_three_title }}">
+                            <input type="text" name="title" class="form-control"
+                                value="{{ @$title->footer_grid_three_title }}">
                             <button type="submit" class="btn btn-primary mt-4">Submit</button>
                         </div>
                     </form>
@@ -48,8 +49,8 @@
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 
     <script>
-        $(document).ready(function () {
-            $('body').on('click', '.change-status', function () {
+        $(document).ready(function() {
+            $('body').on('click', '.change-status', function() {
                 const checked = $(this).is(':checked');
                 const id = $(this).data('id');
                 console.log(id);
@@ -64,10 +65,10 @@
                         status: checked,
                         id: id,
                     },
-                    success: function (response) {
+                    success: function(response) {
                         toastr.success(response.message);
                     },
-                    error: function (response) {
+                    error: function(response) {
                         console.log(response);
                     },
                 });

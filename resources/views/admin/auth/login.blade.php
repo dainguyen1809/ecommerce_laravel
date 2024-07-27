@@ -44,7 +44,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <a href="#" class="text-muted float-right"><small>Forgot your
+                                    <a href="{{ route('password.request') }}"
+                                        class="text-muted float-right"><small>Forgot your
                                             password?</small></a>
                                     <label for="password">{{ __('Password') }}</label>
                                     <div class="input-group input-group-merge">
