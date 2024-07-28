@@ -40,7 +40,8 @@
                                 $category = array_keys($lastKey)[0];
                                 if ($category === 'category') {
                                     $category = \App\Models\Category::find($lastKey['category']);
-                                    $products[] = \App\Models\Product::with('reviews')
+                                    $products[] = \App\Models\Product::withAvg('reviews', 'rating') // => reviews_avg_rating method
+                                        ->with(['productVariants', 'category', 'productImageGalleries'])
                                         ->where('category_id', $category->id)
                                         ->where('is_approved', 1)
                                         ->where('status', 1)
@@ -49,7 +50,8 @@
                                         ->get();
                                 } elseif ($category === 'sub_category') {
                                     $category = \App\Models\SubCategory::find($lastKey['sub_category']);
-                                    $products[] = \App\Models\Product::with('reviews')
+                                    $products[] = \App\Models\Product::withAvg('reviews', 'rating') // => reviews_avg_rating method
+                                        ->with(['productVariants', 'category', 'productImageGalleries'])
                                         ->where('sub_category_id', $category->id)
                                         ->where('is_approved', 1)
                                         ->where('status', 1)
@@ -58,7 +60,8 @@
                                         ->get();
                                 } elseif ($category === 'child_category') {
                                     $category = \App\Models\ChildCategory::find($lastKey['child_category']);
-                                    $products[] = \App\Models\Product::with('reviews')
+                                    $products[] = \App\Models\Product::withAvg('reviews', 'rating') // => reviews_avg_rating method
+                                        ->with(['productVariants', 'category', 'productImageGalleries'])
                                         ->where('child_category_id', $category->id)
                                         ->where('is_approved', 1)
                                         ->where('status', 1)
@@ -88,11 +91,8 @@
                                     <div class="ts__hot_deals__single_text">
                                         <h5>{!! limitText($item->name) !!}</h5>
                                         <p class="ts__rating">
-                                            @php
-                                                $avgRating = round($item->reviews()->avg('rating'));
-                                            @endphp
                                             @for ($i = 1; $i <= 5; $i++)
-                                                @if ($i <= $avgRating)
+                                                @if ($i <= $item->reviews_avg_rating)
                                                     <i class="fas fa-star"></i>
                                                 @else
                                                     <i class="far fa-star"></i>
