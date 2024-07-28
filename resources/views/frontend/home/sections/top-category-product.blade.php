@@ -41,7 +41,8 @@
                                 if ($category === 'category') {
                                     $category = \App\Models\Category::find($lastKey['category']);
                                     $products[] = \App\Models\Product::withAvg('reviews', 'rating') // => reviews_avg_rating method
-                                        ->with(['productVariants', 'category', 'productImageGalleries'])
+                                        ->withCount('reviews')
+                                        ->with(['productVariants', 'category'])
                                         ->where('category_id', $category->id)
                                         ->where('is_approved', 1)
                                         ->where('status', 1)
@@ -51,7 +52,8 @@
                                 } elseif ($category === 'sub_category') {
                                     $category = \App\Models\SubCategory::find($lastKey['sub_category']);
                                     $products[] = \App\Models\Product::withAvg('reviews', 'rating') // => reviews_avg_rating method
-                                        ->with(['productVariants', 'category', 'productImageGalleries'])
+                                        ->withCount('reviews')
+                                        ->with(['productVariants', 'category'])
                                         ->where('sub_category_id', $category->id)
                                         ->where('is_approved', 1)
                                         ->where('status', 1)
@@ -61,7 +63,8 @@
                                 } elseif ($category === 'child_category') {
                                     $category = \App\Models\ChildCategory::find($lastKey['child_category']);
                                     $products[] = \App\Models\Product::withAvg('reviews', 'rating') // => reviews_avg_rating method
-                                        ->with(['productVariants', 'category', 'productImageGalleries'])
+                                        ->withCount('reviews')
+                                        ->with(['productVariants', 'category'])
                                         ->where('child_category_id', $category->id)
                                         ->where('is_approved', 1)
                                         ->where('status', 1)
@@ -98,7 +101,7 @@
                                                     <i class="far fa-star"></i>
                                                 @endif
                                             @endfor
-                                            <span>({{ count($item->reviews) }} review)</span>
+                                            <span>({{ $item->reviews_count }} review)</span>
                                         </p>
                                         @if (checkDiscount($item))
                                             <p class="ts__tk">{{ $settings->currency_icon }}{{ $item->offer_price }}
