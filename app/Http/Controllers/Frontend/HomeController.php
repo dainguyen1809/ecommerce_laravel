@@ -76,21 +76,30 @@ class HomeController extends Controller
     {
         $typeProducts = [];
 
-        $typeProducts['new_arrival'] = Product::where([
-            'product_type' => 'new_arrival',
-            'is_approved' => 1,
-            'status' => 1,
-        ])->orderBy('id', 'desc')->take(8)->get();
-        $typeProducts['featured_product'] = Product::where([
-            'product_type' => 'featured_product',
-            'is_approved' => 1,
-            'status' => 1,
-        ])->orderBy('id', 'desc')->take(8)->get();
-        $typeProducts['best_product'] = Product::where([
-            'product_type' => 'best_product',
-            'is_approved' => 1,
-            'status' => 1,
-        ])->orderBy('id', 'desc')->take(8)->get();
+        $typeProducts['new_arrival'] = Product::withAvg('reviews', 'rating') // => reviews_avg_rating method
+            ->withCount('reviews') // => reviews_count method
+            ->with(['productVariants', 'category', 'productImageGalleries'])
+            ->where([
+                'product_type' => 'new_arrival',
+                'is_approved' => 1,
+                'status' => 1,
+            ])->orderBy('id', 'desc')->take(8)->get();
+        $typeProducts['featured_product'] = Product::withAvg('reviews', 'rating') // => reviews_avg_rating method
+            ->withCount('reviews') // => reviews_count method
+            ->with(['productVariants', 'category', 'productImageGalleries'])
+            ->where([
+                'product_type' => 'featured_product',
+                'is_approved' => 1,
+                'status' => 1,
+            ])->orderBy('id', 'desc')->take(8)->get();
+        $typeProducts['best_product'] = Product::withAvg('reviews', 'rating') // => reviews_avg_rating method
+            ->withCount('reviews') // => reviews_count method
+            ->with(['productVariants', 'category', 'productImageGalleries'])
+            ->where([
+                'product_type' => 'best_product',
+                'is_approved' => 1,
+                'status' => 1,
+            ])->orderBy('id', 'desc')->take(8)->get();
 
         return $typeProducts;
     }

@@ -1,4 +1,4 @@
-<div class="col-xl-3 col-sm-6 col-lg-4">
+<div class="col-xl-3 col-sm-6 col-lg-4 {{ @$key }}">
     <div class="ts__product_item">
         @if (isset($product->product_type))
             <span class="ts__new">
