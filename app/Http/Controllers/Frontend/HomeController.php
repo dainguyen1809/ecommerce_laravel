@@ -26,8 +26,10 @@ class HomeController extends Controller
             ->orderBy('serial', 'asc')
             ->get();
         $counterFlashSale = FlashSale::first();
+
         $flashSaleItems = FlashSaleItem::where('show_at_home', 1)
-            ->where('status', 1)->get();
+            ->where('status', 1)->pluck('product_id')->toArray();
+
         $popularCategory = HomePageSetting::where('key', 'popular_category')->first();
 
         $brands = Brand::where('status', 1)
@@ -133,6 +135,18 @@ class HomeController extends Controller
             'brands' => $brands,
             // 'productBanner' => $productBanner,
             'vendor' => $vendor,
+        ]);
+    }
+
+    public function showProductModal($id)
+    {
+        $product = Product::findOrFail($id);
+        $content = view('components.modal', [
+            'product' => $product,
+        ])->render();
+
+        return response()->make($content, 200, [
+            'Content-Type' => 'text/html',
         ]);
     }
 }

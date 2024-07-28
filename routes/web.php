@@ -68,6 +68,8 @@ Route::get('cart/sidebar-product-total', [CartController::class, 'cartTotal'])->
 Route::get('apply-coupon', [CartController::class, 'applyCoupon'])->name('apply-coupon');
 Route::get('coupon-calculation', [CartController::class, 'couponCalculation'])->name('coupon-calculation');
 
+Route::get('show-product-modal/{id}', [HomeController::class, 'showProductModal'])->name('show-product-modal');
+
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
     Route::get('profile', [UserProfileController::class, 'index'])->name('profile');

@@ -1,6 +1,6 @@
 <script>
     $(document).ready(function() {
-        $('.form-shopping-cart').on('submit', function(e) {
+        $(document).on('submit', '.form-shopping-cart', function(e) {
             e.preventDefault();
             const formData = $(this).serialize();
             $.ajax({
@@ -187,6 +187,24 @@
                         $('.subscribe').text('Subscribe');
                     }, 1500);
                 }
+            });
+        });
+
+        $('.show_product_modal').on('click', function() {
+            const id = $(this).data('id');
+            $.ajax({
+                method: "get",
+                url: "{{ route('show-product-modal', ':id') }}".replace(":id", id),
+                beforeSend: function() {
+                    $('.product-modal-content').html(
+                        "<span class='loader'></span>"
+                    );
+                },
+                success: function(response) {
+                    setTimeout(() => {
+                        $('.product-modal-content').html(response);
+                    }, 1000);
+                },
             });
         });
     });

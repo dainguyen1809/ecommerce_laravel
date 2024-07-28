@@ -38,7 +38,15 @@
     @include('frontend.layouts.menu')
 
     @yield('content')
-
+    <section class="product_popup_modal">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content product-modal-content">
+                    {{-- popup --}}
+                </div>
+            </div>
+        </div>
+    </section>
     @include('frontend.layouts.footer')
 
 
