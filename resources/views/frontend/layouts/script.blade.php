@@ -128,7 +128,7 @@
             });
         }
 
-        $('.wishlist').on('click', function(e) {
+        $(document).on('click', '.wishlist', function(e) {
             e.preventDefault();
             const id = $(this).data('id');
 
