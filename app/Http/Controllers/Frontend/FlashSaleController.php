@@ -13,7 +13,7 @@ class FlashSaleController extends Controller
     public function index()
     {
         $counterFlashSale = FlashSale::first();
-        $flashSaleItems = FlashSaleItem::where('status', 1)->orderBy('id', 'asc')->paginate(4);
+        $flashSaleItems = FlashSaleItem::where('status', 1)->orderBy('id', 'asc')->pluck('product_id')->toArray();
 
         $bannerTwo = Advertisement::where('key', 'homepage_banner_section_two')->first();
         $bannerTwo = json_decode($bannerTwo?->value);

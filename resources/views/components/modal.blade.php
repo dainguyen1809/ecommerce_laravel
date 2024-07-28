@@ -16,25 +16,6 @@
                                 class="img-fluid w-100">
                         </div>
                     </div>
-                    {{-- 
-                    @if (count($product->productImageGalleries) === 0)
-                        <div class="col-xl-12">
-                            <div class="modal_slider_img">
-                                <img src="{{ asset($product->thumb_image) }}" alt="{{ $product->name }}"
-                                    class="img-fluid w-100">
-                            </div>
-                        </div>
-                    @endif
-
-                    @foreach ($product->productImageGalleries as $imageGallery)
-                        <div class="col-xl-12">
-                            <div class="modal_slider_img">
-                                <img src="{{ asset($imageGallery->images) }}" alt="{{ $product->name }}"
-                                    class="img-fluid w-100">
-                            </div>
-                        </div>
-                    @endforeach 
-                    --}}
                 </div>
             </div>
         </div>

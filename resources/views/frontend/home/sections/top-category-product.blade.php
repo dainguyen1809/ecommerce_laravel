@@ -42,7 +42,6 @@
                                     $category = \App\Models\Category::find($lastKey['category']);
                                     $products[] = \App\Models\Product::withAvg('reviews', 'rating') // => reviews_avg_rating method
                                         ->withCount('reviews')
-                                        ->with(['productVariants', 'category'])
                                         ->where('category_id', $category->id)
                                         ->where('is_approved', 1)
                                         ->where('status', 1)
@@ -53,7 +52,6 @@
                                     $category = \App\Models\SubCategory::find($lastKey['sub_category']);
                                     $products[] = \App\Models\Product::withAvg('reviews', 'rating') // => reviews_avg_rating method
                                         ->withCount('reviews')
-                                        ->with(['productVariants', 'category'])
                                         ->where('sub_category_id', $category->id)
                                         ->where('is_approved', 1)
                                         ->where('status', 1)
@@ -64,7 +62,6 @@
                                     $category = \App\Models\ChildCategory::find($lastKey['child_category']);
                                     $products[] = \App\Models\Product::withAvg('reviews', 'rating') // => reviews_avg_rating method
                                         ->withCount('reviews')
-                                        ->with(['productVariants', 'category'])
                                         ->where('child_category_id', $category->id)
                                         ->where('is_approved', 1)
                                         ->where('status', 1)
