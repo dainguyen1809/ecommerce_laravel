@@ -28,6 +28,7 @@ class VendorController extends Controller
         // statistics earnings 
 
         $todayEarning = Order::where('order_status', 'delivered')
+            ->where('payment_status', 1)
             ->whereDate('created_at', Carbon::today())
             ->whereHas('orderProducts', function ($query) {
                 $query->where('vendor_id', auth()->user()->vendor->id);

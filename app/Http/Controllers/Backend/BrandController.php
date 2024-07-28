@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Brand\StoreBrandRequest;
 use App\Http\Requests\Brand\UpdateBrandRequest;
 use App\Models\Brand;
+use App\Models\Product;
 use App\Traits\UploadImage;
 use Illuminate\Http\Request;
 
@@ -76,6 +77,12 @@ class BrandController extends Controller
     public function destroy($id)
     {
         $brand = $this->model->findOrFail($id);
+        if (Product::where('brand_id', $brand->id)->count() > 0) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'This brand have products. You can\'t delete it',
+            ]);
+        }
         $this->deleteImage($brand->logo);
         $brand->delete();
 

@@ -1,8 +1,9 @@
-<div class="tab-pane fade active show" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
     <div class="card border">
         <div class="row m-2">
             <div class="col-12">
-                <form action="{{ route('admin.paypal-settings.update', 1) }}" method="post" enctype="multipart/form-data">
+                <h1 class="text-center">Updating...</h1>
+                {{-- <form action="{{ route('admin.paypal-settings.update', 1) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="form-group">
@@ -64,7 +65,7 @@
                             <button class="btn btn-primary col-sm-3">Submit</button>
                         </div>
                     </div>
-                </form>
+                </form> --}}
             </div>
         </div>
     </div>

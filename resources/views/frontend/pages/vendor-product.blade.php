@@ -199,9 +199,11 @@
                                     @foreach ($products as $product)
                                         <div class="col-xl-12">
                                             <div class="ts__product_item ts__list_view">
-                                                <span class="ts__new">
-                                                    {{ formatProductType($product->product_type) }}
-                                                </span>
+                                                @if (isset($product->product_type))
+                                                    <span class="ts__new">
+                                                        {{ formatProductType($product->product_type) }}
+                                                    </span>
+                                                @endif
                                                 @if (checkDiscount($product))
                                                     <span class="ts__minus">
                                                         -{{ calculateDiscountPercent($product->price, $product->offer_price) }}%

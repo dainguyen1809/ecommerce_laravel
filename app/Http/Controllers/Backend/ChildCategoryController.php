@@ -8,6 +8,8 @@ use App\Http\Requests\ChildCategory\StoreChildCategoryRequest;
 use App\Http\Requests\ChildCategory\UpdateChildCategoryRequest;
 use App\Models\Category;
 use App\Models\ChildCategory;
+use App\Models\HomePageSetting;
+use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use function App\Helpers\active;
@@ -109,7 +111,27 @@ class ChildCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $this->model->findOrFail($id)->delete();
+
+        $childCategory = ChildCategory::findOrFail($id);
+        if (Product::where('child_category_id', $childCategory->id)->count() > 0) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'This item contain products. You can\'t delete it',
+            ]);
+        }
+        $homeSetting = HomePageSetting::all();
+        foreach ($homeSetting as $item) {
+            $arrConvert = json_decode($item->value);
+            $colection = collect($arrConvert);
+            if ($colection->contains('child_category', $childCategory->id)) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'This item contain products. You can\'t delete it',
+                ]);
+            }
+        }
+
+        $childCategory->delete();
 
         return response()->json([
             'status' => 'success',

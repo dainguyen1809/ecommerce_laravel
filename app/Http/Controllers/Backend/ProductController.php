@@ -9,6 +9,7 @@ use App\Http\Requests\product\UpdateProductRequest;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ChildCategory;
+use App\Models\OrderProduct;
 use App\Models\Product;
 use App\Models\ProductImageGallery;
 use App\Models\ProductVariant;
@@ -155,6 +156,13 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = $this->model->findOrFail($id);
+
+        if (OrderProduct::where('product_id', $product->id)->count() > 0) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'This product have orders. You can\'t delete it',
+            ]);
+        }
 
         // delete main image
         $this->deleteImage($product->thumb_image);

@@ -74,41 +74,17 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="ts__add_address_single">
-                                <label>Product Types</label>
-                                <div class="ts__topbar_select">
-                                    <select class="select_2" name="product_type">
-                                        <option value="">Select</option>
-                                        <option {{ $product->product_type == 'new_arrival' ? 'selected' : '' }}
-                                            value="new_arrival">
-                                            New Arrival
-                                        </option>
-                                        <option {{ $product->product_type == 'featured_product' ? 'selected' : '' }}
-                                            value="featured_product">
-                                            Featured
-                                        </option>
-                                        <option {{ $product->product_type == 'best_product' ? 'selected' : '' }}
-                                            value="best_product">
-                                            Best Product
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="ts__add_address_single">
-                                <label>Brand</label>
-                                <div class="ts__topbar_select">
-                                    <select class="select_2" name="brand">
-                                        <option value="">Select</option>
-                                        @foreach ($brands as $brand)
-                                            <option {{ $brand->id == $product->brand_id ? 'selected' : '' }}
-                                                value="{{ $brand->id }}">
-                                                {{ $brand->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                        <div class="ts__add_address_single">
+                            <label>Brand</label>
+                            <div class="ts__topbar_select">
+                                <select class="select_2" name="brand">
+                                    <option value="">Select</option>
+                                    @foreach ($brands as $brand)
+                                        <option {{ $brand->id == $product->brand_id ? 'selected' : '' }}
+                                            value="{{ $brand->id }}">
+                                            {{ $brand->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>

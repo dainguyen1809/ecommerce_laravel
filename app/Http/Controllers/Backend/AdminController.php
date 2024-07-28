@@ -24,6 +24,7 @@ class AdminController extends Controller
 
         // earning
         $todayEarning = Order::where('order_status', '!=', 'canceled')
+            ->where('payment_status', 1)
             ->whereDate('created_at', Carbon::today())->sum('sub_total');
         $monthEarning = Order::where('order_status', '!=', 'canceled')
             ->whereMonth('created_at', Carbon::now()->month)->sum('sub_total');
@@ -67,6 +68,9 @@ class AdminController extends Controller
 
     public function login()
     {
+        if (auth()->check() && auth()->user()->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        }
         return view('admin.auth.login');
     }
 }

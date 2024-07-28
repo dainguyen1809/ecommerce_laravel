@@ -24,7 +24,11 @@
                     @foreach ($products as $product)
                         <div class="col-xl-3 col-sm-6 col-lg-4 {{ $key }}">
                             <div class="ts__product_item">
-                                <span class="ts__new">{{ formatProductType($product->product_type) }}</span>
+                                @if (isset($product->product_type))
+                                    <span class="ts__new">
+                                        {{ formatProductType($product->product_type) }}
+                                    </span>
+                                @endif
                                 @if (checkDiscount($product))
                                     <span class="ts__minus">
                                         -{{ calculateDiscountPercent($product->price, $product->offer_price) }}%

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FlashSaleController;
@@ -22,7 +21,7 @@ use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/test/testing', [TestController::class, 'test'])->name('test.testing');
+// Route::get('/test/testing', [TestController::class, 'test'])->name('test.testing');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -31,8 +30,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
-
-Route::get('admin/login', [AdminController::class, 'login'])->name('admin.login');
 
 // flash sale
 Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sale');
@@ -116,5 +113,7 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     Route::get('paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('paypal.payment');
     Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
     Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
+    // paypal
+    Route::get('cod/payment', [PaymentController::class, 'payWithCod'])->name('cod.payment');
 
 });
