@@ -9,8 +9,8 @@
     <meta content="Coderthemes" name="author" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <title>{{ $settings->site_name . ' - ' . Auth::user()->name }}</title>
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <title>{{ @$settings->site_name . ' - ' . Auth::user()->name }}</title>
+    <link rel="icon" type="image/png" href="{{ asset($logoSetting->favicon) }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}">
